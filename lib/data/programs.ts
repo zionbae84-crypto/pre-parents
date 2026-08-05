@@ -166,4 +166,135 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gov.kr/portal/service/serviceInfo/SME000000100",
     lastVerifiedAt: "2026-08-05",
   },
+  // 출처: 서울시 탄생응원 서울프로젝트 몽땅정보 만능키(umppa.seoul.go.kr) 및
+  // 서울시 뉴스(news.seoul.go.kr/welfare/archives/543754), 2026-08-05 확인
+  {
+    id: "seoul-pregnant-transport-support",
+    title: "서울시 임산부 교통비 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신중"],
+    category: "바우처",
+    summary: "서울 거주 임산부에게 교통비 최대 100만원 지원",
+    benefit:
+      "첫째 임신·출산 시 70만원, 둘째 80만원, 셋째 이상 100만원을 임산부 본인 명의 신용/체크카드에 포인트로 충전. 대중교통, 택시, 유류비 등 교통수단에 사용 가능.",
+    eligibility: {
+      note: "신청일 기준 서울시 거주 임산부(다문화가족 외국인 임산부 포함). 2026년 7월 1일 이후 신청분부터 서울시 90일 이상 계속 거주 요건 적용. 소득기준 없음.",
+    },
+    applicationMethod:
+      "서울시 임산부 교통비 지원 홈페이지(seoulmomcare.com) 온라인 신청 또는 거주지 주민센터·보건소 방문 신청",
+    applicationPeriod:
+      "임신 중 신청 시 분만예정일로부터 12개월 되는 달 말일까지, 출산 후 신청 시 자녀 출생일로부터 12개월 되는 달 말일까지",
+    officialLink:
+      "https://umppa.seoul.go.kr/hmpg/sprt/bzin/bzmgComtDetail.do?biz_mng_no=34B5EA8BEB354E2DB26136CFE52AEFF2",
+    lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 서울시 탄생응원 서울프로젝트 몽땅정보 만능키(umppa.seoul.go.kr), 2026-08-05 확인
+  {
+    id: "seoul-postpartum-care-expense",
+    title: "서울형 산후조리경비 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["출생출산"],
+    category: "바우처",
+    summary: "서울 출산가정에 산후조리경비 최대 150만원 바우처",
+    benefit:
+      "첫째 출산 시 100만원, 둘째 120만원, 셋째 이상 150만원을 바우처(서울사랑상품권 등)로 지원. 산후조리원 비용, 산후도우미, 의약품 등에 사용. 현금지급 불가.",
+    eligibility: {
+      note: "신청일 기준 서울 거주 출산모(외국인 배우자, 미혼모 포함). 2026년 7월 1일부터 서울시 90일 이상 거주 요건 적용.",
+    },
+    applicationMethod: "서울시 산후조리경비 지원 온라인 신청 또는 거주지 주민센터·보건소 방문 신청",
+    applicationPeriod:
+      "출산일로부터 180일 이내 신청(유산·사산은 임신 16주 이상 확인일로부터 180일 이내). 기한 경과 시 소급 적용 불가.",
+    officialLink:
+      "https://umppa.seoul.go.kr/hmpg/sprt/bzin/bzmgComtDetail.do?biz_mng_no=58D83411277E40D1BFF6255A10CBCDD5",
+    lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 강남구청 공식 홈페이지 종합민원 신청서식(gangnam.go.kr, B_000060/14890), 2026-08-05 확인
+  {
+    id: "gangnam-childbirth-grant",
+    title: "강남구 출산양육지원금",
+    agencyType: "기초",
+    agencyName: "강남구",
+    region: { sido: "서울특별시", sigungu: "강남구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "강남구 출생아 가정에 최대 500만원 현금지원",
+    benefit:
+      "첫째 200만원, 둘째 200만원, 셋째 300만원, 넷째 이상 500만원을 1회 현금 지급(계좌입금). 첫째·둘째 200만원은 2023년생부터 적용.",
+    eligibility: {
+      note: "강남구에 출생신고된 아동, 보호자와 아동이 주민등록상 동일세대, 보호자의 강남구 거주기간 1년 이상.",
+    },
+    applicationMethod: "거주지 관할 동주민센터 방문신청 또는 정부24 온라인신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    requiredDocuments: ["신분증", "통장사본(신생아의 부 또는 모)", "출산양육지원금 신청서"],
+    officialLink: "https://www.gangnam.go.kr/board/B_000060/14890/view.do?mid=ID03_010104",
+    lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보 출산장려금(서울특별시 서초구) 조례 안내
+  // (easylaw.go.kr, areaCsmOrdinSeq=220), 2026-08-05 확인
+  {
+    id: "seocho-childbirth-grant",
+    title: "서초구 출산장려금",
+    agencyType: "기초",
+    agencyName: "서초구",
+    region: { sido: "서울특별시", sigungu: "서초구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "서초구 신생아 가정에 최대 100만원 현금지원",
+    benefit:
+      "첫째아 30만원, 둘째아 50만원, 셋째아 이상 100만원 현금 지급(쌍생아는 출생순위별로 각각 지급).",
+    eligibility: {
+      note: "출생일 기준 365일 이전부터 서초구에 계속 주민등록을 두고 실제 거주 중인 신생아의 부 또는 모.",
+    },
+    applicationMethod: "오케이민원센터장 또는 거주지 관할 동장에게 제출(동주민센터 방문신청)",
+    applicationPeriod: "신생아 출생일부터 1년 이내",
+    requiredDocuments: ["출산지원금 지원신청서", "예금통장 사본"],
+    officialLink:
+      "https://easylaw.go.kr/CSP/CnpClsOrdinMain.laf?popMenu=ov&areaCsmOrdinSeq=220&ccfNo=1&cciNo=1&cnpClsNo=1",
+    lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 관악구청 공식 홈페이지 한눈에 보는 출산 및 양육 관련 연령별 지원사업(gwanak.go.kr), 2026-08-05 확인.
+  // 참고: 2021년 언론보도는 조례 개정으로 자녀순위별 10만~200만원 현금 지급으로 상향되었다고 보도했으나
+  // 관악구청 공식 페이지 기준 현재 운영 내용은 2만원 상당 유아용품 지급이므로 공식 페이지 기준으로 반영함
+  {
+    id: "gwanak-birth-celebration-grant",
+    title: "관악구 출생축하금",
+    agencyType: "기초",
+    agencyName: "관악구",
+    region: { sido: "서울특별시", sigungu: "관악구" },
+    stages: ["출생출산"],
+    category: "기타",
+    summary: "관악구 출생아 가정에 2만원 상당 유아용품 지원",
+    benefit: "관악구 거주 및 출생신고한 영아 가정에 2만원 상당의 유아용품을 지급(현물지원).",
+    eligibility: {
+      note: "관악구에 출생신고한 영아를 둔 가정. 소득기준 없음.",
+    },
+    applicationMethod: "정부24(plus.gov.kr) 온라인 신청 또는 거주지 동주민센터 방문 신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    officialLink: "https://www.gwanak.go.kr/site/gwanak/06/10614011300002025051402.jsp",
+    lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 강서구청 공식 홈페이지 강서구 임신부 가사돌봄서비스(gangseo.seoul.kr/welfare/wel100501), 2026-08-05 확인
+  {
+    id: "gangseo-pregnant-housework-service",
+    title: "강서구 임신부 가사돌봄서비스",
+    agencyType: "기초",
+    agencyName: "강서구",
+    region: { sido: "서울특별시", sigungu: "강서구" },
+    stages: ["임신중"],
+    category: "돌봄서비스",
+    summary: "강서구 임신부 대상 가사·병원동행 돌봄서비스 지원",
+    benefit:
+      "청소, 세탁, 식기세척 등 기본 가사 및 병원 동행 서비스를 할인 요금(평일 회당 7,000원, 토요일 회당 8,000원)에 최대 10회(1회 4시간) 이용. 이용자가 서비스 제공업체에 직접 결제.",
+    eligibility: {
+      note: "강서구에 주민등록을 두고 거주하는 임신부(임신판정~출산 전). 서울형 가사서비스, 한부모가족 가사서비스와 중복 지원 불가.",
+    },
+    applicationMethod: "정부24 온라인 신청 또는 거주지 동주민센터 방문 신청",
+    applicationPeriod: "2026년 3월 23일(월) ~ 10월 30일(금)",
+    officialLink: "https://www.gangseo.seoul.kr/welfare/wel100501",
+    lastVerifiedAt: "2026-08-05",
+  },
 ];
