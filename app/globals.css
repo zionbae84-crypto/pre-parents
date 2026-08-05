@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coral: #FF8A65;
+  --color-coral-dark: #F4703F;
+  --color-cream: #FFF8F0;
+  --color-sage: #8FBC8F;
+  --color-soft-yellow: #FFD54F;
+  --color-brown: #5C4A3D;
+  --color-badge-gov: #4A90D9;
+  --color-badge-metro: #FF8A65;
+  --color-badge-local: #FFD54F;
+
+  --radius-card: 16px;
+  --radius-button: 12px;
+
+  --font-display: var(--font-jua);
+  --font-body: var(--font-noto-sans-kr);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+}
