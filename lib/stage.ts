@@ -9,16 +9,21 @@ function todayString(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function parseDateParts(dateString: string): { year: number; month: number; day: number } {
+  const [year, month, day] = dateString.split("-").map(Number);
+  return { year, month: month - 1, day };
+}
+
 export function calculateAgeInMonths(
   birthDate: string,
   today: string = todayString()
 ): number {
-  const birth = new Date(birthDate);
-  const now = new Date(today);
+  const birth = parseDateParts(birthDate);
+  const now = parseDateParts(today);
   let months =
-    (now.getFullYear() - birth.getFullYear()) * 12 +
-    (now.getMonth() - birth.getMonth());
-  if (now.getDate() < birth.getDate()) {
+    (now.year - birth.year) * 12 +
+    (now.month - birth.month);
+  if (now.day < birth.day) {
     months -= 1;
   }
   return Math.max(0, months);
