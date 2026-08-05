@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Jua, Noto_Sans_KR } from "next/font/google";
+import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 import "./globals.css";
 
 const jua = Jua({
@@ -25,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${jua.variable} ${notoSansKr.variable} font-body antialiased`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
