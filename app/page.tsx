@@ -1,69 +1,53 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+
+const STAGES = [
+  { slug: "임신준비", label: "임신준비" },
+  { slug: "임신중", label: "임신중" },
+  { slug: "출생출산", label: "출생·출산" },
+  { slug: "영유아기", label: "영유아기" },
+  { slug: "유아", label: "유아" },
+] as const;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="mx-auto max-w-[1200px] px-6 py-16">
+      <section className="text-center">
+        <h1 className="font-display text-[48px] text-coral leading-tight">
+          예비부모를 위한
+          <br />
+          정부지원금, 한눈에 확인하세요
+        </h1>
+        <p className="mt-6 text-[17px] text-brown/80">
+          정부, 서울시, 자치구로 흩어진 임신·출산·육아 지원사업을
+          <br />
+          거주지·나이·소득만 입력하면 한번에 찾아드려요.
+        </p>
+        <div className="mt-8 flex justify-center gap-4">
+          <Button href="/search" variant="primary">
+            맞춤 지원금 찾기
+          </Button>
+          <Button href="/programs" variant="outline">
+            전체 지원사업 둘러보기
+          </Button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="mt-20">
+        <h2 className="text-center font-display text-[32px] text-brown">
+          어떤 단계에 계신가요?
+        </h2>
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
+          {STAGES.map((stage) => (
+            <a
+              key={stage.slug}
+              href={`/guide/${stage.slug}`}
+              className="rounded-card border-2 border-brown/10 bg-white p-6 text-center font-bold text-brown transition-colors hover:border-coral hover:text-coral"
+            >
+              {stage.label}
+            </a>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
