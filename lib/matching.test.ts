@@ -56,7 +56,7 @@ describe("matchProgram - region", () => {
 
 describe("matchProgram - stage", () => {
   it("matches when stages intersect", () => {
-    const program = { ...base, stages: ["임신중", "출생출산"] as const };
+    const program: SupportProgram = { ...base, stages: ["임신중", "출생출산"] };
     expect(matchProgram({ ...program }, { ...baseCriteria, stages: ["출생출산"] })).toBe(true);
   });
 
@@ -83,7 +83,7 @@ describe("matchProgram - parent age", () => {
 
 describe("matchProgram - child age", () => {
   it("rejects when child age is outside the range", () => {
-    const program = {
+    const program: SupportProgram = {
       ...base,
       stages: ["영유아기"],
       eligibility: { childAgeMonthsMin: 0, childAgeMonthsMax: 11 },
@@ -94,7 +94,7 @@ describe("matchProgram - child age", () => {
   });
 
   it("passes when child age is within the range", () => {
-    const program = {
+    const program: SupportProgram = {
       ...base,
       stages: ["영유아기"],
       eligibility: { childAgeMonthsMin: 0, childAgeMonthsMax: 11 },
