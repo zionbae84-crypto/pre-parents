@@ -60,8 +60,52 @@ describe("matchProgram - stage", () => {
     expect(matchProgram({ ...program }, { ...baseCriteria, stages: ["출생출산"] })).toBe(true);
   });
 
-  it("rejects when stages do not intersect", () => {
+  it("rejects when stages do not intersect and no child-age eligibility window is set", () => {
     expect(matchProgram(base, { ...baseCriteria, stages: ["유아"] })).toBe(false);
+  });
+
+  it("matches via childAge eligibility window even when the tagged stage doesn't intersect (parental-allowance-style program)", () => {
+    // Mirrors 부모급여: tagged stages only cover 출생출산/영유아기, but
+    // eligibility.childAgeMonthsMax extends coverage through 12~23개월 (유아 단계).
+    const program: SupportProgram = {
+      ...base,
+      stages: ["출생출산", "영유아기"],
+      eligibility: { childAgeMonthsMin: 0, childAgeMonthsMax: 23 },
+    };
+    const criteria: SearchCriteria = {
+      ...baseCriteria,
+      stages: ["유아"],
+      childAgeMonths: 13,
+    };
+    expect(matchProgram(program, criteria)).toBe(true);
+  });
+
+  it("does not fall back to the childAge window when the user has no child age (still pregnant/preparing)", () => {
+    const program: SupportProgram = {
+      ...base,
+      stages: ["출생출산", "영유아기"],
+      eligibility: { childAgeMonthsMin: 0, childAgeMonthsMax: 23 },
+    };
+    const criteria: SearchCriteria = {
+      ...baseCriteria,
+      stages: ["유아"],
+      childAgeMonths: undefined,
+    };
+    expect(matchProgram(program, criteria)).toBe(false);
+  });
+
+  it("does not fall back when childAge is outside the program's eligibility window either", () => {
+    const program: SupportProgram = {
+      ...base,
+      stages: ["출생출산", "영유아기"],
+      eligibility: { childAgeMonthsMin: 0, childAgeMonthsMax: 23 },
+    };
+    const criteria: SearchCriteria = {
+      ...baseCriteria,
+      stages: ["유아"],
+      childAgeMonths: 30,
+    };
+    expect(matchProgram(program, criteria)).toBe(false);
   });
 });
 

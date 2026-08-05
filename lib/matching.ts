@@ -23,7 +23,21 @@ export function matchesStage(
   program: SupportProgram,
   criteria: SearchCriteria
 ): boolean {
-  return program.stages.some((stage) => criteria.stages.includes(stage));
+  if (program.stages.some((stage) => criteria.stages.includes(stage))) {
+    return true;
+  }
+
+  // A program's `stages` tag is a coarse browsing category (e.g. 부모급여 is
+  // tagged 출생출산/영유아기), but some programs stay eligible past that tag
+  // per their own structured childAge window (부모급여 pays through 23개월,
+  // i.e. into 유아). When that window is defined and the user has a child
+  // age, it's authoritative even if the coarse stage tag doesn't intersect.
+  const { childAgeMonthsMin, childAgeMonthsMax } = program.eligibility;
+  if (childAgeMonthsMin === undefined && childAgeMonthsMax === undefined) return false;
+  if (criteria.childAgeMonths === undefined) return false;
+  if (childAgeMonthsMin !== undefined && criteria.childAgeMonths < childAgeMonthsMin) return false;
+  if (childAgeMonthsMax !== undefined && criteria.childAgeMonths > childAgeMonthsMax) return false;
+  return true;
 }
 
 export function matchesParentAge(

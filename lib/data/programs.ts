@@ -8,7 +8,8 @@ export const programs: SupportProgram[] = [
     agencyType: "정부",
     agencyName: "보건복지부",
     region: "nationwide",
-    stages: ["출생출산"],
+    // applicationPeriod가 "출생일로부터 2년 이내"이므로 영유아기·유아 단계까지 신청 가능
+    stages: ["출생출산", "영유아기", "유아"],
     category: "바우처",
     summary: "출생아 1인당 200만원(둘째부터 300만원) 바우처",
     benefit:
@@ -197,7 +198,8 @@ export const programs: SupportProgram[] = [
     agencyType: "광역",
     agencyName: "서울특별시",
     region: { sido: "서울특별시" },
-    stages: ["출생출산"],
+    // applicationPeriod가 "출산일로부터 180일 이내"이므로 영유아기 단계까지 신청 가능
+    stages: ["출생출산", "영유아기"],
     category: "바우처",
     summary: "서울 출산가정에 산후조리경비 최대 150만원 바우처",
     benefit:
@@ -219,6 +221,8 @@ export const programs: SupportProgram[] = [
     agencyType: "기초",
     agencyName: "강남구",
     region: { sido: "서울특별시", sigungu: "강남구" },
+    // applicationPeriod가 "명시 없음"이라 신청 가능 기간을 넓혀 잡을 근거가 없어
+    // 출생출산 단계로만 한정(신청기한 확인되면 stages 확장 검토)
     stages: ["출생출산"],
     category: "현금지원",
     summary: "강남구 출생아 가정에 최대 500만원 현금지원",
@@ -241,7 +245,8 @@ export const programs: SupportProgram[] = [
     agencyType: "기초",
     agencyName: "서초구",
     region: { sido: "서울특별시", sigungu: "서초구" },
-    stages: ["출생출산"],
+    // applicationPeriod가 "출생일부터 1년 이내"이므로 영유아기 단계까지 신청 가능
+    stages: ["출생출산", "영유아기"],
     category: "현금지원",
     summary: "서초구 신생아 가정에 최대 100만원 현금지원",
     benefit:
@@ -265,6 +270,8 @@ export const programs: SupportProgram[] = [
     agencyType: "기초",
     agencyName: "관악구",
     region: { sido: "서울특별시", sigungu: "관악구" },
+    // applicationPeriod가 "명시 없음"이라 신청 가능 기간을 넓혀 잡을 근거가 없어
+    // 출생출산 단계로만 한정(신청기한 확인되면 stages 확장 검토)
     stages: ["출생출산"],
     category: "기타",
     summary: "관악구 출생아 가정에 2만원 상당 유아용품 지원",

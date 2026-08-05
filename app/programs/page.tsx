@@ -67,19 +67,25 @@ export default function ProgramsPage() {
       </div>
 
       <div className="mt-8 flex flex-col gap-4">
-        {filtered.map((program) => (
-          <Card key={program.id}>
-            <div className="mb-2 flex items-center gap-2">
-              <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
-              <span className="text-[13px] text-brown/60">{program.category}</span>
-            </div>
-            <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
-            <p className="mt-1 text-brown/80">{program.summary}</p>
-            <Link href={`/programs/${program.id}`} className="mt-3 inline-block font-bold text-coral">
-              자세히 보기 →
-            </Link>
-          </Card>
-        ))}
+        {filtered.length === 0 ? (
+          <p className="text-brown/60">
+            선택한 조건에 맞는 지원사업이 아직 없어요. 다른 조건으로 다시 확인해 보세요.
+          </p>
+        ) : (
+          filtered.map((program) => (
+            <Card key={program.id}>
+              <div className="mb-2 flex items-center gap-2">
+                <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
+                <span className="text-[13px] text-brown/60">{program.category}</span>
+              </div>
+              <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
+              <p className="mt-1 text-brown/80">{program.summary}</p>
+              <Link href={`/programs/${program.id}`} className="mt-3 inline-block font-bold text-coral">
+                자세히 보기 →
+              </Link>
+            </Card>
+          ))
+        )}
       </div>
     </main>
   );
