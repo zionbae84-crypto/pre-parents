@@ -304,4 +304,362 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gangseo.seoul.kr/welfare/wel100501",
     lastVerifiedAt: "2026-08-05",
   },
+  // 출처: 종로구보건소 공식 홈페이지(jongno.go.kr, menuId=401291), 2026-08-06 확인
+  {
+    id: "jongno-postpartum-care-copay-support",
+    title: "산모·신생아 건강관리서비스 본인부담금 추가지원",
+    agencyType: "기초",
+    agencyName: "종로구",
+    region: { sido: "서울특별시", sigungu: "종로구" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "산모신생아 건강관리 본인부담금 90%까지 추가지원",
+    benefit:
+      "산모·신생아 건강관리서비스 이용 시 서비스 가격의 본인부담금(통상 10~50%) 중 자기부담을 총 서비스가격의 10% 수준까지 낮춰주는 추가지원. 쌍생아 이상, 셋째아 이상, 희귀난치성질환 산모, 장애인 산모, 북한이탈주민, 결혼이민자, 미혼모는 소득기준과 무관하게 지원.",
+    eligibility: {
+      incomePercentMax: 100,
+      note: "출산일 기준 10개월 전부터 신청일까지 계속 종로구에 주민등록된 출산가정(기준중위소득 100% 이하). 쌍생아 이상/셋째아 이상/희귀난치성질환 산모/장애인 산모/북한이탈주민/결혼이민자/미혼모는 소득 무관 지원.",
+    },
+    applicationMethod: "종로구보건소 방문 신청",
+    applicationPeriod: "서비스 종료일로부터 30일 이내",
+    requiredDocuments: [
+      "본인부담금 신청서",
+      "개인정보 수집이용동의서",
+      "만족도 조사지",
+      "산모 통장사본",
+      "본인부담금 영수증",
+      "서비스제공기록지",
+    ],
+    officialLink: "https://www.jongno.go.kr/Health.do?menuId=401291&menuNo=401291",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 중구청 공식 홈페이지 다자녀 가정지원 안내(junggu.seoul.kr, cmsid=16349), 2026-08-06 확인.
+  // 참고: 중구청 사이트 내 별도 팝업 공지(cid=64081)에는 "둘째 50만/셋째 100만/넷째 이상 300만원(첫째 지급 없음)"으로
+  // 다르게 게시되어 있어 두 페이지의 금액이 상충함. 더 상세하고 구조화된 콘텐츠 페이지(cmsid=16349) 수치를 채택했으며,
+  // 실제 운영 여부는 중구청 가족정책과(02-3396-5434) 재확인 권장.
+  {
+    id: "junggu-childbirth-childcare-grant",
+    title: "출산양육지원금",
+    agencyType: "기초",
+    agencyName: "중구",
+    region: { sido: "서울특별시", sigungu: "중구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "출생아 순위별 최대 1,000만원 양육지원금 지급",
+    benefit:
+      "자녀 출산 시 순위별 일시금 지급 — 첫째 100만원, 둘째 200만원, 셋째 300만원, 넷째 400만원, 다섯째 이상 1,000만원.",
+    eligibility: {
+      note: "신생아 출생일 현재 중구에 12개월 이상 주민등록 후 실제 거주(12개월 미만 거주 시 실거주기간 12개월 경과 후 지원 가능).",
+    },
+    applicationMethod: "거주지 동주민센터 방문 신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    officialLink: "https://www.junggu.seoul.kr/content.do?cmsid=16349",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 용산구보건소 공식 홈페이지(health.yongsan.go.kr, menuNo=201275), 2026-08-06 확인.
+  // 참고: 일반 가구 대상 출산장려금 조례(전부개정, 2024.10 입법예고)가 존재하나 공식페이지에서 구체 금액을
+  // 확인하지 못해, 확실히 검증된 장애인가정 출산지원금만 반영함.
+  {
+    id: "yongsan-disabled-family-birth-grant",
+    title: "장애인가정 출산지원금",
+    agencyType: "기초",
+    agencyName: "용산구",
+    region: { sido: "서울특별시", sigungu: "용산구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "장애인 가정 출산 시 최대 170만원 지원",
+    benefit:
+      "등록장애인이 부 또는 모인 가정의 출산비용 지원 — 심하지 않은 장애 120만원, 심한 장애 170만원(구비 지원 50만원 포함).",
+    eligibility: {
+      note: "신생아 출생일 기준 3개월 전부터 용산구에 주민등록을 두고 거주하는 등록 장애인으로 출산한 장애인 가정의 부 또는 모.",
+    },
+    applicationMethod: "거주지 동주민센터 방문 또는 정부24/복지로 온라인 신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    officialLink: "http://health.yongsan.go.kr/portal/main/contents.do?menuNo=201275",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 성동구보건소 공식 홈페이지(sd.go.kr, key=4816), 2026-08-06 확인
+  {
+    id: "seongdong-postpartum-care-expense-support",
+    title: "성동구 출산가정 산후조리비용 확대지원",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["출생출산", "영유아기"],
+    category: "바우처",
+    summary: "산후조리비 현금+바우처 최대 150만원 지원",
+    benefit:
+      "현금 50만원(산모 계좌 입금, 성동구 지원)에 더해 바우처로 첫째 100만원, 둘째 120만원, 셋째 이상 150만원 추가 지원(성동구+서울시 재원).",
+    eligibility: {
+      note: "현금 지원은 신청일 기준 성동구 거주 및 성동구 출생신고 출산모 대상. 바우처는 신청일 현재 서울시 거주 및 서울시 출생신고 출산모 대상(2026년 7월 1일부터 90일 이상 거주 요건 적용).",
+    },
+    applicationMethod:
+      "동주민센터 방문(현금 신청) 또는 정부24 보조금24·탄생육아 몽땅정보통(umppa.seoul.go.kr) 온라인 신청",
+    applicationPeriod:
+      "현금: 출산일로부터 60일 이내 / 바우처: 출산 후 180일 이내(미숙아·선천성이상아는 퇴원일로부터 180일 이내)",
+    requiredDocuments: [
+      "출산서비스 통합처리 신청서",
+      "신분증",
+      "통장사본(산모명의)",
+      "주민등록등초본",
+      "가족관계증명서",
+    ],
+    officialLink: "https://www.sd.go.kr/health/contents.do?key=4816",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 광진구청 공식 홈페이지(gwangjin.go.kr, menuNo=200309), 2026-08-06 확인
+  {
+    id: "gwangjin-first-birthday-celebration-grant",
+    title: "첫돌(출산)축하금 지원",
+    agencyType: "기초",
+    agencyName: "광진구",
+    region: { sido: "서울특별시", sigungu: "광진구" },
+    stages: ["영유아기"],
+    category: "바우처",
+    summary: "첫돌 맞은 아이에 최대 300만원 축하금 지급",
+    benefit:
+      "출생 후 첫돌이 지난 자녀에게 1회 지급 — 첫째~셋째 자녀 100만원, 넷째 200만원, 다섯째 이상 300만원. 서울사랑상품권(광진구 첫돌축하금) 형태로 지급, 광진구 내 가맹점(음식점, 마트, 병원, 약국, 문화·교육업종 등)에서 사용 가능.",
+    eligibility: {
+      note: "2025년 이후 광진구에서 출생한 첫째 자녀부터 지원. 출생일 포함하여 지원일까지 계속 동일세대로 광진구 거주하는 부모 또는 보호자.",
+    },
+    applicationMethod: "거주지 동주민센터 방문 신청",
+    applicationPeriod: "출생신고 후 1년이 경과한 날로부터 6개월 이내",
+    requiredDocuments: ["신분증", "신청서(조례 별지1호 서식 또는 출산서비스 통합처리신청서)"],
+    officialLink: "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200309",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 「서울특별시 동대문구 출생 및 양육 지원에 관한 조례」(law.go.kr, ordinSeq=1890197), 2026-08-06 확인.
+  // 참고: law.go.kr 조례 원문은 JS 렌더링으로 직접 추출하지 못해, 일관되게 동일 금액을 보도한 언론 3건으로
+  // 교차검증함(공식 조례 원문 직접 열람은 못했음). 정확한 신청기한도 미확인.
+  {
+    id: "dongdaemun-birth-grant",
+    title: "출산지원금",
+    agencyType: "기초",
+    agencyName: "동대문구",
+    region: { sido: "서울특별시", sigungu: "동대문구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "출생아 순위별 30만~300만원 출산지원금",
+    benefit:
+      "순위별 일시금 지급 — 첫째 30만원, 둘째 60만원, 셋째 100만원, 넷째 200만원, 다섯째 이상 300만원(2024.1.1 시행).",
+    eligibility: {
+      note: "출생일 현재 동대문구에 주민등록을 두고 실제 거주하는 출생아의 부 또는 모.",
+    },
+    applicationMethod: "거주지 동주민센터 방문 신청",
+    applicationPeriod: "명시 없음(출생신고 시 접수, 정확한 신청기한은 동대문구청 가정복지과 확인 필요)",
+    officialLink: "https://www.law.go.kr/LSW//ordinInfoP.do?ordinSeq=1890197&chrClsCd=010202&gubun=ELIS",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 중랑구청 공식 홈페이지(jungnang.go.kr, menuNo=201500), 2026-08-06 확인.
+  // 참고: 공식페이지 직접 fetch가 기술적으로 반복 실패해 검색엔진에 색인된 동일 페이지 콘텐츠와
+  // 언론보도(헤럴드경제, 문화일보)로 교차검증함.
+  {
+    id: "jungnang-birth-celebration-goods-points",
+    title: "중랑형 출산축하용품 지원사업",
+    agencyType: "기초",
+    agencyName: "중랑구",
+    region: { sido: "서울특별시", sigungu: "중랑구" },
+    stages: ["출생출산", "영유아기"],
+    category: "바우처",
+    summary: "출산가정에 육아용품 전용 10만 포인트 지급",
+    benefit:
+      "출산·육아용품 전용 온라인몰에서 사용 가능한 10만 포인트 지급. 400여 종 육아용품 중 직접 선택해 가정으로 배송받는 방식.",
+    eligibility: {
+      note: "2026년 1월 1일 이후 출생아를 둔 가정으로, 출생일 기준 중랑구에 12개월 이상 주민등록을 두고 실제 거주 중인 경우.",
+    },
+    applicationMethod:
+      "동주민센터 방문(출생신고 시 행복출산 원스톱서비스로 통합 신청) 또는 중랑구청 홈페이지 온라인 신청",
+    applicationPeriod: "출생일로부터 6개월 이내",
+    officialLink: "https://www.jungnang.go.kr/portal/main/contents.do?menuNo=201500",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보 성북구 조례 안내(easylaw.go.kr, areaCsmOrdinSeq=221), 2026-08-06 확인
+  {
+    id: "seongbuk-childbirth-grant",
+    title: "출산장려금",
+    agencyType: "기초",
+    agencyName: "성북구",
+    region: { sido: "서울특별시", sigungu: "성북구" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "셋째 이상 자녀 출산 시 100만~200만원 지급",
+    benefit:
+      "신생아 출생일 기준 6개월 이상 계속 성북구에 주민등록을 두고 실제 거주하는 신생아의 보호자에게 셋째 자녀 100만원, 넷째 자녀 150만원, 다섯째 자녀 이상 200만원을 지급(첫째·둘째 자녀는 지원 대상 아님).",
+    eligibility: {
+      note: "신생아 출생일 기준 6개월 이상 계속하여 성북구에 주민등록을 두고 실제 거주하는 신생아의 보호자. 셋째 자녀 이상부터 지원 대상.",
+    },
+    applicationMethod: "거주지 관할 동장에게 출산서비스 통합처리 신청서 제출(출생신고 접수 시 안내)",
+    applicationPeriod: "신생아 출생일부터 1년 이내",
+    officialLink:
+      "https://www.easylaw.go.kr/CSP/CnpClsOrdinMain.laf?areaCsmOrdinSeq=221&ccfNo=1&cciNo=1&cnpClsNo=1",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 서대문구보건소 공식 홈페이지(sdm.go.kr), 2026-08-06 확인
+  {
+    id: "seodaemun-pregnancy-congrats-grant",
+    title: "임신축하금",
+    agencyType: "기초",
+    agencyName: "서대문구",
+    region: { sido: "서울특별시", sigungu: "서대문구" },
+    stages: ["임신중"],
+    category: "현금지원",
+    summary: "임신부에게 태아 수에 따라 30만~90만원 지급",
+    benefit:
+      "태아 수에 따라 차등 지급: 단태아 30만원, 쌍태아 60만원, 삼태아 이상 90만원. 신청 다음 달 중순경 본인 계좌로 입금.",
+    eligibility: {
+      note: "출산예정일(출산일) 기준 1년 전부터 신청일 현재까지 계속하여 서대문구에 주민등록을 두고 실제 거주하는 임신부. 외국인은 임신부와 배우자 모두 출산예정일 1년 전부터 관내 거소확인 필요.",
+    },
+    applicationMethod: "온라인(정부24에서 서대문구 임신축하금 검색 신청) 또는 관할 동주민센터·보건소 방문 신청",
+    applicationPeriod: "출산예정일 또는 출산일 전일까지(출산 후 신청 불가)",
+    requiredDocuments: ["신분증", "임신확인서", "지원 신청서", "통장사본", "개인정보 동의서"],
+    officialLink: "https://www.sdm.go.kr/health/contents/healthbiz/maternal/pregnancy",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 도봉구청 공식 홈페이지(dobong.go.kr, code=10010135), 2026-08-06 확인
+  {
+    id: "dobong-birth-celebration-goods",
+    title: "출생축하용품 지원",
+    agencyType: "기초",
+    agencyName: "도봉구",
+    region: { sido: "서울특별시", sigungu: "도봉구" },
+    stages: ["출생출산"],
+    category: "기타",
+    summary: "신생아에게 기저귀 등 육아용품 세트 무료 지원",
+    benefit:
+      "2024년 1월 1일 이후 출생한 도봉구 거주 아동에게 아기양말, 기저귀, 방수패드, 손수건 등 출생축하용품 세트를 신청인이 희망하는 장소로 택배 배송.",
+    eligibility: {
+      note: "2024년 1월 1일 이후 출생한 도봉구 거주 아동.",
+    },
+    applicationMethod: "방문신청(동주민센터, 출생신고 시) 또는 온라인신청(정부24 > 원스톱서비스 > 행복출산)",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    officialLink: "https://www.dobong.go.kr/Contents.asp?code=10010135",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 양천구청 공식 홈페이지(yangcheon.go.kr, cbIdx=369, bcIdx=177144), 2026-08-06 확인.
+  // 참고: 양천구 자체 "출산지원금 지급 조례"는 2021년생까지만 적용되고 폐지되어 반영하지 않음.
+  {
+    id: "yangcheon-disabled-family-birth-support",
+    title: "장애인가정 출산비 지원(양천구 추가지원)",
+    agencyType: "기초",
+    agencyName: "양천구",
+    region: { sido: "서울특별시", sigungu: "양천구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "장애인 부모 출산 시 양천구가 1인당 50만원 추가지원",
+    benefit:
+      "국비·서울시비 등록장애인 1인당 120만원 + 양천구 자체 추가지원 50만원(여성장애인·남성장애인 배우자 각각 적용), 총 지원액 170만원.",
+    eligibility: {
+      note: "출생일 이전부터 신청일 현재까지 6개월 이상 계속 양천구에 주민등록을 두고 거주하는 등록장애인(여성장애인 본인 또는 남성장애인의 배우자가 출산).",
+    },
+    applicationMethod: "관할 동주민센터 방문 신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    requiredDocuments: ["신청서", "출생사실이 기재된 주민등록등본", "통장사본"],
+    officialLink: "https://www.yangcheon.go.kr/site/yangcheon/ex/bbs/View.do?cbIdx=369&bcIdx=177144",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보 구로구 조례 안내 및 구로구청 공식 홈페이지(guro.go.kr, key=4187), 2026-08-06 확인
+  {
+    id: "guro-multichild-birth-celebration-grant",
+    title: "다자녀 출생축하금",
+    agencyType: "기초",
+    agencyName: "구로구",
+    region: { sido: "서울특별시", sigungu: "구로구" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "셋째아 60만원, 넷째아 이상 200만원 출생축하금",
+    benefit:
+      "셋째 자녀 60만원, 넷째 자녀 이상 200만원 1회 지급(쌍생아 이상은 개별 지급).",
+    eligibility: {
+      note: "신생아 출생일 6개월 전부터 신청일 현재까지 계속 구로구에 주민등록을 두고 실제 거주하는 보호자(부 또는 모). 신생아는 보호자와 동일 세대원이어야 하며, 셋째아 이상 출산가정만 해당.",
+    },
+    applicationMethod: "거주지 관할 동장에게 신청(신청서 및 예금통장 사본 제출)",
+    applicationPeriod: "신생아 출생일로부터 1년 이내(거주기간 6개월 미만인 경우, 6개월 경과 후 6개월 이내 신청)",
+    requiredDocuments: ["신청서(별지 제1호서식)", "신청인 예금통장 사본"],
+    officialLink: "https://www.guro.go.kr/www/contents.do?key=4187",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 금천구청 공식 홈페이지(geumcheon.go.kr, key=525), 2026-08-06 확인
+  {
+    id: "geumcheon-birth-celebration-grant",
+    title: "금천구 출생축하금",
+    agencyType: "기초",
+    agencyName: "금천구",
+    region: { sido: "서울특별시", sigungu: "금천구" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "셋째아 70만원, 넷째아 이상 100만원 출생축하금",
+    benefit: "셋째 자녀 70만원, 넷째 자녀 이상 100만원 지급.",
+    eligibility: {
+      note: "셋째아 이상 출산가정, 금천구 주민등록 및 실거주 요건 적용.",
+    },
+    applicationMethod: "주민센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생일로부터 1년 이내",
+    officialLink: "https://www.geumcheon.go.kr/portal/contents.do?key=525",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 영등포구청 공식 홈페이지(ydp.go.kr, key=3842), 2026-08-06 확인
+  {
+    id: "yeongdeungpo-disabled-family-birth-support",
+    title: "장애인가정 출산지원금 지원(영등포구 추가지원)",
+    agencyType: "기초",
+    agencyName: "영등포구",
+    region: { sido: "서울특별시", sigungu: "영등포구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "장애인가정 출산 시 영등포구가 태아 1인당 50만원 추가지원",
+    benefit:
+      "서울시·국비 기본지원 태아 1인 기준 120만원 + 영등포구 자체 추가지원 태아 1인 기준 50만원(여성장애인 및 남성장애인 배우자 동일 기준 적용).",
+    eligibility: {
+      note: "장애인복지법 제32조에 따른 등록장애인으로 당해연도 1월 1일 이후 출산자, 또는 임신기간 4개월 이상 태아를 유산·사산한 자(인공임신중절 제외). 영등포구 거주자.",
+    },
+    applicationMethod: "장애인의 주민등록지 관할 동주민센터에 출산자 본인 또는 배우자 방문 신청",
+    applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
+    requiredDocuments: ["신청자 신분증", "신청서", "출생증명서 또는 주민등록등본", "입금계좌 통장사본"],
+    officialLink: "https://www.ydp.go.kr/www/contents.do?key=3842",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 「서울특별시 동작구 출산지원금 지급에 관한 조례」(law.go.kr, ordinSeq=1746909), 2026-08-06 확인.
+  // 참고: 신청방법·신청기한은 원문에서 확인하지 못해 "확인 안됨"으로 표기. 실제 반영 전 동작구청
+  // 보육정책과(또는 관련 부서) 재확인 권장.
+  {
+    id: "dongjak-angel-celebration-grant",
+    title: "동작천사축하금",
+    agencyType: "기초",
+    agencyName: "동작구",
+    region: { sido: "서울특별시", sigungu: "동작구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "출생순위별 30만~200만원 동작천사축하금",
+    benefit:
+      "첫째 30만원, 둘째 50만원, 셋째 100만원, 넷째 이상 200만원 지급(2022.11.10 조례 전부개정으로 사업명이 동작천사축하금으로 변경됨).",
+    eligibility: {
+      note: "동작구에 6개월 이상 계속 거주 중인 신생아의 보호자(부 또는 모).",
+    },
+    applicationMethod: "확인 안됨(관할 동작구청 문의 필요)",
+    applicationPeriod: "확인 안됨(관할 동작구청 문의 필요)",
+    officialLink: "https://www.law.go.kr/LSW//ordinInfoP.do?ordinSeq=1746909&chrClsCd=010202&gubun=ELIS",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 강동구청 공식 홈페이지(gangdong.go.kr, gdp_005_001_005_001_003), 2026-08-06 확인
+  {
+    id: "gangdong-multichild-special-allowance",
+    title: "다자녀특별장려금",
+    agencyType: "기초",
+    agencyName: "강동구",
+    region: { sido: "서울특별시", sigungu: "강동구" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "세자녀 이상 가정에 월 10만~20만원 지급",
+    benefit:
+      "세자녀 가정 세대당 월 10만원, 네자녀 이상 가정 세대당 월 20만원 지급. 신청 익월부터 대상 자녀가 만 6세 미만(0~71개월)까지 지급.",
+    eligibility: {
+      childAgeMonthsMin: 0,
+      childAgeMonthsMax: 71,
+      note: "강동구 동일 세대로 구성된 세 자녀 이상 다자녀 가정의 부모 또는 실질적 양육자.",
+    },
+    applicationMethod: "거주지 관할 동주민센터 신청",
+    applicationPeriod: "상시 신청(지급 자체는 신청 익월부터 자녀 만 6세 미만까지 지속)",
+    officialLink: "https://www.gangdong.go.kr/web/newportal/contents/gdp_005_001_005_001_003",
+    lastVerifiedAt: "2026-08-06",
+  },
 ];
