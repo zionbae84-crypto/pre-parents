@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/Button";
+import { StageIcon } from "@/components/ui/StageIcon";
 
 const STAGES = [
-  { slug: "임신준비", label: "임신준비" },
-  { slug: "임신중", label: "임신중" },
-  { slug: "출생출산", label: "출생·출산" },
-  { slug: "영유아기", label: "영유아기" },
-  { slug: "유아", label: "유아" },
+  { slug: "임신준비", ordinal: "첫 단계", label: "임신준비 단계" },
+  { slug: "임신중", ordinal: "두번째 단계", label: "임신중 단계" },
+  { slug: "출생출산", ordinal: "세번째 단계", label: "출생·출산 단계" },
+  { slug: "영유아기", ordinal: "네번째 단계", label: "영유아기 단계" },
+  { slug: "유아", ordinal: "다섯번째 단계", label: "유아 단계" },
 ] as const;
 
 export default function Home() {
@@ -37,13 +38,19 @@ export default function Home() {
           어떤 단계에 계신가요?
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
-          {STAGES.map((stage) => (
+          {STAGES.map((stage, index) => (
             <a
               key={stage.slug}
               href={`/guide/${stage.slug}`}
-              className="rounded-card border-2 border-brown/10 bg-white p-6 text-center font-bold text-brown transition-colors hover:border-coral hover:text-coral"
+              className="flex flex-col items-center gap-2 rounded-card border-2 border-brown/10 bg-white p-6 text-center text-brown transition-colors hover:border-coral hover:text-coral"
             >
-              {stage.label}
+              <StageIcon
+                stage={stage.slug}
+                className="animate-float"
+                style={{ animationDelay: `${index * -0.4}s` }}
+              />
+              <span className="text-[13px] text-brown/60">{stage.ordinal}</span>
+              <span className="font-bold">{stage.label}</span>
             </a>
           ))}
         </div>
