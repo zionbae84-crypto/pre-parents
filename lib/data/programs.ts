@@ -662,4 +662,65 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gangdong.go.kr/web/newportal/contents/gdp_005_001_005_001_003",
     lastVerifiedAt: "2026-08-06",
   },
+  // 출처: 노원구보건소 공식 홈페이지(nowon.kr, healthIncrz1_04.jsp), 2026-08-06 확인.
+  // 참고: 사용자가 제공한 nowon.kr 링크(생애주기별 출산·양육지원사업 안내)는 e-Book/PDF 형태라 본문 텍스트를
+  // 확인할 수 없었음. 같은 공식 도메인 내 실제 텍스트 콘텐츠 페이지에서 확인 가능한 유일한 노원구 자체
+  // 현금성/현물 지원사업이 이 유축기 무료대여였음("노원mom 출산축하용품"은 이전 조사에서도 공식 페이지로
+  // 확인되지 않아 이번에도 제외).
+  {
+    id: "nowon-breast-pump-rental",
+    title: "유축기 무료대여",
+    agencyType: "기초",
+    agencyName: "노원구",
+    region: { sido: "서울특별시", sigungu: "노원구" },
+    stages: ["출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "분만 후 60일 이내 수유부에게 유축기 2개월 무료 대여",
+    benefit: "스펙트라 S2+ 유축기(소모품 제외, 본체만) 대여일로부터 2개월간 무료 대여.",
+    eligibility: {
+      note: "분만 후 60일 이내인 노원구 관내 수유부.",
+    },
+    applicationMethod: "노원구보건소 4층 모자건강센터 방문 신청",
+    applicationPeriod: "분만 후 60일 이내",
+    requiredDocuments: ["산모 신분증", "주민등록등본", "출생증명서(등본에 출생사실 기재 시 생략 가능)"],
+    officialLink: "https://www.nowon.kr/health/healthIncrz/healthIncrz1/healthIncrz1_04.jsp",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 마포구보건소 공식 홈페이지(mapo.go.kr, health04020101), 2026-08-06 확인.
+  // 참고: 사용자가 제공한 mapo.go.kr 공지사항 링크(2026년 행복출산 원스톱 서비스 안내)는 이미지 위주
+  // 게시물이라 본문 텍스트가 없었음. 같은 공식 도메인의 산후관리 사업 페이지에서 확인 가능한 마포구 자체
+  // 현물 지원사업으로 대체함. 마포구 자체 출산축하금 조례(첫째10만~다섯째 이상 500만원)가 3자 법률DB에는
+  // 인용되어 있으나, 기존 공식 URL이 현재 404 처리되어 있고 대체 공식 링크를 확보하지 못해 반영하지 않음.
+  {
+    id: "mapo-postpartum-breast-pump-rental",
+    title: "산후 유축기 대여 지원",
+    agencyType: "기초",
+    agencyName: "마포구",
+    region: { sido: "서울특별시", sigungu: "마포구" },
+    stages: ["출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "출산 후 유축기(소모품 포함) 2개월 무료 대여",
+    benefit: "스펙트라 S2+ 유축기(소모품 제공) 2개월 대여. 온라인 신청 시 신청 후 3일 이내 수령.",
+    eligibility: {
+      note: "마포구민 임산부(산모) 또는 대한민국 국민과 혼인해 임신·출산했거나 대한민국 국적 아동을 양육 중인 외국인.",
+    },
+    applicationMethod:
+      "온라인 신청(마포구보건소 온라인서비스 > 유축기 예약 서비스) 또는 마포구보건소 2층 햇빛센터 방문 신청",
+    applicationPeriod: "출산 후 신청(대여기간 2개월)",
+    requiredDocuments: ["산모 신분증", "(주소 확인 불가 시) 주민등록등본"],
+    officialLink: "https://www.mapo.go.kr/site/health/content/health04020101",
+    lastVerifiedAt: "2026-08-06",
+  },
 ];
+
+// 아래 3개 구는 사용자가 제공한 공식 링크를 직접 확인했으나, 다음 사유로 이번 시드 데이터에 반영하지 않았다:
+//
+// - 송파구(songpa.go.kr/www/contents.do?key=2953): "출산축하금 지원사업" 실재하나 공식페이지에 명시된 지원대상이
+//   "2021.12.31. 이전 출생 신생아"로 한정되어 있고, "2022.1.1. 이후 출생아에게는 첫만남이용권을 지원함"이라고
+//   명시되어 있어 2026년 현재 신규 출산가정에는 적용되지 않는 사실상 종료된 사업. 오해를 막기 위해 미반영.
+// - 강북구(gangbuk.go.kr/portal/main/contents.do?menuNo=200640): "출산 양육 돌봄" 안내 페이지를 직접 확인했으나
+//   첫만남이용권/부모급여/아동수당/산후조리경비 등 이미 반영된 정부·서울시 공통사업 링크 모음일 뿐, 강북구
+//   자체의 별도 현금성 출산장려금·축하금 사업은 이 페이지에 없었음.
+// - 은평구(ep.go.kr/health/contents.do?key=1582): "난임부부 시술비 지원" 확인됨. 지원금액(신선배아 110만원,
+//   동결배아 50만원, 인공수정 30만원, 25회)이 기존 gov-infertility-treatment-support(정부, 전국 공통)와
+//   동일해 은평구 자체 추가지원이 아닌 국가사업의 지역 접수창구 안내로 판단, 중복 등록하지 않음.
