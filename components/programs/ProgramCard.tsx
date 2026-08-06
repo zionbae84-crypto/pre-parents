@@ -26,20 +26,25 @@ export function ProgramCard({
 }) {
   return (
     <Card compact>
-      <div className="mb-1.5 flex flex-wrap items-center gap-2">
-        <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
-        <span className="text-[13px] text-brown/60">{program.category}</span>
-        {showEligibilityWarning && needsEligibilityCheck(program) && (
-          <span className="inline-flex items-center rounded-full bg-soft-yellow px-2 py-0.5 text-[13px] font-bold text-brown">
-            ⚠️ 세부조건 확인 필요
-          </span>
-        )}
+      <div className="flex h-full flex-col">
+        <div className="mb-1.5 flex flex-wrap items-center gap-2">
+          <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
+          <span className="text-[13px] text-brown/60">{program.category}</span>
+          {showEligibilityWarning && needsEligibilityCheck(program) && (
+            <span className="inline-flex items-center rounded-full bg-soft-yellow px-2 py-0.5 text-[13px] font-bold text-brown">
+              ⚠️ 세부조건 확인 필요
+            </span>
+          )}
+        </div>
+        <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
+        <p className="mt-1 text-brown/80">{program.summary}</p>
+        <Link
+          href={`/programs/${program.id}`}
+          className="mt-auto inline-block pt-3 font-bold text-coral"
+        >
+          자세히 보기 →
+        </Link>
       </div>
-      <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
-      <p className="mt-1 text-brown/80">{program.summary}</p>
-      <Link href={`/programs/${program.id}`} className="mt-3 inline-block font-bold text-coral">
-        자세히 보기 →
-      </Link>
     </Card>
   );
 }
