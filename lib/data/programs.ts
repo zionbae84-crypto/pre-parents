@@ -711,7 +711,573 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.mapo.go.kr/site/health/content/health04020101",
     lastVerifiedAt: "2026-08-06",
   },
+  // 출처: 고용노동부 정책자료 "2025.1.1부터 달라지는 육아지원제도"(moel.go.kr), 2026-08-06 확인
+  {
+    id: "gov-parental-leave-benefit",
+    title: "육아휴직급여",
+    agencyType: "정부",
+    agencyName: "고용노동부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "육아휴직 기간 중 통상임금 일부를 현금 지원",
+    benefit:
+      "육아휴직 1~3개월차: 통상임금 100%(월 상한 250만원), 4~6개월차: 월 상한 200만원, 7개월차 이후: 통상임금 80%(월 상한 160만원). 하한액 월 70만원. 2025년 2월 23일부터 사후지급금(25% 유보) 제도가 폐지되어 매월 전액 지급. 6+6 부모육아휴직제로 부모 모두 각 3개월 이상 육아휴직을 사용하면 휴직 기간이 1년에서 1년 6개월로 연장(한부모·중증장애아동 부모는 조건 없이 1년 6개월).",
+    eligibility: {
+      childAgeMonthsMax: 96,
+      note: "만 8세 이하 또는 초등학교 2학년 이하 자녀를 양육하기 위해 30일 이상 육아휴직을 부여받은 근로자로, 휴직 시작일 이전 고용보험 피보험 단위기간 합산 180일 이상.",
+    },
+    applicationMethod:
+      "관할 고용센터 방문·우편·팩스 신청 또는 고용보험 홈페이지(ei.go.kr) 온라인 신청(개인서비스 → 모성보호 육아지원 신청)",
+    applicationPeriod: "육아휴직 시작 후 매월 단위 신청(해당 월분은 다음 달 말일까지), 육아휴직 종료 후 12개월 이내 신청",
+    requiredDocuments: ["육아휴직급여 신청서", "육아휴직 확인서(최초 1회)", "통상임금 확인 서류(임금대장 등)"],
+    officialLink: "https://www.moel.go.kr/policy/policydata/view.do?bbs_seq=20250100172",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=1380), 2026-08-06 확인
+  {
+    id: "gov-spouse-paternity-leave-benefit",
+    title: "배우자 출산휴가 급여",
+    agencyType: "정부",
+    agencyName: "고용노동부",
+    region: "nationwide",
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "배우자 출산 시 20일 유급휴가 급여 지원",
+    benefit:
+      "2025년 2월 23일부터 배우자 출산휴가가 10일에서 20일로 확대(전 기간 유급). 우선지원대상기업 소속 근로자는 통상임금 100%(상한액 1,684,210원, 20일 기준)를 정부가 지원. 대규모기업 근로자는 최초 5일만 사업주가 유급 지급하고 나머지는 사업주 자체 부담. 출산일부터 120일 이내 사용, 최대 4회 분할 사용 가능.",
+    eligibility: {
+      note: "배우자가 출산한 근로자로, 휴가 종료일 기준 고용보험 피보험 단위기간 합산 180일 이상.",
+    },
+    applicationMethod: "관할 고용센터 방문·우편·팩스 신청 또는 고용보험 홈페이지(ei.go.kr) 온라인 신청",
+    applicationPeriod: "휴가 종료 후 한꺼번에 신청하며, 휴가 종료일 이후 12개월 이내 미신청 시 지급 불가",
+    requiredDocuments: ["배우자 출산휴가 급여 신청서", "배우자 출산휴가 확인서", "통상임금 확인 서류"],
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1380&ccfNo=1&cciNo=2&cnpClsNo=2",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr) 및 고용24(gov.kr), 2026-08-06 확인
+  {
+    id: "gov-reduced-working-hours-benefit",
+    title: "육아기 근로시간 단축급여",
+    agencyType: "정부",
+    agencyName: "고용노동부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "육아기 근로시간 단축 시 임금 감소분 일부 지원",
+    benefit:
+      "주당 최초 10시간 단축분: 통상임금 100% 지원(상한 250만원, 하한 50만원). 나머지 단축분: 통상임금 80% 지원(상한 160만원, 하한 50만원). 근로시간은 주 15시간 이상 35시간 이하로 유지해야 함. 2025년 2월 개정으로 대상 자녀 연령이 8세(초2)에서 12세(초6)로 확대.",
+    eligibility: {
+      childAgeMonthsMax: 144,
+      note: "육아기 근로시간 단축을 30일 이상 실시한 근로자로, 단축 시작 전 고용보험 피보험 단위기간 합산 180일 이상.",
+    },
+    applicationMethod:
+      "관할 고용센터 방문·우편·팩스 신청 또는 고용보험 홈페이지(ei.go.kr)·고용24 온라인 신청",
+    applicationPeriod: "단축 시작 후 1개월부터 종료 후 12개월 이내 신청",
+    requiredDocuments: [
+      "육아기 근로시간 단축급여 신청서",
+      "육아기 근로시간 단축 확인서(최초 1회)",
+      "단축 전후 근로조건 확인 서류(임금대장, 근로계약서 등)",
+    ],
+    officialLink: "https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=14900000303",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=735), 2026-08-06 확인
+  {
+    id: "gov-teen-mother-medical-expense",
+    title: "청소년산모 임신·출산 의료비 지원",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "만 19세 이하 산모 임신·출산 의료비 바우처 지원",
+    benefit:
+      "임신 1회당 120만원 범위에서 임산부 및 2세 미만 영유아의 의료비·약제/치료재료 구입비를 국민행복카드 바우처로 지원(산후조리원 비용 제외). 카드 수령 후 분만예정일 이후 2년까지 사용 가능.",
+    eligibility: {
+      parentAgeMax: 19,
+      note: "만 19세 이하 산모(소득·재산 기준 없음).",
+    },
+    applicationMethod: "사회서비스 전자바우처 포털(socialservice.or.kr) 온라인 신청 또는 국민행복카드 발급 카드사 신청",
+    applicationPeriod: "임신 확인 후 상시 신청 가능",
+    requiredDocuments: ["청소년산모 임신·출산 의료비 지원 신청 및 임신확인서", "주민등록등본"],
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=735&ccfNo=2&cciNo=2&cnpClsNo=2",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 정부24 서비스 상세(gov.kr, SME000000110), 2026-08-06 확인
+  {
+    id: "gov-premature-infant-medical-expense",
+    title: "미숙아·선천성이상아 의료비 지원",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "의료비",
+    summary: "미숙아·선천성이상아 입원치료비 최대 2천만원 지원",
+    benefit:
+      "건강보험 급여 중 전액본인부담금 및 비급여 진료비 지원. 미숙아는 체중별 최고 2천만원, 선천성이상아는 최고 700만원까지 지원(100만원 미만은 전액, 초과분은 90%). 2024년부터 가구 소득과 관계없이 지원.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      note: "미숙아: 출생 후 24시간 이내 신생아집중치료실(NICU) 입원치료. 선천성이상아: 출생 후 2년 이내 선천성이상질환 진단 및 입원·수술.",
+    },
+    applicationMethod: "주소지 관할 보건소 방문 신청 또는 e보건소 공공보건포털·아이마중앱 온라인 신청",
+    applicationPeriod: "최종 퇴원일로부터 6개월 이내 신청",
+    requiredDocuments: [
+      "지원신청서",
+      "진료비 영수증·세부내역서",
+      "입금계좌통장 사본",
+      "주민등록등본",
+      "출생보고서/출생증명서(미숙아)",
+      "진단서·입퇴원확인서(선천성이상아)",
+    ],
+    officialLink: "https://www.gov.kr/portal/service/serviceInfo/SME000000110",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 복지로 복지서비스 상세(bokjiro.go.kr, WLF00000040), 2026-08-06 확인
+  {
+    id: "gov-congenital-metabolic-disorder-screening",
+    title: "선천성대사이상 검사 및 환아관리",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "의료비",
+    summary: "신생아 대사이상 선별·확진검사비 및 환아 특수식이 지원",
+    benefit:
+      "출생 후 28일 이내 실시한 건강보험 적용 선별검사의 본인부담금 지원(입원 중 검사는 전액 공단부담으로 본인부담 없음, 유소견 시 재검사 1회 추가지원 가능). 확진검사 결과 대사이상 확진 시 확진검사비 본인부담금 7만원 한도 지원. 확진 환아는 특수조제분유·저단백햇반 지원 및 선천성 갑상선기능저하증 환아 의료비 지원.",
+    eligibility: {
+      childAgeMonthsMax: 228,
+      note: "선별검사는 출생 후 28일 이내 신생아 대상, 환아관리 지원은 확진 시 만 19세 미만.",
+    },
+    applicationMethod: "주소지 관할 보건소 방문 신청",
+    applicationPeriod: "선별·확진검사비는 출생일 기준 1년 이내 신청",
+    requiredDocuments: ["검사비 영수증", "검사비 세부내역서", "검사 결과지"],
+    officialLink:
+      "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000040&wlfareInfoReldBztpCd=01",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 정부24 서비스 상세(gov.kr, SD0000007044), 2026-08-06 확인
+  {
+    id: "gov-newborn-hearing-screening",
+    title: "신생아 난청 조기진단 지원",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "의료비",
+    summary: "신생아 난청 검사비 및 보청기 구입비 지원",
+    benefit:
+      "출생 후 28일 이내 실시한 건강보험 적용 외래 선별검사의 본인부담금 지원(최대 2회). 재검(Refer) 판정 후 확진검사비 본인부담금 7만원 한도 지원. 양측성 난청(좋은 귀 평균청력 40~59dB)은 보청기 2개(개당 135만원 한도), 일측성 난청(나쁜 귀 55dB 이상·좋은 귀 40dB 이하)은 보청기 1개(135만원 한도) 지원. 2024년부터 소득기준 폐지.",
+    eligibility: {
+      childAgeMonthsMax: 144,
+      note: "검사비는 60개월 미만 영유아, 보청기 지원은 만 12세 미만 아동 대상, 소득무관.",
+    },
+    applicationMethod: "주민등록 주소지 관할 보건소 방문 신청 또는 e보건소 공공보건포털·아이마중앱 온라인 신청",
+    applicationPeriod: "확진검사비 신청기한은 출생일 기준 1년 이내",
+    requiredDocuments: ["검사비 영수증", "검사비 세부내역서", "검사 결과지"],
+    officialLink: "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/SD0000007044",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 복지로 복지서비스 상세(bokjiro.go.kr, WLF00000092), 2026-08-06 확인
+  {
+    id: "gov-low-income-diaper-formula-support",
+    title: "저소득층 기저귀·조제분유 지원",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "바우처",
+    summary: "저소득 가정 영아 기저귀·조제분유 구매비 지원",
+    benefit:
+      "기저귀 월 9만원, 조제분유 월 11만원 지원(동시 지원 시 영아 1인당 월 20만원). 국민행복카드에 바우처 포인트로 지급되어 지정 유통점에서 사용. 만 2세 미만(0~24개월) 영아까지 최대 24개월 지원. 2026년 7월부터 장애인·다자녀(2인 이상) 가구는 기준중위소득 100% 이하로 대상 확대.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      incomePercentMax: 100,
+      note: "기초생활보장수급자, 차상위계층, 한부모가족은 소득기준 없이 지원. 장애인 가구·다자녀(2인 이상) 가구는 기준중위소득 100% 이하(2026.7월부터 확대 적용).",
+    },
+    applicationMethod: "관할 시·군·구 보건소 또는 읍·면·동 주민센터 방문 신청",
+    applicationPeriod: "영아 출생 후 상시 신청 가능(최대 24개월간 지원)",
+    requiredDocuments: [
+      "저소득층 기저귀·조제분유 지원 신청서",
+      "영아 부모 건강보험증 사본 및 소득증빙자료",
+      "가구원수 확인자료(주민등록등본, 가족관계증명서 등)",
+    ],
+    officialLink: "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000092",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 보건복지부 장애인건강과 공식 페이지(mohw.go.kr), 2026-08-06 확인
+  {
+    id: "gov-disabled-woman-childbirth-expense",
+    title: "여성장애인 출산비용 지원",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "등록 여성장애인 출산 시 태아 1인당 120만원 지원",
+    benefit:
+      "등록 여성장애인이 출산하거나 임신 4개월 이상 유산·사산한 경우 태아 1인 기준 120만원을 현금으로 지원(다태아는 태아 수에 비례). 인공임신중절 수술은 제외(모자보건법 제14조 제1항 사유는 예외). 소득기준 없음.",
+    eligibility: {
+      note: "장애인복지법 제32조에 따라 등록된 여성장애인 중 출산 또는 임신 4개월 이상 유산·사산한 자.",
+    },
+    applicationMethod: "행정복지센터(읍·면·동 주민센터) 방문 신청 또는 복지로·정부24 온라인 신청",
+    applicationPeriod: "출산(유·사산) 후 상시 신청 가능",
+    requiredDocuments: ["여성장애인 출산비용 지원 신청서", "출생증명서(또는 유산·사산 진단서)", "장애인등록증"],
+    officialLink: "https://www.mohw.go.kr/menu.es?mid=a10710060800",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 아이돌봄서비스 공식 홈페이지(idolbom.go.kr, 여성가족부), 2026-08-06 확인.
+  // 참고: 가구 소득유형(가~바형)별 정확한 소득구간·정부지원율은 공식페이지 원문에서 확인하지 못해
+  // incomePercentMax는 비워두고 note에 정성적으로만 기재함.
+  {
+    id: "gov-idolbom-childcare-service",
+    title: "아이돌봄서비스",
+    agencyType: "정부",
+    agencyName: "여성가족부",
+    region: "nationwide",
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "아이돌보미 파견 돌봄서비스 비용 소득별 차등 지원",
+    benefit:
+      "시간제서비스(생후 3개월~12세, 연 960시간 이내)와 영아종일제서비스(생후 3개월~36개월, 월 200시간 이내)를 정부지원 대상으로 제공. 시간당 기본단가는 유형별로 상이(시간제 기본형 12,790원, 종합형 16,620원, 영아종일제 12,790원 등). 가구 소득유형(가~바형)에 따라 본인부담률이 차등 적용되며, 질병감염아동지원은 기본요금 50% 지원, 긴급돌봄은 건당 3,000원 추가요금. 국민행복카드로 결제.",
+    eligibility: {
+      childAgeMonthsMax: 144,
+      note: "생후 3개월~12세 아동 가정. 정부지원 소득기준은 가구 소득유형(가~바형)에 따라 차등 적용되며 구체적 구간은 매년 고시로 결정(공식 확인 필요).",
+    },
+    applicationMethod:
+      "복지로(온라인)에서 정부지원 자격(소득유형) 신청 후, 아이돌봄서비스 홈페이지(idolbom.go.kr)에서 회원가입 및 서비스 신청·연계",
+    applicationPeriod: "연중 상시 신청",
+    requiredDocuments: ["아이돌봄서비스 신청서", "가족관계증명서", "소득증빙자료(건강보험료 납부확인서 등)"],
+    officialLink: "https://www.idolbom.go.kr/front/",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=1126), 2026-08-06 확인
+  {
+    id: "gov-multichild-car-acquisition-tax",
+    title: "다자녀가구 자동차 취득세 감면",
+    agencyType: "정부",
+    agencyName: "행정안전부",
+    region: "nationwide",
+    stages: ["영유아기", "유아"],
+    category: "세제혜택",
+    summary: "18세 미만 자녀 2명 이상 가구 자동차 취득세 감면",
+    benefit:
+      "18세 미만 자녀 2명 이상을 양육하는 가구는 자동차 취득세 50% 경감, 3명 이상 양육 가구는 취득세 면제(차종·감면한도는 지방세특례제한법 및 차량 종류에 따라 상이). 자녀 수는 가족관계등록부 기준(입양자녀는 친생부모 자녀 수에서 제외 등 세부 규정 있음). 적용기한 2027년 12월 31일까지.",
+    eligibility: {
+      childAgeMonthsMax: 216,
+      note: "18세 미만 자녀 2명 이상을 양육하는 가구주 명의 차량 취득 시 적용. 감면 한도는 차종(승용/승합/화물)에 따라 상이.",
+    },
+    applicationMethod: "자동차 등록 시 관할 시·군·구청 세무과 방문 신청 또는 위택스(wetax.go.kr) 문의",
+    applicationPeriod: "자동차 등록일로부터 60일 이내 신청",
+    requiredDocuments: ["지방세 감면신청서", "가족관계증명서(자녀 수 확인)", "자동차 등록 관련 서류"],
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1126&ccfNo=6&cciNo=1&cnpClsNo=1",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=1773), 2026-08-06 확인
+  {
+    id: "gov-newborn-special-supply",
+    title: "신생아 특별공급(주택 특별·우선공급)",
+    agencyType: "정부",
+    agencyName: "국토교통부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "주거",
+    summary: "2년 이내 출산 무주택가구 대상 주택 특별공급",
+    benefit:
+      "입주자모집공고일 기준 2년 이내 출산(입양 포함)한 무주택 세대에 공공분양·민간분양·공공임대 주택을 특별공급. 공공주택은 신생아 특별공급 물량 중 70%는 도시근로자 가구 월평균소득 100% 이하에 우선공급, 20%는 140% 이하에 공급, 나머지 10%는 소득 초과자 대상 100% 추첨제. 민간분양은 신혼부부·생애최초 특공 물량의 20%를 출산가구에 우선공급.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      incomePercentMax: 140,
+      note: "무주택세대구성원, 자산요건 충족, 월평균소득 전년도 도시근로자 가구당 월평균소득 140% 이하(맞벌이 200% 이하).",
+    },
+    applicationMethod: "청약홈(applyhome.co.kr) 및 각 분양공고문에 따른 청약 신청",
+    applicationPeriod: "분양 공고별 청약 일정에 따름",
+    requiredDocuments: ["청약통장", "가족관계증명서(출산 확인)", "주민등록등본", "소득·자산 증빙서류"],
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1773&ccfNo=2&cciNo=1&cnpClsNo=5",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 주택도시기금 기금e든든 공식 페이지(myhome.go.kr), 2026-08-06 확인
+  {
+    id: "gov-newborn-special-loan-purchase",
+    title: "신생아 특례 디딤돌대출(주택구입자금)",
+    agencyType: "정부",
+    agencyName: "국토교통부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "주거",
+    summary: "2년 내 출산가구 대상 저리 주택구입자금 대출",
+    benefit:
+      "특례금리 연 1.80~4.50%(소득수준별 차등), 대출한도 최대 4억원(LTV 70%, 생애최초 80%, DTI 60% 이내). 추가 출산 시 특례금리 적용기간이 5년씩 연장(최장 15년). 2025년 6월 27일 이전 계약 체결 건은 한도 5억원 이내 적용.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      note: "대출접수일 기준 2년 이내 출산(2023.1.1. 이후 출생아부터 적용)한 무주택 세대주 또는 1주택 세대주(대환대출). 부부합산 연소득 1.3억원 이하(맞벌이 각각 소득이 있는 경우 합산 2억원 이하).",
+    },
+    applicationMethod: "주택도시기금 기금e든든(nhuf.molit.go.kr) 온라인 신청 또는 취급은행(우리·신한·국민·농협·하나은행) 방문 신청",
+    applicationPeriod: "소유권이전등기 전 신청(또는 등기 후 3개월 이내)",
+    requiredDocuments: ["주택매매계약서", "가족관계증명서(출산 확인)", "소득증빙서류", "주민등록등본"],
+    officialLink: "https://www.myhome.go.kr/hws/portal/cont/selectBabySpecialCaseStepStoneLoneView.do",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 주택도시기금 기금e든든 공식 페이지(myhome.go.kr), 2026-08-06 확인
+  {
+    id: "gov-newborn-special-loan-jeonse",
+    title: "신생아 특례 버팀목대출(전세자금)",
+    agencyType: "정부",
+    agencyName: "국토교통부",
+    region: "nationwide",
+    stages: ["출생출산", "영유아기"],
+    category: "주거",
+    summary: "2년 내 출산가구 대상 저리 전세자금 대출",
+    benefit:
+      "특례금리 연 1.3~4.3%(소득·보증금 규모별 차등), 대출한도 최대 2.4억원(임차보증금의 80% 이내). 추가 출산 자녀 1명당 특례금리 적용기간 4년 연장. 2025년 6월 26일 이전 계약 건은 한도 3억원 이내 적용. 순자산가액 3.45억원 이하 요건 있음.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      note: "대출접수일 기준 2년 이내 출산(2023.1.1. 이후 출생아부터 적용)한 무주택 세대주. 부부합산 연소득 1.3억원 이하(맞벌이 2억원 이하), 순자산가액 3.45억원 이하, 임차보증금 5% 이상 지불 필수.",
+    },
+    applicationMethod: "주택도시기금 기금e든든(nhuf.molit.go.kr) 온라인 신청 또는 수탁은행 방문 신청",
+    applicationPeriod: "임대차계약서상 잔금지급일과 주민등록등본상 전입일 중 빠른 날로부터 3개월 이내 신청",
+    requiredDocuments: ["임대차계약서", "가족관계증명서(출산 확인)", "소득증빙서류", "주민등록등본"],
+    officialLink: "https://www.myhome.go.kr/hws/portal/cont/selectBabySpecialCaseCrutchLoneView.do",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: umppa.seoul.go.kr 사업소개 페이지, 2026-08-06 확인
+  {
+    id: "seoul-childcare-cost-support",
+    title: "서울형 아이돌봄비 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["영유아기"],
+    category: "현금지원",
+    summary: "24~36개월 영아 돌봄공백 가정에 돌봄비 지원",
+    benefit:
+      "친인척조력자형: 기본 돌봄시간(월 40시간) 충족 시 영아 1명 월 30만원, 2명 월 45만원, 3명 월 60만원. 민간서비스형: 월 20~40시간 이용 시 시간당 영아 1명 7,500원, 2명 11,250원, 3명 15,000원.",
+    eligibility: {
+      childAgeMonthsMin: 24,
+      childAgeMonthsMax: 36,
+      incomePercentMax: 150,
+      note: "맞벌이 가정은 부부합산소득의 25% 경감 적용. 친인척조력자는 4촌 이내 친인척만 인정.",
+    },
+    applicationMethod: "탄생육아 몽땅정보통(umppa.seoul.go.kr) 온라인 신청",
+    applicationPeriod: "매월 1~15일 접수(아동이 23개월부터 신청 가능)",
+    requiredDocuments: ["사회보장급여 결정 결과통지서(당해년도)", "가족관계증명서(친인척형)", "수급자 통장사본(친인척형)"],
+    officialLink:
+      "https://umppa.seoul.go.kr/hmpg/reca/care/sesu/bzin/bzmgPageDetail.do?biz_mng_no=59F45FE9BC024848AD07143C962E6869",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: seoul-agi.seoul.go.kr + umppa.seoul.go.kr, 2026-08-06 확인
+  {
+    id: "seoul-parents-taxi",
+    title: "서울 엄마아빠택시 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["영유아기"],
+    category: "바우처",
+    summary: "24개월 이하 영아 가정에 카시트 택시 포인트 지원",
+    benefit: "영아 1인당 연 10만원 이용포인트 지원(운영업체에서 최대 2만원 추가 포인트 지급 가능).",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      note: "2023년 1월생 이후 영아 대상. 실질적 양육자(부, 모, (외)조부모, 3촌 이내 친인척으로 영아와 동일 주민등록)이면 신청 가능, 위탁아동 양육가정 포함.",
+    },
+    applicationMethod:
+      "몽땅정보 만능키 온라인 신청 또는 동주민센터 방문 신청, 영아 1명당 운영업체(타다/파파) 중 1개 선택(선택 후 변경 불가)",
+    applicationPeriod: "상시 접수(2026년부터 연중 상시 신청으로 확대)",
+    officialLink:
+      "https://umppa.seoul.go.kr/hmpg/sprt/mdtx/bzin/bzmgPageDetail.do?biz_mng_no=3EF7489ACF614F939FEF8514308797D2",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: news.seoul.go.kr 공식 소개 페이지, 2026-08-06 확인
+  {
+    id: "seoul-dadungi-happy-card",
+    title: "서울 다둥이행복카드(다자녀가족 지원)",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["영유아기", "유아"],
+    category: "바우처",
+    summary: "2자녀 이상 가족 우대카드로 공공시설 이용료 감면",
+    benefit:
+      "서울대공원·서울상상나라·서울형 키즈카페 무료입장, 서울달 30% 할인, 시립체육시설 입장료 면제·프로그램 50% 할인, 하수도요금 30% 감면, 지역난방비 할인 등.",
+    eligibility: {
+      note: "서울시 거주 2자녀 이상 가족(막내 자녀 18세 이하), 신청 당시 부 또는 모 한 명과 자녀들이 서울시에 주민등록.",
+    },
+    applicationMethod: "신용/체크카드는 신한은행·우리은행 영업점 방문 발급, 신분확인용 카드는 서울온 앱에서 모바일카드로 발급",
+    applicationPeriod: "상시",
+    requiredDocuments: ["신분증", "가족관계증명서", "주민등록등본"],
+    officialLink: "https://news.seoul.go.kr/welfare/archives/100261",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: seoul.go.kr 정책아카이브, 2026-08-06 확인
+  {
+    id: "seoul-type-kids-cafe",
+    title: "서울형 키즈카페",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "0~9세 아동 저비용 실내놀이시설 이용",
+    benefit: "0~9세 아동 대상 회당 이용료 5천원 내외(구립은 3천원 내외), 보육교사 등 전문인력 놀이돌봄 지원, 한부모가족 우대.",
+    eligibility: {
+      childAgeMonthsMax: 108,
+      note: "서울시민(조부모 등 직계가족 포함) 및 서울 소재 직장인의 취학 전 자녀 등 0~9세 아동. 한부모가족은 한부모가족증명서 제시 시 우대.",
+    },
+    applicationMethod: "사전예약제(시설별 회차 예약), 서울시 우리동네키움포털 등에서 운영현황 확인 및 예약",
+    applicationPeriod: "상시(시설별 운영시간 내 회차 예약)",
+    officialLink: "https://www.seoul.go.kr/policy/view.do?id=46&lan=",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: news.seoul.go.kr(citybuild), 2026-08-06 확인
+  {
+    id: "seoul-newlywed-deposit-interest-support",
+    title: "서울시 신혼부부 임차보증금 이자지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신준비"],
+    category: "주거",
+    summary: "무주택 신혼·예비신혼부부 임차보증금 대출이자 지원",
+    benefit:
+      "임차보증금의 90% 이내, 최대 3억원 대출에 대해 소득구간별 최대 연 3.0%+ 추가지원 최대 연 1.5%(다자녀 등) 이자지원. 기본 2년+2년, 자녀 증가 시 최장 10~12년까지 연장 가능.",
+    eligibility: {
+      note: "부부합산 연소득 1억 3천만원 이하, 혼인신고일 기준 7년 이내 신혼부부 또는 추천서 신청일로부터 6개월 이내 예비신혼부부, 본인·배우자 무주택자, 서울시민이거나 대출 후 1개월 내 서울 전입 예정자, 생애 최초 1회 지원.",
+    },
+    applicationMethod: "서울주거포털(housing.seoul.go.kr)에서 융자추천서 신청 후 협약은행(국민·하나·신한은행)에서 대출 실행",
+    applicationPeriod: "상시접수",
+    officialLink: "https://news.seoul.go.kr/citybuild/archives/508747",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: seoul-agi.seoul.go.kr, 2026-08-06 확인
+  {
+    id: "seoul-korean-medicine-infertility-treatment",
+    title: "서울형 한의약 난임치료 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "원인불명 난임부부 한의약 치료비 최대 120만원 지원",
+    benefit: "3개월분 첩약 치료비용의 90% 지원(최대 120만원), 기초생활수급자·차상위계층은 100% 지원. 최소 1개월 이상 치료 참여 필수.",
+    eligibility: {
+      parentAgeMax: 45,
+      note: "여성 만 45세 이하, 신청일 기준 서울시 주민등록, 법률혼 및 사실혼 모두 가능, 원인불명 난임 진단 필수, 국가/서울시 난임부부 시술비 지원과 중복 불가.",
+    },
+    applicationMethod: "서울시 임신출산정보센터(seoul-agi.seoul.go.kr) 온라인 신청 또는 주소지·직장소재지 관할 보건소 방문 신청",
+    applicationPeriod: "상시접수",
+    requiredDocuments: [
+      "신청서",
+      "원인불명 난임진단서",
+      "검사결과지(신청일 기준 6개월 이내)",
+      "주민등록등본",
+      "가족관계증명서(필요시)",
+      "사실혼 증명서(해당 시)",
+    ],
+    officialLink: "https://seoul-agi.seoul.go.kr/infertility-treatment-support",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: ourbaby.seoul.kr + seoul-agi.seoul.go.kr, 2026-08-06 확인
+  {
+    id: "seoul-baby-health-first-step",
+    title: "서울아기 건강 첫걸음",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신중", "출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "영유아 건강관리 간호사가 가정을 방문해 건강관리 지원",
+    benefit:
+      "출산 후 이른 시일 내 보편방문(산모·신생아 건강평가, 모유수유교육 등) 실시, 건강 위험요인이 있는 경우 만 2세까지 25~29회 지속방문 및 부모교육·연계서비스 제공.",
+    eligibility: {
+      childAgeMonthsMax: 24,
+      note: "소득기준 없음. 서울시민 중 출산한 모든 임산부와 영유아 대상.",
+    },
+    applicationMethod: "서울시 임신출산정보센터(seoul-agi.seoul.go.kr) 온라인 신청(회원가입→로그인→사업신청) 또는 관할 자치구 보건소 등록",
+    applicationPeriod: "상시(출산 후 신청)",
+    officialLink: "https://seoul-agi.seoul.go.kr/health-first-step",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: news.seoul.go.kr(welfare), 2026-08-06 확인
+  {
+    id: "seoul-self-employed-birth-benefit",
+    title: "서울시 1인 자영업자 등 임산부 출산급여·배우자 출산휴가급여 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "고용보험 미가입 자영업자·프리랜서 출산급여 지원",
+    benefit:
+      "임산부 출산급여: 고용보험 지원(150만원)에 서울시 90만원 추가지원해 총 240만원 보장(다태아는 170만원 추가해 총 320만원). 배우자 출산휴가급여: 최대 80만원 지원.",
+    eligibility: {
+      note: "2024년 4월 22일 이후 자녀를 출산한 서울시 거주 1인 자영업자·프리랜서·노무제공자 등. 부부가 각각 요건 충족 시 각각 신청 가능. 배우자 출산휴가급여는 배우자 출산일 이전 18개월 중 3개월 이상 소득활동 필요.",
+    },
+    applicationMethod: "몽땅정보 만능키(umppa.seoul.go.kr) 온라인 신청 또는 다산콜센터(120)",
+    applicationPeriod: "임산부 출산급여: 출산일로부터 1년 이내 / 배우자 출산휴가급여: 출산휴가 종료일로부터 1년 이내",
+    officialLink: "https://news.seoul.go.kr/welfare/archives/568576",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: umppa.seoul.go.kr + mediahub.seoul.go.kr(2026년 완화), 2026-08-06 확인
+  {
+    id: "seoul-childbirth-housing-support",
+    title: "자녀출산 무주택가구 주거비 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["출생출산", "영유아기"],
+    category: "주거",
+    summary: "출산·입양 무주택가구 전월세 주거비 차액 지원",
+    benefit: "월 최대 30만원, 2년간 최대 720만원 주거비 지원(다태아 또는 추가출산 시 1~2년 연장되어 최장 4년까지 지원).",
+    eligibility: {
+      incomePercentMax: 180,
+      note: "2025년 1월 1일 이후 출산·입양(입양아는 출생일로부터 48개월 이하)한 서울시 거주 무주택 가구(부·모 모두 무주택), 전세보증금 5억원 이하 또는 보증금 월세 환산액과 월세액 합산 229만원 이하(2026년 기준, 전용 85㎡ 이하), 공공임대주택 미거주, 출산 후 1년 이내 신청.",
+    },
+    applicationMethod: "탄생육아 몽땅정보통(umppa.seoul.go.kr) 온라인 신청",
+    applicationPeriod: "2026년 상반기 2월 2일~6월 30일, 하반기 7월 1일~12월 31일(연 2회 모집공고)",
+    requiredDocuments: [
+      "가족관계증명서(배우자 있으면 모두)",
+      "청약홈 주택소유현황(배우자 있으면 모두)",
+      "확정일자 날인된 임대차계약서",
+      "신용정보조회서",
+    ],
+    officialLink:
+      "https://umppa.seoul.go.kr/hmpg/sprt/cnls/bzin/bzmgPageDetail.do?biz_mng_no=197DA8F773AAE8DCE063A6022162FF67",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: news.seoul.go.kr(2024확대) + mediahub.seoul.go.kr(2025~2026 바우처 전환), 2026-08-06 확인
+  {
+    id: "seoul-housekeeping-service-support",
+    title: "서울형 가사서비스 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신중", "출생출산"],
+    category: "돌봄서비스",
+    summary: "임산부·맞벌이·다자녀 가정 가사서비스 무료 제공",
+    benefit:
+      "가구당 연 70만원 상당 바우처를 신용(체크)카드로 지급, 본인부담 없음(청소·설거지·세탁·쓰레기배출 등 서비스, 요리·돌봄 등은 제외).",
+    eligibility: {
+      incomePercentMax: 180,
+      note: "임산부는 임신 3개월(12주)부터 출산 후 1년 이내, 맞벌이는 부부 모두 주 20시간 이상 근로하며 12세 이하 자녀 양육, 다자녀는 18세 이하 자녀 2명 이상(그중 1명 이상 12세 이하). 강서구 등 일부 자치구 위임 가사서비스와는 별개의 서울시 전역 사업.",
+    },
+    applicationMethod: "몽땅정보 만능키 또는 서울맘케어·서울형 가사서비스 누리집을 통한 온라인 신청",
+    applicationPeriod: "연 1회 공고(2026년 신청은 3월 30일 개시), 예산 소진 시 조기 마감",
+    officialLink: "https://news.seoul.go.kr/welfare/archives/560008",
+    lastVerifiedAt: "2026-08-06",
+  },
 ];
+
+// 아래 3개 구는 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
+// 못해(DNS 접속 실패, 전용 페이지 미발견 등) 이번 시드 데이터에는 반영하지 않았다. 이 프로젝트의 데이터
+// 신뢰 기준(officialLink는 반드시 검증 가능한 공식 도메인)에 맞지 않기 때문이며, 추후 구청 콜센터 등을 통해
+// 공식 링크를 확보하면 추가할 수 있다:
+//
+// - 송파구 "송파베이비샤워"(2026년 신설, 신생아 가정 화장품 3종 무상 지급): 시정일보 등 언론 보도만 확인,
+//   구청 공식 페이지 미발견.
+// - 은평구 "다자녀 출산용품 교환권"(둘째 이상, 15만원 상당): 정부24·모두의혜택 등에서 확인했으나 은평구
+//   자체 전용 페이지(ep.go.kr)를 찾지 못해 구체적인 officialLink(구체적 서비스 페이지)를 확보하지 못함.
+// - 강북구 "임산부 물품(유축기·안전벨트·혈압계) 대여"(2025.8 제정 조례 근거): 뉴스1 등 언론 보도로 확인,
+//   구청 보건소 공식 페이지(mhealth.gangbuk.go.kr)는 DNS 접속 실패.
 
 // 아래 3개 구는 사용자가 제공한 공식 링크를 직접 확인했으나, 다음 사유로 이번 시드 데이터에 반영하지 않았다:
 //
