@@ -6,11 +6,11 @@ import { Card } from "@/components/ui/Card";
 // note가 이 사업의 유일한 자격조건 정보일 때만 확인 필요 뱃지를 띄운다.
 // 나이/소득처럼 구조화된 필드로 이미 걸러진 경우 note는 부가 설명일 뿐이므로 뱃지를 띄우지 않는다.
 function needsEligibilityCheck(program: SupportProgram): boolean {
-  const { note, parentAgeMin, parentAgeMax, childAgeMonthsMin, childAgeMonthsMax, incomePercentMax } =
+  const { note, motherAgeMin, motherAgeMax, childAgeMonthsMin, childAgeMonthsMax, incomePercentMax } =
     program.eligibility;
   const hasStructuredCondition =
-    parentAgeMin !== undefined ||
-    parentAgeMax !== undefined ||
+    motherAgeMin !== undefined ||
+    motherAgeMax !== undefined ||
     childAgeMonthsMin !== undefined ||
     childAgeMonthsMax !== undefined ||
     incomePercentMax !== undefined;

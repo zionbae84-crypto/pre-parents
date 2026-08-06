@@ -23,7 +23,7 @@ export default function SearchPage() {
     const criteria: SearchCriteria = {
       sido: values.sido,
       sigungu: values.sigungu || undefined,
-      parentAge: values.parentAge,
+      motherAge: values.motherAge,
       stages,
       childAgeMonths,
       incomePercent,

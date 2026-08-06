@@ -8,7 +8,7 @@ export interface SearchFormValues {
   sido: string;
   sigungu: string;
   stageInput: UserStageInput;
-  parentAge: number;
+  motherAge: number;
   householdSize: number;
   monthlyIncome: number;
 }
@@ -31,7 +31,7 @@ export function SearchForm({
   const [status, setStatus] = useState<PregnancyStatus>("preparing");
   const [dueDate, setDueDate] = useState("");
   const [birthDate, setBirthDate] = useState("");
-  const [parentAge, setParentAge] = useState(30);
+  const [motherAge, setMotherAge] = useState(30);
   const [householdSize, setHouseholdSize] = useState(3);
   const [monthlyIncome, setMonthlyIncome] = useState(4000000);
 
@@ -44,7 +44,7 @@ export function SearchForm({
           ? { status: "pregnant", dueDate }
           : { status: "born", birthDate };
 
-    onSubmit({ sido, sigungu, stageInput, parentAge, householdSize, monthlyIncome });
+    onSubmit({ sido, sigungu, stageInput, motherAge, householdSize, monthlyIncome });
   }
 
   return (
@@ -122,12 +122,12 @@ export function SearchForm({
       </div>
 
       <div>
-        <label className="mb-2 block font-bold text-brown">부모 나이</label>
+        <label className="mb-2 block font-bold text-brown">엄마 나이</label>
         <input
           type="number"
           min={0}
-          value={parentAge}
-          onChange={(e) => setParentAge(Number(e.target.value))}
+          value={motherAge}
+          onChange={(e) => setMotherAge(Number(e.target.value))}
           className="w-32 rounded-button border-2 border-brown/20 px-3 py-2"
         />
       </div>
