@@ -21,6 +21,18 @@ const STATUS_LABEL: Record<PregnancyStatus, string> = {
   born: "출산 완료",
 };
 
+const labelClass = "mb-2 block text-[15px] font-bold text-brown";
+const fieldClass = "w-full rounded-button border-2 border-brown/20 px-3 py-2";
+
+function formatIncome(value: number): string {
+  return value.toLocaleString("ko-KR");
+}
+
+function parseIncome(input: string): number {
+  const digitsOnly = input.replace(/[^0-9]/g, "");
+  return digitsOnly === "" ? 0 : Number(digitsOnly);
+}
+
 export function SearchForm({
   onSubmit,
 }: {
@@ -50,10 +62,10 @@ export function SearchForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-6 rounded-card border-2 border-brown/10 bg-white p-6"
+      className="flex flex-col gap-5 rounded-card border-2 border-brown/10 bg-white p-6"
     >
       <div>
-        <label className="mb-2 block font-bold text-brown">거주지</label>
+        <label className={labelClass}>거주지</label>
         <div className="flex gap-3">
           <select
             value={sido}
@@ -61,7 +73,7 @@ export function SearchForm({
               setSido(e.target.value);
               setSigungu("");
             }}
-            className="rounded-button border-2 border-brown/20 px-3 py-2"
+            className={fieldClass}
           >
             {regions.map((r) => (
               <option key={r.sido} value={r.sido}>
@@ -72,7 +84,7 @@ export function SearchForm({
           <select
             value={sigungu}
             onChange={(e) => setSigungu(e.target.value)}
-            className="rounded-button border-2 border-brown/20 px-3 py-2"
+            className={fieldClass}
           >
             <option value="">전체</option>
             {getSigunguList(sido).map((s) => (
@@ -85,19 +97,28 @@ export function SearchForm({
       </div>
 
       <div>
-        <label className="mb-2 block font-bold text-brown">현재 상태</label>
-        <div className="flex gap-4">
-          {(Object.keys(STATUS_LABEL) as PregnancyStatus[]).map((s) => (
-            <label key={s} className="flex items-center gap-2 text-brown">
-              <input
-                type="radio"
-                name="status"
-                checked={status === s}
-                onChange={() => setStatus(s)}
-              />
-              {STATUS_LABEL[s]}
-            </label>
-          ))}
+        <label className={labelClass}>현재 상태</label>
+        <div role="radiogroup" aria-label="현재 상태" className="flex flex-wrap gap-2">
+          {(Object.keys(STATUS_LABEL) as PregnancyStatus[]).map((s) => {
+            const selected = status === s;
+            return (
+              <button
+                key={s}
+                type="button"
+                role="radio"
+                aria-pressed={selected}
+                aria-checked={selected}
+                onClick={() => setStatus(s)}
+                className={
+                  selected
+                    ? "rounded-button border-2 border-coral bg-coral px-4 py-2 text-[15px] font-bold text-white"
+                    : "rounded-button border-2 border-brown/20 px-4 py-2 text-[15px] text-brown"
+                }
+              >
+                {STATUS_LABEL[s]}
+              </button>
+            );
+          })}
         </div>
         {status === "pregnant" && (
           <input
@@ -106,7 +127,7 @@ export function SearchForm({
             onChange={(e) => setDueDate(e.target.value)}
             required
             aria-label="출산예정일"
-            className="mt-3 rounded-button border-2 border-brown/20 px-3 py-2"
+            className={`mt-3 ${fieldClass}`}
           />
         )}
         {status === "born" && (
@@ -116,41 +137,46 @@ export function SearchForm({
             onChange={(e) => setBirthDate(e.target.value)}
             required
             aria-label="자녀 생년월일"
-            className="mt-3 rounded-button border-2 border-brown/20 px-3 py-2"
+            className={`mt-3 ${fieldClass}`}
           />
         )}
       </div>
 
-      <div>
-        <label className="mb-2 block font-bold text-brown">엄마 나이</label>
-        <input
-          type="number"
-          min={0}
-          value={motherAge}
-          onChange={(e) => setMotherAge(Number(e.target.value))}
-          className="w-32 rounded-button border-2 border-brown/20 px-3 py-2"
-        />
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>엄마 나이</label>
+          <input
+            type="number"
+            min={0}
+            value={motherAge}
+            onChange={(e) => setMotherAge(Number(e.target.value))}
+            className={fieldClass}
+          />
+        </div>
+
+        <div>
+          <label className={labelClass}>가구원수</label>
+          <input
+            type="number"
+            min={1}
+            value={householdSize}
+            onChange={(e) => setHouseholdSize(Number(e.target.value))}
+            className={fieldClass}
+          />
+        </div>
       </div>
+      <p className="-mt-3 text-[13px] text-brown/60">
+        가구원수는 소득 기준(중위소득 %) 계산에 사용돼요
+      </p>
 
       <div>
-        <label className="mb-2 block font-bold text-brown">가구원수</label>
+        <label className={labelClass}>가구월소득(원)</label>
         <input
-          type="number"
-          min={1}
-          value={householdSize}
-          onChange={(e) => setHouseholdSize(Number(e.target.value))}
-          className="w-32 rounded-button border-2 border-brown/20 px-3 py-2"
-        />
-      </div>
-
-      <div>
-        <label className="mb-2 block font-bold text-brown">가구월소득(원)</label>
-        <input
-          type="number"
-          min={0}
-          value={monthlyIncome}
-          onChange={(e) => setMonthlyIncome(Number(e.target.value))}
-          className="w-48 rounded-button border-2 border-brown/20 px-3 py-2"
+          type="text"
+          inputMode="numeric"
+          value={formatIncome(monthlyIncome)}
+          onChange={(e) => setMonthlyIncome(parseIncome(e.target.value))}
+          className={fieldClass}
         />
       </div>
 
