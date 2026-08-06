@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/Button";
 import { StageIcon } from "@/components/ui/StageIcon";
 
 const STAGES = [
-  { slug: "임신준비", ordinal: "첫 단계", label: "임신준비 단계" },
-  { slug: "임신중", ordinal: "두번째 단계", label: "임신중 단계" },
-  { slug: "출생출산", ordinal: "세번째 단계", label: "출생·출산 단계" },
-  { slug: "영유아기", ordinal: "네번째 단계", label: "영유아기 단계" },
-  { slug: "유아", ordinal: "다섯번째 단계", label: "유아 단계" },
+  { slug: "임신준비", ordinal: "첫 번째", label: "임신준비 단계" },
+  { slug: "임신중", ordinal: "두 번째", label: "임신중 단계" },
+  { slug: "출생출산", ordinal: "세 번째", label: "출생·출산 단계" },
+  { slug: "영유아기", ordinal: "네 번째", label: "영유아기 단계" },
+  { slug: "유아", ordinal: "다섯 번째", label: "유아 단계" },
 ] as const;
 
 export default function Home() {

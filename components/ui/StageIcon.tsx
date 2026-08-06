@@ -8,27 +8,27 @@ const ICON_PATHS: Record<Stage, ReactNode> = {
       <path d="M20 25 L20 42" />
       <path d="M20 42 L14 54" />
       <path d="M20 42 L23 54" />
-      <path d="M20 30 L30 32" />
+      <path d="M20 30 L28 29" />
       <circle cx="44" cy="20" r="5" />
       <path d="M44 25 L44 42" />
       <path d="M44 42 L50 54" />
       <path d="M44 42 L41 54" />
-      <path d="M44 30 L34 32" />
-      <path d="M30 32 L34 32" />
+      <path d="M44 30 L36 29" />
+      <path d="M32 34 C 29 31, 26 27, 29 25 C 31 24, 32 26, 32 27 C 32 26, 33 24, 35 25 C 38 27, 35 31, 32 34 Z" />
     </>
   ),
   임신중: (
     <>
-      <circle cx="24" cy="18" r="5" />
-      <path d="M24 23 C 18 28, 16 40, 20 48" />
-      <path d="M24 23 C 30 28, 32 38, 28 46" />
+      <circle cx="22" cy="18" r="5" />
+      <path d="M22 23 C 20 30, 19 40, 20 48" />
+      <path d="M22 23 C 30 28, 33 38, 27 46" />
       <path d="M20 48 L18 56" />
-      <path d="M28 46 L30 56" />
+      <path d="M27 46 L29 56" />
       <circle cx="46" cy="20" r="5" />
       <path d="M46 25 L46 44" />
       <path d="M46 44 L42 56" />
       <path d="M46 44 L50 56" />
-      <path d="M46 30 L30 38" />
+      <path d="M46 30 L33 38" />
     </>
   ),
   출생출산: (
@@ -49,16 +49,16 @@ const ICON_PATHS: Record<Stage, ReactNode> = {
   ),
   영유아기: (
     <>
-      <circle cx="22" cy="16" r="5" />
-      <path d="M22 21 L22 38" />
-      <path d="M22 38 L17 52" />
-      <path d="M22 38 L26 50" />
-      <path d="M22 25 L34 20" />
-      <path d="M34 20 L40 32" />
-      <path d="M40 32 Q48 30 50 38" />
-      <circle cx="42" cy="50" r="4" />
-      <circle cx="54" cy="50" r="4" />
-      <path d="M42 46 L54 46" />
+      <circle cx="20" cy="16" r="5" />
+      <path d="M20 21 L20 38" />
+      <path d="M20 38 L15 52" />
+      <path d="M20 38 L24 50" />
+      <path d="M20 25 L32 21" />
+      <path d="M32 21 L38 32" />
+      <path d="M38 32 L54 32" />
+      <path d="M38 32 Q39 44 47 44 L54 44 L54 32" />
+      <circle cx="41" cy="52" r="4" />
+      <circle cx="52" cy="52" r="4" />
     </>
   ),
   유아: (
