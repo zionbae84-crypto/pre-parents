@@ -1265,15 +1265,108 @@ export const programs: SupportProgram[] = [
     officialLink: "https://news.seoul.go.kr/welfare/archives/560008",
     lastVerifiedAt: "2026-08-06",
   },
+  // 출처: 복지로 복지서비스 상세(bokjiro.go.kr, WLF00003253), 2026-08-06 확인.
+  // 사용자가 알려준 송파구청 "여성·영유아·가족복지 > 출산·양육지원" 카테고리 페이지(key=5645)에서
+  // 발견 — 전국 모든 시군구가 동일하게 운영하는 국가사업이라 정부(전국) 항목으로 분류함.
+  {
+    id: "gov-home-childcare-allowance",
+    title: "가정양육수당 지원사업",
+    agencyType: "정부",
+    agencyName: "교육부",
+    region: "nationwide",
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "어린이집 미이용 24~86개월 아동에 월 10~20만원 지급",
+    benefit:
+      "어린이집·유치원(특수학교 포함)·종일제 아이돌봄서비스를 이용하지 않고 가정에서 양육하는 24개월 이상 86개월 미만 아동에게 월 10만원 지급. 장애아동은 24~36개월 미만 월 20만원, 36~86개월 미만 월 10만원 지급. 매월 25일 아동 또는 부모 명의 계좌로 지급. 출생일로부터 60일 이내 신청 시 출생월부터 소급 지원.",
+    eligibility: {
+      childAgeMonthsMin: 24,
+      childAgeMonthsMax: 86,
+      note: "어린이집·유치원(특수학교 포함)·종일제 아이돌봄서비스를 이용하지 않는 미취학 아동. 소득 수준과 무관하게 지원(부모급여 도입에 따라 0~23개월은 부모급여로 지원). 보육료·유아학비·종일제 아이돌봄서비스와 중복 지원 불가.",
+    },
+    applicationMethod: "동주민센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["신분증", "통장사본"],
+    officialLink:
+      "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 송파구청 "보육료 지원사업" 공식 페이지(songpa.go.kr, key=2944, 최종수정일 2026-06-24), 2026-08-06 확인.
+  // 전국 모든 어린이집에 동일하게 적용되는 국가 보육료 지원 단가라 정부(전국) 항목으로 분류함. 복지로 내
+  // 해당 서비스의 정확한 wlfareInfoId를 확정하지 못해, 직접 확인한 송파구청 페이지를 출처로 사용.
+  {
+    id: "gov-childcare-fee-support",
+    title: "보육료 지원사업",
+    agencyType: "정부",
+    agencyName: "교육부",
+    region: "nationwide",
+    stages: ["영유아기", "유아"],
+    category: "바우처",
+    summary: "만0~5세 어린이집 이용 시 보육료 전액 지원",
+    benefit:
+      "어린이집을 이용하는 만0~5세 영유아에게 국민행복카드를 통해 보육료를 지원(어린이집에 직접 입금). 2026년 기준 월 지원단가: 0세반 584,000원, 1세반 515,000원, 2세반 426,000원, 3~5세반 280,000원. 만0~2세 연장보육(16~19시30분) 이용 시 시간당 1,000~3,000원, 야간연장보육(19시30분 이후 등) 시간당 4,000~5,000원 추가 지원.",
+    eligibility: {
+      childAgeMonthsMax: 71,
+      note: "대한민국 국적 및 유효 주민번호를 보유하고 어린이집을 이용하는 만0~5세 영유아(장애아보육료·다문화보육료 등은 별도 요건). 소득기준 없음. 가정양육수당·유아학비 등과 중복 지원 불가.",
+    },
+    applicationMethod:
+      "동주민센터(아동 주민등록 주소지) 방문 또는 복지로(bokjiro.go.kr) 온라인 신청. 어린이집 이용 전 사전 신청 필요.",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["사회복지급여(서비스) 신청(변경)서", "국민행복카드 발급신청 및 개인신용정보 동의서"],
+    officialLink: "https://www.songpa.go.kr/www/contents.do?key=2944",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 송파구청 "송파구 공동육아나눔터 운영" 공식 페이지(songpa.go.kr, key=2961), 2026-08-06 확인
+  {
+    id: "songpa-shared-childcare-space",
+    title: "송파구 공동육아나눔터 운영",
+    agencyType: "기초",
+    agencyName: "송파구",
+    region: { sido: "서울특별시", sigungu: "송파구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "18세 미만 자녀 가정이 무료로 이용하는 놀이·교류 공간",
+    benefit:
+      "장난감과 도서를 이용할 수 있는 놀이 공간, 애착 형성 및 자녀 발달 촉진 놀이, 강사 없이 진행되는 육아·미술놀이 자조모임 등 제공. 1호점(풍납동), 2호점(잠실본동) 2개소 운영, 월~토 10시~17시30분.",
+    eligibility: {
+      note: "송파구 거주 18세 미만 자녀와 부모(보호자 동반 필수). 이용료 없음.",
+    },
+    applicationMethod: "홈페이지(songpa.familynet.or.kr) 접수, 전화 문의 또는 현장 신청서 작성 후 이용",
+    applicationPeriod: "상시 이용 가능(운영시간 내)",
+    officialLink: "https://www.songpa.go.kr/www/contents.do?key=2961",
+    lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 송파구청 "장난감도서관 운영" 공식 페이지(songpa.go.kr, key=6176, 최종수정일 2026-05-19), 2026-08-06 확인
+  {
+    id: "songpa-toy-library",
+    title: "장난감도서관 운영",
+    agencyType: "기초",
+    agencyName: "송파구",
+    region: { sido: "서울특별시", sigungu: "송파구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "취학 전 영유아 대상 장난감·돌잔치용품 대여 서비스",
+    benefit:
+      "장난감 및 돌잔치·백일상 대여 서비스. 연회비 거주자(부모) 1만원, 다자녀·기초생활수급권자 등 5천원(회원카드 발급일로부터 1년 유효). 송파구 내 오금점·위례점·잠실점·장지점·풍납점 5개소 운영, 화~토 09:30~17:30.",
+    eligibility: {
+      note: "취학 전 영유아 (손)자녀를 둔 송파구 거주자 또는 송파구 소재 회사 재직자.",
+    },
+    applicationMethod:
+      "송파구육아종합지원센터(spscc.or.kr) 홈페이지 회원가입 후 구비서류 지참해 방문 신청, 이후 현장 또는 예약 대여",
+    applicationPeriod: "상시 이용 가능(운영시간 내)",
+    requiredDocuments: ["신분증", "주민등록등본(자녀 미등재 시 가족관계증명서 추가)"],
+    officialLink: "https://www.songpa.go.kr/www/contents.do?key=6176",
+    lastVerifiedAt: "2026-08-06",
+  },
 ];
 
-// 아래 3개 구는 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
+// 아래 2개 구는 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
 // 못해(DNS 접속 실패, 전용 페이지 미발견 등) 이번 시드 데이터에는 반영하지 않았다. 이 프로젝트의 데이터
 // 신뢰 기준(officialLink는 반드시 검증 가능한 공식 도메인)에 맞지 않기 때문이며, 추후 구청 콜센터 등을 통해
 // 공식 링크를 확보하면 추가할 수 있다:
 //
 // - 송파구 "송파베이비샤워"(2026년 신설, 신생아 가정 화장품 3종 무상 지급): 시정일보 등 언론 보도만 확인,
-//   구청 공식 페이지 미발견.
+//   구청 공식 페이지 미발견(위 공동육아나눔터·장난감도서관 등 다른 송파구 사업은 공식 페이지로 확인해 반영함).
 // - 은평구 "다자녀 출산용품 교환권"(둘째 이상, 15만원 상당): 정부24·모두의혜택 등에서 확인했으나 은평구
 //   자체 전용 페이지(ep.go.kr)를 찾지 못해 구체적인 officialLink(구체적 서비스 페이지)를 확보하지 못함.
 // - 강북구 "임산부 물품(유축기·안전벨트·혈압계) 대여"(2025.8 제정 조례 근거): 뉴스1 등 언론 보도로 확인,
