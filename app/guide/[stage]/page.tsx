@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { stageSchema, type Stage } from "@/lib/schemas";
 import { programs } from "@/lib/data/programs";
-import { AgencyBadge } from "@/components/ui/Badge";
-import { Card } from "@/components/ui/Card";
+import { ProgramGroupedGrid } from "@/components/programs/ProgramGroupedGrid";
 
 const STAGE_INTRO: Record<Stage, string> = {
   임신준비: "정부는 난임부부의 시술비 부담을 덜어주는 제도를 운영하고 있어요.",
@@ -23,7 +21,6 @@ export default async function GuidePage({
   params: Promise<{ stage: string }>;
 }) {
   const { stage: rawStage } = await params;
-  // Decode URL-encoded Korean characters
   const decodedStage = decodeURIComponent(rawStage);
   const parsed = stageSchema.safeParse(decodedStage);
   if (!parsed.success) {
@@ -37,23 +34,11 @@ export default async function GuidePage({
       <h1 className="font-display text-[32px] text-coral">{stage} 단계 지원제도</h1>
       <p className="mt-3 text-brown/80">{STAGE_INTRO[stage]}</p>
 
-      <div className="mt-8 flex flex-col gap-4">
+      <div className="mt-8">
         {stagePrograms.length === 0 ? (
           <p className="text-brown/60">이 단계에 등록된 지원사업이 아직 없어요.</p>
         ) : (
-          stagePrograms.map((program) => (
-            <Card key={program.id}>
-              <div className="mb-2 flex items-center gap-2">
-                <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
-                <span className="text-[13px] text-brown/60">{program.category}</span>
-              </div>
-              <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
-              <p className="mt-1 text-brown/80">{program.summary}</p>
-              <Link href={`/programs/${program.id}`} className="mt-3 inline-block font-bold text-coral">
-                자세히 보기 →
-              </Link>
-            </Card>
-          ))
+          <ProgramGroupedGrid programs={stagePrograms} />
         )}
       </div>
     </main>
