@@ -3,7 +3,7 @@ import type { AgencyType, Stage, SupportProgram } from "./schemas";
 export interface SearchCriteria {
   sido: string;
   sigungu?: string;
-  parentAge: number;
+  motherAge: number;
   stages: Stage[];
   childAgeMonths?: number;
   incomePercent: number;
@@ -40,13 +40,13 @@ export function matchesStage(
   return true;
 }
 
-export function matchesParentAge(
+export function matchesMotherAge(
   program: SupportProgram,
   criteria: SearchCriteria
 ): boolean {
-  const { parentAgeMin, parentAgeMax } = program.eligibility;
-  if (parentAgeMin !== undefined && criteria.parentAge < parentAgeMin) return false;
-  if (parentAgeMax !== undefined && criteria.parentAge > parentAgeMax) return false;
+  const { motherAgeMin, motherAgeMax } = program.eligibility;
+  if (motherAgeMin !== undefined && criteria.motherAge < motherAgeMin) return false;
+  if (motherAgeMax !== undefined && criteria.motherAge > motherAgeMax) return false;
   return true;
 }
 
@@ -78,7 +78,7 @@ export function matchProgram(
   return (
     matchesRegion(program, criteria) &&
     matchesStage(program, criteria) &&
-    matchesParentAge(program, criteria) &&
+    matchesMotherAge(program, criteria) &&
     matchesChildAge(program, criteria) &&
     matchesIncome(program, criteria)
   );

@@ -795,7 +795,7 @@ export const programs: SupportProgram[] = [
     benefit:
       "임신 1회당 120만원 범위에서 임산부 및 2세 미만 영유아의 의료비·약제/치료재료 구입비를 국민행복카드 바우처로 지원(산후조리원 비용 제외). 카드 수령 후 분만예정일 이후 2년까지 사용 가능.",
     eligibility: {
-      parentAgeMax: 19,
+      motherAgeMax: 19,
       note: "만 19세 이하 산모(소득·재산 기준 없음).",
     },
     applicationMethod: "사회서비스 전자바우처 포털(socialservice.or.kr) 온라인 신청 또는 국민행복카드 발급 카드사 신청",
@@ -1160,7 +1160,7 @@ export const programs: SupportProgram[] = [
     summary: "원인불명 난임부부 한의약 치료비 최대 120만원 지원",
     benefit: "3개월분 첩약 치료비용의 90% 지원(최대 120만원), 기초생활수급자·차상위계층은 100% 지원. 최소 1개월 이상 치료 참여 필수.",
     eligibility: {
-      parentAgeMax: 45,
+      motherAgeMax: 45,
       note: "여성 만 45세 이하, 신청일 기준 서울시 주민등록, 법률혼 및 사실혼 모두 가능, 원인불명 난임 진단 필수, 국가/서울시 난임부부 시술비 지원과 중복 불가.",
     },
     applicationMethod: "서울시 임신출산정보센터(seoul-agi.seoul.go.kr) 온라인 신청 또는 주소지·직장소재지 관할 보건소 방문 신청",

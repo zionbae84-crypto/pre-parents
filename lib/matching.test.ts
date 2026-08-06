@@ -22,7 +22,7 @@ const base: SupportProgram = {
 const baseCriteria: SearchCriteria = {
   sido: "서울특별시",
   sigungu: "강남구",
-  parentAge: 30,
+  motherAge: 30,
   stages: ["임신중"],
   childAgeMonths: undefined,
   incomePercent: 80,
@@ -109,15 +109,15 @@ describe("matchProgram - stage", () => {
   });
 });
 
-describe("matchProgram - parent age", () => {
-  it("rejects when parent age is below the minimum", () => {
-    const program = { ...base, eligibility: { parentAgeMin: 35 } };
-    expect(matchProgram(program, { ...baseCriteria, parentAge: 30 })).toBe(false);
+describe("matchProgram - mother age", () => {
+  it("rejects when mother age is below the minimum", () => {
+    const program = { ...base, eligibility: { motherAgeMin: 35 } };
+    expect(matchProgram(program, { ...baseCriteria, motherAge: 30 })).toBe(false);
   });
 
-  it("rejects when parent age is above the maximum", () => {
-    const program = { ...base, eligibility: { parentAgeMax: 39 } };
-    expect(matchProgram(program, { ...baseCriteria, parentAge: 40 })).toBe(false);
+  it("rejects when mother age is above the maximum", () => {
+    const program = { ...base, eligibility: { motherAgeMax: 39 } };
+    expect(matchProgram(program, { ...baseCriteria, motherAge: 40 })).toBe(false);
   });
 
   it("passes when no age condition is set", () => {

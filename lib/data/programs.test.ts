@@ -32,7 +32,7 @@ describe("matching against real seed data (regression: benefits shouldn't vanish
   const baseCriteria: SearchCriteria = {
     sido: "서울특별시",
     sigungu: undefined,
-    parentAge: 32,
+    motherAge: 32,
     stages: [],
     childAgeMonths: undefined,
     incomePercent: 50,

@@ -25,8 +25,8 @@ export type Category = z.infer<typeof categorySchema>;
 
 export const eligibilitySchema = z
   .object({
-    parentAgeMin: z.number().int().nonnegative().optional(),
-    parentAgeMax: z.number().int().nonnegative().optional(),
+    motherAgeMin: z.number().int().nonnegative().optional(),
+    motherAgeMax: z.number().int().nonnegative().optional(),
     childAgeMonthsMin: z.number().int().nonnegative().optional(),
     childAgeMonthsMax: z.number().int().nonnegative().optional(),
     incomePercentMax: z.number().positive().optional(),
