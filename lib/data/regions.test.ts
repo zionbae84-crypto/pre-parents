@@ -14,6 +14,12 @@ describe("regions data", () => {
     expect(seoul).toBeDefined();
     expect(seoul?.sigungus).toHaveLength(25);
   });
+
+  it("includes 경기도 with 31 시·군", () => {
+    const gyeonggi = regions.find((r) => r.sido === "경기도");
+    expect(gyeonggi).toBeDefined();
+    expect(gyeonggi?.sigungus).toHaveLength(31);
+  });
 });
 
 describe("getSidoList", () => {
