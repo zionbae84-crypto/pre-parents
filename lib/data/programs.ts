@@ -2121,6 +2121,87 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.yongin.go.kr/home/www/www18/www18_05/www18_05_02/www18_05_02_02.jsp",
     lastVerifiedAt: "2026-08-07",
   },
+  // 출처: 부천시청 공식 홈페이지(bucheon.go.kr, pubhealth.bucheon.go.kr), 2026-08-07 확인
+  {
+    id: "bucheon-childbirth-grant",
+    title: "부천시 출산지원금",
+    agencyType: "기초",
+    agencyName: "부천시",
+    region: { sido: "경기도", sigungu: "부천시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "출생순위별 최대 700만원 출산지원금",
+    benefit:
+      "첫째아 100만원, 둘째아 100만원, 셋째아 200만원, 넷째아 이상 700만원(400만원 즉시 지급 + 1년 후 잔액 300만원 지급, 잔액 지급 전 타 지자체 전출 시 미지급).",
+    eligibility: {
+      note: "2026년 1월 1일 이후 부천시 출생(입양) 아동(2025년 12월 31일 이전 출생아는 넷째아 이상만 해당). 부모 중 1인이 출생·입양일 기준 1년 이전부터 계속 부천시 주민등록 거주(거주 1년 미만이면 1년 경과 후 지급).",
+    },
+    applicationMethod: "출생(입양)일로부터 1년 이내, 주민등록지 관할 행정복지센터 방문 신청(온라인 신청 불가)",
+    applicationPeriod: "출생(입양)일로부터 1년 이내",
+    requiredDocuments: ["출산서비스 통합처리 신청서", "주민등록등·초본", "가족관계증명서(순위 확인 필요 시)"],
+    officialLink: "https://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148006003009005",
+    lastVerifiedAt: "2026-08-07",
+  },
+  {
+    id: "bucheon-multichild-pregnant-parking-discount",
+    title: "다자녀·임산부 공영주차장 이용료 감면",
+    agencyType: "기초",
+    agencyName: "부천시",
+    region: { sido: "경기도", sigungu: "부천시" },
+    stages: ["임신중", "영유아기", "유아"],
+    category: "세제혜택",
+    summary: "다자녀 가정·임산부 대상 공영주차장 이용료 감면",
+    benefit:
+      "세 자녀 이상 가정은 이용료 면제, 두 자녀 가정은 50% 감면, 임산부는 분만예정일로부터 6개월까지 50% 감면(「부천시 주차장 조례」 근거).",
+    eligibility: {
+      note: "경기도 거주 다자녀 가정 자동차 1대(최연소 자녀 18세 이하, 두 자녀 이상). 임산부는 임산부 수첩 또는 건강보험 임신출산 진료비 지급 신청서 등으로 증빙.",
+    },
+    applicationMethod:
+      "온라인(부천시청 홈페이지 주차감면신청, 신청인=차량명의=세대주 부합 시) 또는 관할 행정복지센터 복지팀 방문(스티커 발급). 임산부는 창구 접수만 가능.",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["신분증", "차량등록증(리스는 계약서)", "(임산부) 임산부 증명자료"],
+    officialLink: "https://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148006003009003",
+    lastVerifiedAt: "2026-08-07",
+  },
+  {
+    id: "bucheon-mom-friendly-taxi",
+    title: "맘(Mom)편한 택시",
+    agencyType: "기초",
+    agencyName: "부천시",
+    region: { sido: "경기도", sigungu: "부천시" },
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "임산부 병원 이용 시 택시요금 지원(산후 1년까지)",
+    benefit: "기본요금 1,700원 + 택시비 13,000원 초과분만 본인 결제(예: 미터기 15,000원 → 실부담 3,700원).",
+    eligibility: {
+      note: "부천시 주민등록 임산부. 수혜기간은 임신부터 출산 후 1년까지.",
+    },
+    applicationMethod: "부천시교통약자이동지원센터(1588-3815)에 임산부 증명자료 제출 후 등록, 이후 전화로 배차 신청",
+    applicationPeriod: "임신부터 출산 후 1년까지",
+    officialLink:
+      "https://www.bucheon.go.kr/site/program/board/basicboard/view?currentpage=15&menuid=148006011&pagesize=12&boardtypeid=28004&encid=yR3MHekJOQCD3WBH57mx7w%3D%3D",
+    lastVerifiedAt: "2026-08-07",
+  },
+  {
+    id: "bucheon-pregnant-registration-management",
+    title: "임산부등록관리",
+    agencyType: "기초",
+    agencyName: "부천시",
+    region: { sido: "경기도", sigungu: "부천시" },
+    stages: ["임신중", "출생출산"],
+    category: "의료비",
+    summary: "보건소 임산부 등록 시 검사·영양제·유축기 대여 등 종합 지원",
+    benefit:
+      "임신반응검사, 임신초기검사(12주 이전 혈액·소변검사), 막달검사(35주 이후 혈액검사+심전도), 엽산제·철분제 제공, 출산 후 유축기 대여, 임산부 엠블럼(가방고리) 제공.",
+    eligibility: {
+      note: "부천시 주민등록 임산부(부부 모두 외국인인 경우 등록·지원 불가).",
+    },
+    applicationMethod: "관할 보건소(부천시보건소·소사보건소·오정보건소) 모자보건실 방문",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["신분증", "임신확인서 또는 산모수첩"],
+    officialLink: "https://pubhealth.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=161004004001001",
+    lastVerifiedAt: "2026-08-07",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
