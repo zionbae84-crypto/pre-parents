@@ -11,6 +11,8 @@ export interface SearchFormValues {
   motherAge: number;
   householdSize: number;
   monthlyIncome: number;
+  birthOrder: number;
+  isMultipleBirth: boolean;
 }
 
 type PregnancyStatus = "preparing" | "pregnant" | "born";
@@ -46,6 +48,8 @@ export function SearchForm({
   const [motherAge, setMotherAge] = useState(30);
   const [householdSize, setHouseholdSize] = useState(3);
   const [monthlyIncome, setMonthlyIncome] = useState(4000000);
+  const [birthOrder, setBirthOrder] = useState(1);
+  const [isMultipleBirth, setIsMultipleBirth] = useState(false);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -56,7 +60,16 @@ export function SearchForm({
           ? { status: "pregnant", dueDate }
           : { status: "born", childAgeMonths };
 
-    onSubmit({ sido, sigungu, stageInput, motherAge, householdSize, monthlyIncome });
+    onSubmit({
+      sido,
+      sigungu,
+      stageInput,
+      motherAge,
+      householdSize,
+      monthlyIncome,
+      birthOrder,
+      isMultipleBirth,
+    });
   }
 
   return (
@@ -147,6 +160,51 @@ export function SearchForm({
             />
           </div>
         )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>이 아이는 몇째인가요?</label>
+          <input
+            type="number"
+            min={1}
+            value={birthOrder}
+            onChange={(e) => setBirthOrder(Number(e.target.value))}
+            className={fieldClass}
+          />
+        </div>
+
+        <div>
+          <label className={labelClass}>쌍둥이(다태아)인가요?</label>
+          <div role="radiogroup" aria-label="쌍둥이(다태아) 여부" className="flex gap-2">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={!isMultipleBirth}
+              onClick={() => setIsMultipleBirth(false)}
+              className={
+                !isMultipleBirth
+                  ? "flex-1 rounded-button border-2 border-coral bg-coral px-3 py-2 text-[15px] font-bold text-white"
+                  : "flex-1 rounded-button border-2 border-brown/20 px-3 py-2 text-[15px] text-brown"
+              }
+            >
+              단태아
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={isMultipleBirth}
+              onClick={() => setIsMultipleBirth(true)}
+              className={
+                isMultipleBirth
+                  ? "flex-1 rounded-button border-2 border-coral bg-coral px-3 py-2 text-[15px] font-bold text-white"
+                  : "flex-1 rounded-button border-2 border-brown/20 px-3 py-2 text-[15px] text-brown"
+              }
+            >
+              쌍둥이 이상
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">

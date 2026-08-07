@@ -25,6 +25,8 @@ export default function SearchPage() {
       stages,
       childAgeMonths,
       incomePercent,
+      birthOrder: values.birthOrder,
+      isMultipleBirth: values.isMultipleBirth,
     };
 
     setResults(findMatchingPrograms(programs, criteria));

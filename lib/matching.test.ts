@@ -172,3 +172,16 @@ describe("findMatchingPrograms", () => {
     expect(result.map((p) => p.id)).toEqual(["gov", "metro", "local"]);
   });
 });
+
+describe("matchProgram - birthOrder/isMultipleBirth do not affect matching", () => {
+  it("matches identically regardless of birthOrder/isMultipleBirth values", () => {
+    const program: SupportProgram = { ...base, eligibility: { incomePercentMax: 150 } };
+    const withoutFields = matchProgram(program, baseCriteria);
+    const withFields = matchProgram(program, {
+      ...baseCriteria,
+      birthOrder: 3,
+      isMultipleBirth: true,
+    });
+    expect(withFields).toBe(withoutFields);
+  });
+});

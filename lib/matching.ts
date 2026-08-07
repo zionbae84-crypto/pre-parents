@@ -7,6 +7,8 @@ export interface SearchCriteria {
   stages: Stage[];
   childAgeMonths?: number;
   incomePercent: number;
+  birthOrder?: number;
+  isMultipleBirth?: boolean;
 }
 
 export function matchesRegion(
