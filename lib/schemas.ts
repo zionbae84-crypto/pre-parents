@@ -46,6 +46,31 @@ export const regionValueSchema = z.union([
 ]);
 export type ProgramRegion = z.infer<typeof regionValueSchema>;
 
+export const birthOrderTierSchema = z
+  .object({
+    orderMin: z.number().int().positive(),
+    amount: z.number().int().nonnegative(),
+  })
+  .strict();
+
+export const birthOrderBenefitSchema = z
+  .object({
+    tiers: z.array(birthOrderTierSchema).min(1),
+    flatAddOn: z.number().int().nonnegative().optional(),
+    multipleBirthMode: z.literal("sumConsecutiveOrders").optional(),
+  })
+  .strict();
+export type BirthOrderBenefit = z.infer<typeof birthOrderBenefitSchema>;
+
+export const multipleBirthFlatBenefitSchema = z
+  .object({
+    singleAmount: z.number().int().nonnegative(),
+    multipleAmount: z.number().int().nonnegative(),
+    note: z.string().optional(),
+  })
+  .strict();
+export type MultipleBirthFlatBenefit = z.infer<typeof multipleBirthFlatBenefitSchema>;
+
 export const supportProgramSchema = z
   .object({
     id: z.string().min(1),
@@ -65,6 +90,9 @@ export const supportProgramSchema = z
     lastVerifiedAt: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD 형식이어야 합니다"),
+    birthOrderBenefit: birthOrderBenefitSchema.optional(),
+    multipleBirthFlatBenefit: multipleBirthFlatBenefitSchema.optional(),
+    hasMultipleBirthOrOrderVariation: z.boolean().optional(),
   })
   .strict();
 export type SupportProgram = z.infer<typeof supportProgramSchema>;

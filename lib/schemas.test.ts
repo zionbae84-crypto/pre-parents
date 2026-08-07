@@ -41,6 +41,41 @@ describe("supportProgramSchema", () => {
     const regional = { ...validProgram, region: { sido: "서울특별시" } };
     expect(supportProgramSchema.safeParse(regional).success).toBe(true);
   });
+
+  it("accepts a program with birthOrderBenefit", () => {
+    const withTiers = {
+      ...validProgram,
+      birthOrderBenefit: {
+        tiers: [
+          { orderMin: 1, amount: 2000000 },
+          { orderMin: 2, amount: 3000000 },
+        ],
+        multipleBirthMode: "sumConsecutiveOrders",
+      },
+    };
+    expect(supportProgramSchema.safeParse(withTiers).success).toBe(true);
+  });
+
+  it("rejects a birthOrderBenefit tier with a non-positive orderMin", () => {
+    const invalid = {
+      ...validProgram,
+      birthOrderBenefit: { tiers: [{ orderMin: 0, amount: 1000000 }] },
+    };
+    expect(supportProgramSchema.safeParse(invalid).success).toBe(false);
+  });
+
+  it("accepts a program with multipleBirthFlatBenefit", () => {
+    const withFlat = {
+      ...validProgram,
+      multipleBirthFlatBenefit: { singleAmount: 1000000, multipleAmount: 1400000 },
+    };
+    expect(supportProgramSchema.safeParse(withFlat).success).toBe(true);
+  });
+
+  it("accepts a program with hasMultipleBirthOrOrderVariation", () => {
+    const withFlag = { ...validProgram, hasMultipleBirthOrOrderVariation: true };
+    expect(supportProgramSchema.safeParse(withFlag).success).toBe(true);
+  });
 });
 
 describe("regionEntrySchema", () => {
