@@ -103,6 +103,7 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["임신확인서"],
     officialLink: "https://www.gov.kr/portal/service/serviceInfo/SD0000007672",
     lastVerifiedAt: "2026-08-05",
+    multipleBirthFlatBenefit: { singleAmount: 1000000, multipleAmount: 1400000 },
   },
   // 출처: 복지로 복지서비스 상세(bokjiro.go.kr, WLF00001188) 및
   // 보건복지부 2026년 산모신생아 건강관리 지원사업 안내 훈령(mohw.go.kr, list_no=1488490), 2026-08-05 확인
@@ -127,6 +128,7 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188",
     lastVerifiedAt: "2026-08-05",
+    hasMultipleBirthOrOrderVariation: true,
   },
   // 출처: 복지로 복지서비스 상세(bokjiro.go.kr, WLF00001088) 및
   // 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=735), 2026-08-05 확인
@@ -368,6 +370,7 @@ export const programs: SupportProgram[] = [
     ],
     officialLink: "https://www.jongno.go.kr/Health.do?menuId=401291&menuNo=401291",
     lastVerifiedAt: "2026-08-06",
+    hasMultipleBirthOrOrderVariation: true,
   },
   // 출처: 중구청 공식 홈페이지 다자녀 가정지원 안내(junggu.seoul.kr, cmsid=16349), 2026-08-06 확인.
   // 참고: 중구청 사이트 내 별도 팝업 공지(cid=64081)에는 "둘째 50만/셋째 100만/넷째 이상 300만원(첫째 지급 없음)"으로
@@ -590,6 +593,11 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신분증", "임신확인서", "지원 신청서", "통장사본", "개인정보 동의서"],
     officialLink: "https://www.sdm.go.kr/health/contents/healthbiz/maternal/pregnancy",
     lastVerifiedAt: "2026-08-06",
+    multipleBirthFlatBenefit: {
+      singleAmount: 300000,
+      multipleAmount: 600000,
+      note: "쌍태아 기준(60만원). 삼태아 이상은 90만원으로 별도 문의 필요",
+    },
   },
   // 출처: 도봉구청 공식 홈페이지(dobong.go.kr, code=10010135), 2026-08-06 확인
   {
@@ -758,6 +766,7 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "상시 신청(지급 자체는 신청 익월부터 자녀 만 6세 미만까지 지속)",
     officialLink: "https://www.gangdong.go.kr/web/newportal/contents/gdp_005_001_005_001_003",
     lastVerifiedAt: "2026-08-06",
+    hasMultipleBirthOrOrderVariation: true,
   },
   // 출처: 노원구보건소 공식 홈페이지(nowon.kr, healthIncrz1_04.jsp), 2026-08-06 확인.
   // 참고: 사용자가 제공한 nowon.kr 링크(생애주기별 출산·양육지원사업 안내)는 e-Book/PDF 형태라 본문 텍스트를
@@ -1022,6 +1031,11 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["여성장애인 출산비용 지원 신청서", "출생증명서(또는 유산·사산 진단서)", "장애인등록증"],
     officialLink: "https://www.mohw.go.kr/menu.es?mid=a10710060800",
     lastVerifiedAt: "2026-08-06",
+    multipleBirthFlatBenefit: {
+      singleAmount: 1200000,
+      multipleAmount: 2400000,
+      note: "쌍둥이 2명 기준(태아 1인당 120만원 × 2). 세쌍둥이 이상은 태아 수에 비례하므로 별도 문의 필요",
+    },
   },
   // 출처: 아이돌봄서비스 공식 홈페이지(idolbom.go.kr, 여성가족부), 2026-08-06 확인.
   // 참고: 가구 소득유형(가~바형)별 정확한 소득구간·정부지원율은 공식페이지 원문에서 확인하지 못해
@@ -1313,6 +1327,11 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "임산부 출산급여: 출산일로부터 1년 이내 / 배우자 출산휴가급여: 출산휴가 종료일로부터 1년 이내",
     officialLink: "https://news.seoul.go.kr/welfare/archives/568576",
     lastVerifiedAt: "2026-08-06",
+    multipleBirthFlatBenefit: {
+      singleAmount: 2400000,
+      multipleAmount: 3200000,
+      note: "고용보험 지원분(150만원)을 포함한 총 보장액 기준",
+    },
   },
   // 출처: umppa.seoul.go.kr + mediahub.seoul.go.kr(2026년 완화), 2026-08-06 확인
   {
@@ -1340,6 +1359,7 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://umppa.seoul.go.kr/hmpg/sprt/cnls/bzin/bzmgPageDetail.do?biz_mng_no=197DA8F773AAE8DCE063A6022162FF67",
     lastVerifiedAt: "2026-08-06",
+    hasMultipleBirthOrOrderVariation: true,
   },
   // 출처: news.seoul.go.kr(2024확대) + mediahub.seoul.go.kr(2025~2026 바우처 전환), 2026-08-06 확인
   {
