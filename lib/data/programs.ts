@@ -24,6 +24,13 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656",
     lastVerifiedAt: "2026-08-05",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 2000000 },
+        { orderMin: 2, amount: 3000000 },
+      ],
+      multipleBirthMode: "sumConsecutiveOrders",
+    },
   },
   // 출처: 대한민국 정책브리핑 "2026년 부모급여, 이렇게 지원합니다!"(korea.kr, newsId=148957936),
   // 복지로 wlfareInfoId=WLF00004657, 2026-08-05 확인
@@ -190,6 +197,13 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://umppa.seoul.go.kr/hmpg/sprt/bzin/bzmgComtDetail.do?biz_mng_no=34B5EA8BEB354E2DB26136CFE52AEFF2",
     lastVerifiedAt: "2026-08-05",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 700000 },
+        { orderMin: 2, amount: 800000 },
+        { orderMin: 3, amount: 1000000 },
+      ],
+    },
   },
   // 출처: 서울시 탄생응원 서울프로젝트 몽땅정보 만능키(umppa.seoul.go.kr), 2026-08-05 확인
   {
@@ -213,6 +227,13 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://umppa.seoul.go.kr/hmpg/sprt/bzin/bzmgComtDetail.do?biz_mng_no=58D83411277E40D1BFF6255A10CBCDD5",
     lastVerifiedAt: "2026-08-05",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1000000 },
+        { orderMin: 2, amount: 1200000 },
+        { orderMin: 3, amount: 1500000 },
+      ],
+    },
   },
   // 출처: 강남구청 공식 홈페이지 종합민원 신청서식(gangnam.go.kr, B_000060/14890), 2026-08-05 확인
   {
@@ -236,6 +257,13 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신분증", "통장사본(신생아의 부 또는 모)", "출산양육지원금 신청서"],
     officialLink: "https://www.gangnam.go.kr/board/B_000060/14890/view.do?mid=ID03_010104",
     lastVerifiedAt: "2026-08-05",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 2000000 },
+        { orderMin: 3, amount: 3000000 },
+        { orderMin: 4, amount: 5000000 },
+      ],
+    },
   },
   // 출처: 법제처 찾기쉬운 생활법령정보 출산장려금(서울특별시 서초구) 조례 안내
   // (easylaw.go.kr, areaCsmOrdinSeq=220), 2026-08-05 확인
@@ -260,6 +288,14 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://easylaw.go.kr/CSP/CnpClsOrdinMain.laf?popMenu=ov&areaCsmOrdinSeq=220&ccfNo=1&cciNo=1&cnpClsNo=1",
     lastVerifiedAt: "2026-08-05",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 300000 },
+        { orderMin: 2, amount: 500000 },
+        { orderMin: 3, amount: 1000000 },
+      ],
+      multipleBirthMode: "sumConsecutiveOrders",
+    },
   },
   // 출처: 관악구청 공식 홈페이지 한눈에 보는 출산 및 양육 관련 연령별 지원사업(gwanak.go.kr), 2026-08-05 확인.
   // 참고: 2021년 언론보도는 조례 개정으로 자녀순위별 10만~200만원 현금 지급으로 상향되었다고 보도했으나
@@ -355,6 +391,15 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
     officialLink: "https://www.junggu.seoul.kr/content.do?cmsid=16349",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1000000 },
+        { orderMin: 2, amount: 2000000 },
+        { orderMin: 3, amount: 3000000 },
+        { orderMin: 4, amount: 4000000 },
+        { orderMin: 5, amount: 10000000 },
+      ],
+    },
   },
   // 출처: 용산구보건소 공식 홈페이지(health.yongsan.go.kr, menuNo=201275), 2026-08-06 확인.
   // 참고: 일반 가구 대상 출산장려금 조례(전부개정, 2024.10 입법예고)가 존재하나 공식페이지에서 구체 금액을
@@ -406,6 +451,14 @@ export const programs: SupportProgram[] = [
     ],
     officialLink: "https://www.sd.go.kr/health/contents.do?key=4816",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1000000 },
+        { orderMin: 2, amount: 1200000 },
+        { orderMin: 3, amount: 1500000 },
+      ],
+      flatAddOn: 500000,
+    },
   },
   // 출처: 광진구청 공식 홈페이지(gwangjin.go.kr, menuNo=200309), 2026-08-06 확인
   {
@@ -427,6 +480,13 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신분증", "신청서(조례 별지1호 서식 또는 출산서비스 통합처리신청서)"],
     officialLink: "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200309",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1000000 },
+        { orderMin: 4, amount: 2000000 },
+        { orderMin: 5, amount: 3000000 },
+      ],
+    },
   },
   // 출처: 「서울특별시 동대문구 출생 및 양육 지원에 관한 조례」(law.go.kr, ordinSeq=1890197), 2026-08-06 확인.
   // 참고: law.go.kr 조례 원문은 JS 렌더링으로 직접 추출하지 못해, 일관되게 동일 금액을 보도한 언론 3건으로
@@ -449,6 +509,15 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "명시 없음(출생신고 시 접수, 정확한 신청기한은 동대문구청 가정복지과 확인 필요)",
     officialLink: "https://www.law.go.kr/LSW//ordinInfoP.do?ordinSeq=1890197&chrClsCd=010202&gubun=ELIS",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 300000 },
+        { orderMin: 2, amount: 600000 },
+        { orderMin: 3, amount: 1000000 },
+        { orderMin: 4, amount: 2000000 },
+        { orderMin: 5, amount: 3000000 },
+      ],
+    },
   },
   // 출처: 중랑구청 공식 홈페이지(jungnang.go.kr, menuNo=201500), 2026-08-06 확인.
   // 참고: 공식페이지 직접 fetch가 기술적으로 반복 실패해 검색엔진에 색인된 동일 페이지 콘텐츠와
@@ -493,6 +562,13 @@ export const programs: SupportProgram[] = [
     officialLink:
       "https://www.easylaw.go.kr/CSP/CnpClsOrdinMain.laf?areaCsmOrdinSeq=221&ccfNo=1&cciNo=1&cnpClsNo=1",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 3, amount: 1000000 },
+        { orderMin: 4, amount: 1500000 },
+        { orderMin: 5, amount: 2000000 },
+      ],
+    },
   },
   // 출처: 서대문구보건소 공식 홈페이지(sdm.go.kr), 2026-08-06 확인
   {
@@ -577,6 +653,13 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신청서(별지 제1호서식)", "신청인 예금통장 사본"],
     officialLink: "https://www.guro.go.kr/www/contents.do?key=4187",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 3, amount: 600000 },
+        { orderMin: 4, amount: 2000000 },
+      ],
+      multipleBirthMode: "sumConsecutiveOrders",
+    },
   },
   // 출처: 금천구청 공식 홈페이지(geumcheon.go.kr, key=525), 2026-08-06 확인
   {
@@ -596,6 +679,12 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "출생일로부터 1년 이내",
     officialLink: "https://www.geumcheon.go.kr/portal/contents.do?key=525",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 3, amount: 700000 },
+        { orderMin: 4, amount: 1000000 },
+      ],
+    },
   },
   // 출처: 영등포구청 공식 홈페이지(ydp.go.kr, key=3842), 2026-08-06 확인
   {
@@ -639,6 +728,14 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "확인 안됨(관할 동작구청 문의 필요)",
     officialLink: "https://www.law.go.kr/LSW//ordinInfoP.do?ordinSeq=1746909&chrClsCd=010202&gubun=ELIS",
     lastVerifiedAt: "2026-08-06",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 300000 },
+        { orderMin: 2, amount: 500000 },
+        { orderMin: 3, amount: 1000000 },
+        { orderMin: 4, amount: 2000000 },
+      ],
+    },
   },
   // 출처: 강동구청 공식 홈페이지(gangdong.go.kr, gdp_005_001_005_001_003), 2026-08-06 확인
   {
