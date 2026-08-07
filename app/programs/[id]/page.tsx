@@ -2,6 +2,11 @@ import { notFound } from "next/navigation";
 import { programs } from "@/lib/data/programs";
 import { AgencyBadge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import {
+  calculatePersonalizedBenefit,
+  formatBenefitAmount,
+  formatBirthOrderLabel,
+} from "@/lib/birthOrderBenefit";
 
 export function generateStaticParams() {
   return programs.map((p) => ({ id: p.id }));
@@ -9,14 +14,26 @@ export function generateStaticParams() {
 
 export default async function ProgramDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ birthOrder?: string; multiple?: string }>;
 }) {
   const { id } = await params;
   const program = programs.find((p) => p.id === id);
   if (!program) {
     notFound();
   }
+
+  const sp = await searchParams;
+  const parsedOrder = sp.birthOrder ? Number(sp.birthOrder) : NaN;
+  const personalization =
+    Number.isFinite(parsedOrder) && parsedOrder >= 1
+      ? { birthOrder: parsedOrder, isMultipleBirth: sp.multiple === "true" }
+      : null;
+  const personalizedResult = personalization
+    ? calculatePersonalizedBenefit(program, personalization)
+    : null;
 
   return (
     <main className="mx-auto max-w-[800px] px-6 py-12">
@@ -26,6 +43,27 @@ export default async function ProgramDetailPage({
       </div>
       <h1 className="font-display text-[32px] text-brown">{program.title}</h1>
       <p className="mt-2 text-brown/80">{program.summary}</p>
+
+      {personalizedResult && personalization && (
+        <div className="mt-4 rounded-card border-2 border-sage bg-sage/10 p-4">
+          {"flagOnly" in personalizedResult ? (
+            <p className="font-bold text-brown">
+              다자녀/쌍둥이 조건에 따라 내용이 달라질 수 있어요 — 아래 지원내용을 확인해 주세요.
+            </p>
+          ) : personalizedResult.isCombinedOrders ? (
+            <p className="font-bold text-brown">
+              쌍둥이({formatBirthOrderLabel(personalization.birthOrder)}+
+              {formatBirthOrderLabel(personalization.birthOrder + 1)}) 기준 예상 혜택:{" "}
+              {formatBenefitAmount(personalizedResult.amount)}
+            </p>
+          ) : (
+            <p className="font-bold text-brown">
+              {formatBirthOrderLabel(personalization.birthOrder)} 자녀 기준 예상 혜택:{" "}
+              {formatBenefitAmount(personalizedResult.amount)}
+            </p>
+          )}
+        </div>
+      )}
 
       <Card>
         <dl className="flex flex-col gap-4">
