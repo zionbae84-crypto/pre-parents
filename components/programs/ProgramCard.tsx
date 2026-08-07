@@ -2,6 +2,12 @@ import Link from "next/link";
 import type { SupportProgram } from "@/lib/schemas";
 import { AgencyBadge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import {
+  calculatePersonalizedBenefit,
+  formatBenefitAmount,
+  formatBirthOrderLabel,
+  type PersonalizationInput,
+} from "@/lib/birthOrderBenefit";
 
 // note가 이 사업의 유일한 자격조건 정보일 때만 확인 필요 뱃지를 띄운다.
 // 나이/소득처럼 구조화된 필드로 이미 걸러진 경우 note는 부가 설명일 뿐이므로 뱃지를 띄우지 않는다.
@@ -17,13 +23,37 @@ function needsEligibilityCheck(program: SupportProgram): boolean {
   return Boolean(note) && !hasStructuredCondition;
 }
 
+function personalizedBenefitLabel(
+  program: SupportProgram,
+  personalization: PersonalizationInput
+): string | null {
+  const result = calculatePersonalizedBenefit(program, personalization);
+  if (result === null) return null;
+  if ("flagOnly" in result) return "다자녀/쌍둥이 조건에 따라 달라짐";
+  if (result.isCombinedOrders) {
+    const first = formatBirthOrderLabel(personalization.birthOrder);
+    const second = formatBirthOrderLabel(personalization.birthOrder + 1);
+    return `쌍둥이(${first}+${second}) 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`;
+  }
+  return `${formatBirthOrderLabel(personalization.birthOrder)} 자녀 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`;
+}
+
 export function ProgramCard({
   program,
   showEligibilityWarning = false,
+  personalization,
 }: {
   program: SupportProgram;
   showEligibilityWarning?: boolean;
+  personalization?: PersonalizationInput;
 }) {
+  const benefitLabel = personalization
+    ? personalizedBenefitLabel(program, personalization)
+    : null;
+  const href = personalization
+    ? `/programs/${program.id}?birthOrder=${personalization.birthOrder}&multiple=${personalization.isMultipleBirth}`
+    : `/programs/${program.id}`;
+
   return (
     <Card compact>
       <div className="flex h-full flex-col">
@@ -38,8 +68,13 @@ export function ProgramCard({
         </div>
         <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
         <p className="mt-1 text-brown/80">{program.summary}</p>
+        {benefitLabel && (
+          <p className="mt-1.5 inline-block w-fit rounded-full bg-sage/20 px-2 py-0.5 text-[13px] font-bold text-brown">
+            {benefitLabel}
+          </p>
+        )}
         <Link
-          href={`/programs/${program.id}`}
+          href={href}
           className="mt-auto inline-block pt-3 font-bold text-coral"
         >
           자세히 보기 →

@@ -1,5 +1,6 @@
 import { groupProgramsByAgency } from "@/lib/groupByAgency";
 import type { AgencyType, SupportProgram } from "@/lib/schemas";
+import type { PersonalizationInput } from "@/lib/birthOrderBenefit";
 import { ProgramCard } from "./ProgramCard";
 
 const AGENCY_SECTION_TITLE: Record<AgencyType, string> = {
@@ -11,9 +12,11 @@ const AGENCY_SECTION_TITLE: Record<AgencyType, string> = {
 export function ProgramGroupedGrid({
   programs,
   showEligibilityWarning = false,
+  personalization,
 }: {
   programs: SupportProgram[];
   showEligibilityWarning?: boolean;
+  personalization?: PersonalizationInput;
 }) {
   const groups = groupProgramsByAgency(programs);
 
@@ -34,6 +37,7 @@ export function ProgramGroupedGrid({
                 key={program.id}
                 program={program}
                 showEligibilityWarning={showEligibilityWarning}
+                personalization={personalization}
               />
             ))}
           </div>

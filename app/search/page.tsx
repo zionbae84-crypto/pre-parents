@@ -8,9 +8,11 @@ import { calculateIncomePercent } from "@/lib/income";
 import { findMatchingPrograms, type SearchCriteria } from "@/lib/matching";
 import { programs } from "@/lib/data/programs";
 import type { SupportProgram } from "@/lib/schemas";
+import type { PersonalizationInput } from "@/lib/birthOrderBenefit";
 
 export default function SearchPage() {
   const [results, setResults] = useState<SupportProgram[] | null>(null);
+  const [personalization, setPersonalization] = useState<PersonalizationInput | null>(null);
 
   function handleSubmit(values: SearchFormValues) {
     const stages = determineStages(values.stageInput);
@@ -29,6 +31,7 @@ export default function SearchPage() {
       isMultipleBirth: values.isMultipleBirth,
     };
 
+    setPersonalization({ birthOrder: values.birthOrder, isMultipleBirth: values.isMultipleBirth });
     setResults(findMatchingPrograms(programs, criteria));
   }
 
@@ -41,7 +44,7 @@ export default function SearchPage() {
           {results === null ? (
             <p className="text-brown/60">조건을 입력하고 검색하면 결과가 여기에 나타나요.</p>
           ) : (
-            <ResultList programs={results} />
+            <ResultList programs={results} personalization={personalization ?? undefined} />
           )}
         </div>
       </div>
