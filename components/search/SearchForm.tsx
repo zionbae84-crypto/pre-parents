@@ -42,7 +42,7 @@ export function SearchForm({
   const [sigungu, setSigungu] = useState("");
   const [status, setStatus] = useState<PregnancyStatus>("preparing");
   const [dueDate, setDueDate] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [childAgeMonths, setChildAgeMonths] = useState(0);
   const [motherAge, setMotherAge] = useState(30);
   const [householdSize, setHouseholdSize] = useState(3);
   const [monthlyIncome, setMonthlyIncome] = useState(4000000);
@@ -54,7 +54,7 @@ export function SearchForm({
         ? { status: "preparing" }
         : status === "pregnant"
           ? { status: "pregnant", dueDate }
-          : { status: "born", birthDate };
+          : { status: "born", childAgeMonths };
 
     onSubmit({ sido, sigungu, stageInput, motherAge, householdSize, monthlyIncome });
   }
@@ -121,24 +121,31 @@ export function SearchForm({
           })}
         </div>
         {status === "pregnant" && (
-          <input
-            type="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-            required
-            aria-label="출산예정일"
-            className={`mt-3 ${fieldClass}`}
-          />
+          <div className="mt-3">
+            <label className="mb-2 block text-[13px] text-brown/60">출산예정일</label>
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              required
+              aria-label="출산예정일"
+              className={fieldClass}
+            />
+          </div>
         )}
         {status === "born" && (
-          <input
-            type="date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            required
-            aria-label="자녀 생년월일"
-            className={`mt-3 ${fieldClass}`}
-          />
+          <div className="mt-3">
+            <label className="mb-2 block text-[13px] text-brown/60">현재 개월수</label>
+            <input
+              type="number"
+              min={0}
+              value={childAgeMonths}
+              onChange={(e) => setChildAgeMonths(Number(e.target.value))}
+              required
+              aria-label="자녀 현재 개월수"
+              className={fieldClass}
+            />
+          </div>
         )}
       </div>
 

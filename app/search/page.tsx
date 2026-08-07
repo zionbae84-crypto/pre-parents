@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SearchForm, type SearchFormValues } from "@/components/search/SearchForm";
 import { ResultList } from "@/components/search/ResultList";
-import { determineStages, calculateAgeInMonths } from "@/lib/stage";
+import { determineStages } from "@/lib/stage";
 import { calculateIncomePercent } from "@/lib/income";
 import { findMatchingPrograms, type SearchCriteria } from "@/lib/matching";
 import { programs } from "@/lib/data/programs";
@@ -16,9 +16,7 @@ export default function SearchPage() {
     const stages = determineStages(values.stageInput);
     const incomePercent = calculateIncomePercent(values.monthlyIncome, values.householdSize);
     const childAgeMonths =
-      values.stageInput.status === "born"
-        ? calculateAgeInMonths(values.stageInput.birthDate)
-        : undefined;
+      values.stageInput.status === "born" ? values.stageInput.childAgeMonths : undefined;
 
     const criteria: SearchCriteria = {
       sido: values.sido,
