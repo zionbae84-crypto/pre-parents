@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   calculatePersonalizedBenefit,
+  describePersonalizedBenefit,
   formatBirthOrderLabel,
   formatBenefitAmount,
 } from "./birthOrderBenefit";
@@ -37,7 +38,7 @@ describe("calculatePersonalizedBenefit - birthOrderBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 2, isMultipleBirth: false })
-    ).toEqual({ amount: 800000, isCombinedOrders: false });
+    ).toEqual({ amount: 800000, source: "birthOrder", isCombinedOrders: false });
   });
 
   it("falls back to the highest applicable tier for orders beyond the last one (이상)", () => {
@@ -53,7 +54,7 @@ describe("calculatePersonalizedBenefit - birthOrderBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 7, isMultipleBirth: false })
-    ).toEqual({ amount: 1000000, isCombinedOrders: false });
+    ).toEqual({ amount: 1000000, source: "birthOrder", isCombinedOrders: false });
   });
 
   it("returns null when the order is below the lowest defined tier", () => {
@@ -81,7 +82,7 @@ describe("calculatePersonalizedBenefit - birthOrderBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: false })
-    ).toEqual({ amount: 1500000, isCombinedOrders: false });
+    ).toEqual({ amount: 1500000, source: "birthOrder", isCombinedOrders: false });
   });
 
   it("sums tier(order) and tier(order+1) for twins when multipleBirthMode is sumConsecutiveOrders (첫만남이용권 example)", () => {
@@ -97,7 +98,7 @@ describe("calculatePersonalizedBenefit - birthOrderBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: true })
-    ).toEqual({ amount: 5000000, isCombinedOrders: true });
+    ).toEqual({ amount: 5000000, source: "birthOrder", isCombinedOrders: true });
   });
 
   it("does not combine orders for twins when multipleBirthMode is not set", () => {
@@ -112,7 +113,7 @@ describe("calculatePersonalizedBenefit - birthOrderBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: true })
-    ).toEqual({ amount: 700000, isCombinedOrders: false });
+    ).toEqual({ amount: 700000, source: "birthOrder", isCombinedOrders: false });
   });
 });
 
@@ -124,7 +125,7 @@ describe("calculatePersonalizedBenefit - multipleBirthFlatBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: false })
-    ).toEqual({ amount: 1000000, isCombinedOrders: false });
+    ).toEqual({ amount: 1000000, source: "multipleBirthFlat" });
   });
 
   it("returns multipleAmount when it is a multiple birth", () => {
@@ -134,7 +135,35 @@ describe("calculatePersonalizedBenefit - multipleBirthFlatBenefit", () => {
     };
     expect(
       calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: true })
-    ).toEqual({ amount: 1400000, isCombinedOrders: false });
+    ).toEqual({ amount: 1400000, source: "multipleBirthFlat" });
+  });
+
+  it("carries the note through when present", () => {
+    const program: SupportProgram = {
+      ...base,
+      multipleBirthFlatBenefit: {
+        singleAmount: 300000,
+        multipleAmount: 600000,
+        note: "쌍태아 기준(60만원). 삼태아 이상은 90만원으로 별도 문의 필요",
+      },
+    };
+    expect(
+      calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: true })
+    ).toEqual({
+      amount: 600000,
+      source: "multipleBirthFlat",
+      note: "쌍태아 기준(60만원). 삼태아 이상은 90만원으로 별도 문의 필요",
+    });
+  });
+
+  it("does not null-check a zero amount (deliberate asymmetry vs. the tiers branch)", () => {
+    const program: SupportProgram = {
+      ...base,
+      multipleBirthFlatBenefit: { singleAmount: 0, multipleAmount: 500000 },
+    };
+    expect(
+      calculatePersonalizedBenefit(program, { birthOrder: 1, isMultipleBirth: false })
+    ).toEqual({ amount: 0, source: "multipleBirthFlat" });
   });
 });
 
@@ -170,5 +199,55 @@ describe("formatBenefitAmount", () => {
   it("formats a KRW amount in 만원 units with thousands separators", () => {
     expect(formatBenefitAmount(5000000)).toBe("500만원");
     expect(formatBenefitAmount(10000000)).toBe("1,000만원");
+  });
+});
+
+describe("describePersonalizedBenefit", () => {
+  const personalization = { birthOrder: 2, isMultipleBirth: false };
+
+  it("returns null when the calculation result is null", () => {
+    expect(describePersonalizedBenefit(null, personalization)).toBeNull();
+  });
+
+  it("describes a flagOnly result with the short badge label", () => {
+    expect(describePersonalizedBenefit({ flagOnly: true }, personalization)).toEqual({
+      label: "다자녀/쌍둥이 조건에 따라 달라짐",
+    });
+  });
+
+  it("describes a plain birthOrder result with the ordinal label", () => {
+    expect(
+      describePersonalizedBenefit(
+        { amount: 2000000, source: "birthOrder", isCombinedOrders: false },
+        personalization
+      )
+    ).toEqual({ label: "둘째 자녀 기준 예상 혜택: 200만원" });
+  });
+
+  it("describes a combined-orders (twins) birthOrder result", () => {
+    expect(
+      describePersonalizedBenefit(
+        { amount: 5000000, source: "birthOrder", isCombinedOrders: true },
+        { birthOrder: 1, isMultipleBirth: true }
+      )
+    ).toEqual({ label: "쌍둥이(첫째+둘째) 기준 예상 혜택: 500만원" });
+  });
+
+  it("describes a multipleBirthFlat single-birth result without birth-order phrasing", () => {
+    expect(
+      describePersonalizedBenefit(
+        { amount: 1000000, source: "multipleBirthFlat" },
+        { birthOrder: 3, isMultipleBirth: false }
+      )
+    ).toEqual({ label: "단태아 기준 예상 혜택: 100만원" });
+  });
+
+  it("describes a multipleBirthFlat twin-birth result and carries its note", () => {
+    expect(
+      describePersonalizedBenefit(
+        { amount: 600000, source: "multipleBirthFlat", note: "쌍태아 기준(60만원)" },
+        { birthOrder: 1, isMultipleBirth: true }
+      )
+    ).toEqual({ label: "쌍둥이(다태아) 기준 예상 혜택: 60만원", note: "쌍태아 기준(60만원)" });
   });
 });

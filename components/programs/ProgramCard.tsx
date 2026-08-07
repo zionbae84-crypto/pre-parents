@@ -4,8 +4,7 @@ import { AgencyBadge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import {
   calculatePersonalizedBenefit,
-  formatBenefitAmount,
-  formatBirthOrderLabel,
+  describePersonalizedBenefit,
   type PersonalizationInput,
 } from "@/lib/birthOrderBenefit";
 
@@ -23,21 +22,6 @@ function needsEligibilityCheck(program: SupportProgram): boolean {
   return Boolean(note) && !hasStructuredCondition;
 }
 
-function personalizedBenefitLabel(
-  program: SupportProgram,
-  personalization: PersonalizationInput
-): string | null {
-  const result = calculatePersonalizedBenefit(program, personalization);
-  if (result === null) return null;
-  if ("flagOnly" in result) return "다자녀/쌍둥이 조건에 따라 달라짐";
-  if (result.isCombinedOrders) {
-    const first = formatBirthOrderLabel(personalization.birthOrder);
-    const second = formatBirthOrderLabel(personalization.birthOrder + 1);
-    return `쌍둥이(${first}+${second}) 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`;
-  }
-  return `${formatBirthOrderLabel(personalization.birthOrder)} 자녀 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`;
-}
-
 export function ProgramCard({
   program,
   showEligibilityWarning = false,
@@ -47,8 +31,11 @@ export function ProgramCard({
   showEligibilityWarning?: boolean;
   personalization?: PersonalizationInput;
 }) {
-  const benefitLabel = personalization
-    ? personalizedBenefitLabel(program, personalization)
+  const benefitInfo = personalization
+    ? describePersonalizedBenefit(
+        calculatePersonalizedBenefit(program, personalization),
+        personalization
+      )
     : null;
   const href = personalization
     ? `/programs/${program.id}?birthOrder=${personalization.birthOrder}&multiple=${personalization.isMultipleBirth}`
@@ -68,10 +55,15 @@ export function ProgramCard({
         </div>
         <h3 className="font-display text-[19px] text-brown">{program.title}</h3>
         <p className="mt-1 text-brown/80">{program.summary}</p>
-        {benefitLabel && (
-          <p className="mt-1.5 inline-block w-fit rounded-full bg-sage/20 px-2 py-0.5 text-[13px] font-bold text-brown">
-            {benefitLabel}
-          </p>
+        {benefitInfo && (
+          <div className="mt-1.5">
+            <p className="inline-block w-fit rounded-full bg-sage/20 px-2 py-0.5 text-[13px] font-bold text-brown">
+              {benefitInfo.label}
+            </p>
+            {benefitInfo.note && (
+              <p className="mt-1 text-[12px] text-brown/60">{benefitInfo.note}</p>
+            )}
+          </div>
         )}
         <Link
           href={href}

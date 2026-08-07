@@ -7,6 +7,7 @@ export interface SearchCriteria {
   stages: Stage[];
   childAgeMonths?: number;
   incomePercent: number;
+  // 매칭(필터링)에는 쓰이지 않는다 — 결과 표시 단계의 개인화 계산(lib/birthOrderBenefit.ts)에만 사용됨
   birthOrder?: number;
   isMultipleBirth?: boolean;
 }

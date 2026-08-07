@@ -6,9 +6,15 @@ export interface PersonalizationInput {
 }
 
 export type PersonalizedBenefit =
-  | { amount: number; isCombinedOrders: boolean }
+  | { amount: number; source: "birthOrder"; isCombinedOrders: boolean }
+  | { amount: number; source: "multipleBirthFlat"; note?: string }
   | { flagOnly: true }
   | null;
+
+export interface PersonalizedBenefitDisplay {
+  label: string;
+  note?: string;
+}
 
 function tierLookup(tiers: { orderMin: number; amount: number }[], order: number): number {
   const applicable = tiers.filter((tier) => tier.orderMin <= order);
@@ -31,14 +37,14 @@ export function calculatePersonalizedBenefit(
       ? tierLookup(tiers, input.birthOrder) + tierLookup(tiers, input.birthOrder + 1)
       : tierLookup(tiers, input.birthOrder);
     const amount = base + flatAddOn;
-    return amount > 0 ? { amount, isCombinedOrders } : null;
+    return amount > 0 ? { amount, source: "birthOrder", isCombinedOrders } : null;
   }
 
   if (multipleBirthFlatBenefit) {
     const amount = input.isMultipleBirth
       ? multipleBirthFlatBenefit.multipleAmount
       : multipleBirthFlatBenefit.singleAmount;
-    return { amount, isCombinedOrders: false };
+    return { amount, source: "multipleBirthFlat", note: multipleBirthFlatBenefit.note };
   }
 
   if (hasMultipleBirthOrOrderVariation) {
@@ -67,4 +73,31 @@ export function formatBirthOrderLabel(order: number): string {
 
 export function formatBenefitAmount(amount: number): string {
   return `${Math.round(amount / 10000).toLocaleString("ko-KR")}만원`;
+}
+
+export function describePersonalizedBenefit(
+  result: PersonalizedBenefit,
+  personalization: PersonalizationInput
+): PersonalizedBenefitDisplay | null {
+  if (result === null) return null;
+  if ("flagOnly" in result) {
+    return { label: "다자녀/쌍둥이 조건에 따라 달라짐" };
+  }
+  if (result.source === "multipleBirthFlat") {
+    const statusLabel = personalization.isMultipleBirth ? "쌍둥이(다태아)" : "단태아";
+    return {
+      label: `${statusLabel} 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`,
+      note: result.note,
+    };
+  }
+  if (result.isCombinedOrders) {
+    const first = formatBirthOrderLabel(personalization.birthOrder);
+    const second = formatBirthOrderLabel(personalization.birthOrder + 1);
+    return {
+      label: `쌍둥이(${first}+${second}) 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`,
+    };
+  }
+  return {
+    label: `${formatBirthOrderLabel(personalization.birthOrder)} 자녀 기준 예상 혜택: ${formatBenefitAmount(result.amount)}`,
+  };
 }
