@@ -20,19 +20,26 @@ function secondsUntilKstMidnight(): number {
   return Math.floor((kstMidnight - kstNow.getTime()) / 1000);
 }
 
-function hasRedisEnv(): boolean {
-  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
-  return Boolean(url && token);
+function getRedisCredentials(): { url: string; token: string } | null {
+  const url =
+    process.env.UPSTASH_REDIS_KV_REST_API_URL ||
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_KV_REST_API_TOKEN ||
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN;
+  return url && token ? { url, token } : null;
 }
 
 export async function GET(request: NextRequest) {
-  if (!hasRedisEnv()) {
+  const credentials = getRedisCredentials();
+  if (!credentials) {
     return NextResponse.json({ today: 0, total: 0, configured: false });
   }
 
   try {
-    const redis = Redis.fromEnv();
+    const redis = new Redis(credentials);
     const dailyKey = todayKey();
     const alreadyVisited = request.cookies.get(COOKIE_NAME)?.value === "1";
 
