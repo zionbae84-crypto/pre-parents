@@ -4375,8 +4375,8 @@ export const programs: SupportProgram[] = [
     lastVerifiedAt: "2026-08-08",
   },
   // 출처: 경기도 분만취약지 임산부 교통비 지원사업 — 경기도 6개 분만취약지 시·군(안성·포천·양평·여주·가평·
-  // 연천) 공통 시행 사업. 여주시는 기존 자체페이지가 사업종료 공지만 확인되어(신규 페이지 미확인) 이번
-  // 배치에서 제외. 2026-08-08 확인.
+  // 연천) 공통 시행 사업. 여주시는 이 시점엔 기존 자체페이지가 사업종료 공지만 확인되어 제외했으나,
+  // 이후 신규 페이지(key=3103)를 재확인하여 파일 하단에 별도로 반영함. 2026-08-08 확인.
   {
     id: "gg-birth-vulnerable-area-transportation-anseong",
     title: "경기도 분만취약지 임산부 교통비 지원사업(안성시)",
@@ -4466,6 +4466,117 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "임신 3개월~출산 후 3개월 이내",
     officialLink: "https://www.yeoncheon.go.kr/health/contents.do?key=5148",
     lastVerifiedAt: "2026-08-08",
+  },
+  // 출처: 여주시보건소(yeoju.go.kr/health) 표준 브라우저 User-Agent로 재접속하여 확인, 경기도청
+  // 출산장려금 현황표(gg.go.kr), 2026-08-09 확인. 이전 조사에서는 자동화 요청이 403으로 차단되어
+  // 반영을 보류했으나, 정상 User-Agent로는 접속이 가능함을 재확인하여 반영함.
+  {
+    id: "yeoju-birth-grant",
+    title: "출산장려금",
+    agencyType: "기초",
+    agencyName: "여주시",
+    region: { sido: "경기도", sigungu: "여주시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "출생순위별 차등 출산장려금(첫째 100만원~셋째 이상 1,000만원)",
+    benefit:
+      "첫째 100만원(1회), 둘째 500만원(5회 분할), 셋째 1,000만원(5회 분할), 넷째 1,000만원(5회 분할), 다섯째 이상 1,000만원(5회 분할).",
+    eligibility: {
+      note: "출생·입양일 기준 1년 이전부터(첫째아는 180일) 계속 여주시 주민등록 및 실거주하는 부 또는 모(거주기간 미충족 시 기간 경과 후 지원).",
+    },
+    applicationMethod: "출생신고·입양신고 후 관할 행정복지센터 방문 신청",
+    applicationPeriod: "출생신고·입양신고일로부터 1년 이내",
+    officialLink: "https://www.gg.go.kr/contents/contents.do?ciIdx=987110&menuId=266074",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yeoju-multichild-monthly-grant",
+    title: "다자녀장려금",
+    agencyType: "기초",
+    agencyName: "여주시",
+    region: { sido: "경기도", sigungu: "여주시" },
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "둘째 이상 자녀(만 1~5세)에게 매월 5만원 지급",
+    benefit: "둘째 이상 자녀 만 1세~5세 구간 매월 5만원 지급.",
+    eligibility: {
+      note: "신청일 기준 1년 이상 계속 여주시 주민등록 및 실거주하는 다자녀 가정의 부 또는 모, 대상 자녀는 만 1세 이상 5세 이하 둘째 이상 자녀(거주기간 미충족 시 1년 경과 후 지원).",
+    },
+    applicationMethod: "관할 행정복지센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "자녀가 만 1세가 되는 달부터 신청 가능",
+    officialLink: "https://www.gg.go.kr/contents/contents.do?ciIdx=987110&menuId=266074",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yeoju-postpartum-care-cash-support",
+    title: "여주시 산후조리비 지원사업",
+    agencyType: "기초",
+    agencyName: "여주시",
+    region: { sido: "경기도", sigungu: "여주시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "산후조리원·산모신생아 건강관리·가사도우미·산부인과 진료비 본인부담금 등 최대 100만원 지원",
+    benefit:
+      "출생아 1인당 최대 100만원 지원(다태아는 배수 지급). 산후조리원 이용료, 산모·신생아 건강관리 지원사업 본인부담금, 출산 후 가사도우미 서비스 본인부담금, 산부인과 진료비 본인부담금 등에 사용 가능.",
+    eligibility: {
+      note: "신청일 현재 6개월 이상 계속 여주시 주민등록, 신청일 현재 영아 출생일이 6개월 이내, 여주시 출생등록(2025년 1월 1일 출생아부터 해당).",
+    },
+    applicationMethod: "여주시보건소 건강증진과 모자보건팀 방문 또는 정부24(보조금24) 온라인 신청",
+    applicationPeriod: "출생일(사산일)로부터 6개월 이내",
+    requiredDocuments: [
+      "지원 신청서(개인정보제공동의서 포함)",
+      "주민등록 등(초)본",
+      "가족관계증명서",
+      "출산·산후조리 관련 지출 증빙서류(이용처별 납부영수증)",
+      "신청인 명의 통장사본",
+      "신분증",
+    ],
+    officialLink: "https://www.yeoju.go.kr/health/contents.do?key=2763",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yeoju-public-postpartum-center-multichild-discount",
+    title: "경기여주 공공산후조리원 다자녀 이용료 감면",
+    agencyType: "기초",
+    agencyName: "여주시",
+    region: { sido: "경기도", sigungu: "여주시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "둘째 이상 출산 가정의 경기여주 공공산후조리원 이용료 본인부담금 50% 지원",
+    benefit: "경기여주 공공산후조리원 이용료 본인부담금 50% 지원, 단태아 최대 84만원·쌍생아 최대 109만2천원, 산모 1인당 1회.",
+    eligibility: {
+      note: "2026년 1월 1일 이후 출생아 가정, 신청일 기준 산모 또는 배우자가 여주시 주민등록, 둘째 자녀 출산, 경기여주 공공산후조리원 이용자.",
+    },
+    applicationMethod: "경기여주 공공산후조리원 방문 신청(퇴소 시 신청 권장)",
+    applicationPeriod: "경기여주 공공산후조리원 퇴소일로부터 1개월 이내",
+    requiredDocuments: [
+      "신분증",
+      "신청서 및 개인정보 제공 동의서",
+      "주민등록 등(초)본",
+      "가족관계증명서",
+      "산후조리원 이용료 납부 영수증",
+      "신청인 통장사본",
+    ],
+    officialLink: "https://www.yeoju.go.kr/health/contents.do?key=3469",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "gg-birth-vulnerable-area-transportation-yeoju",
+    title: "경기도 분만취약지 임산부 교통비 지원사업(여주시)",
+    agencyType: "광역",
+    agencyName: "경기도",
+    region: { sido: "경기도", sigungu: "여주시" },
+    stages: ["임신중", "출생출산"],
+    category: "현금지원",
+    summary: "분만취약지 임산부에게 교통비 카드 포인트 최대 100만원 지원",
+    benefit: "신한 국민행복카드에 포인트 최대 100만원 지급(대중교통비·택시비·자가용 유류비 등 사용), 출산 후 6개월까지 사용 가능.",
+    eligibility: {
+      note: "신청일 기준 6개월 이상 해당 시·군(분만취약지) 주민등록, 임신 3개월~출산 후 3개월 이내 신청. 2025년 1월 1일 이전 출산자는 지원 제외.",
+    },
+    applicationMethod: "정부24(보조금24) 온라인 또는 보건소 방문 신청",
+    applicationPeriod: "임신 3개월~출산 후 3개월 이내",
+    officialLink: "https://www.yeoju.go.kr/health/contents.do?key=3103",
+    lastVerifiedAt: "2026-08-09",
   },
 ];
 
