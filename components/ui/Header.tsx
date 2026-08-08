@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCoveredSigungu } from "@/lib/coverage";
+import { regions } from "@/lib/data/regions";
 
 function shortRegionLabel(name: string): string {
   return name.replace(/(시|군|구)$/, "");
@@ -25,6 +26,8 @@ function LocationPinIcon() {
 
 export function Header() {
   const gyeonggiCovered = getCoveredSigungu("경기도");
+  const gyeonggiTotal = regions.find((r) => r.sido === "경기도")?.sigungus.length ?? 0;
+  const isGyeonggiFullyCovered = gyeonggiTotal > 0 && gyeonggiCovered.length === gyeonggiTotal;
 
   return (
     <header className="border-b-2 border-brown/10 bg-white">
@@ -40,7 +43,9 @@ export function Header() {
           {gyeonggiCovered.length > 0 && (
             <span className="inline-flex items-center gap-1 rounded-full border border-brown/15 bg-brown/5 px-2 py-0.5 text-[12px] font-bold text-brown/70">
               <LocationPinIcon />
-              경기도({gyeonggiCovered.map(shortRegionLabel).join(",")})
+              경기도
+              {!isGyeonggiFullyCovered &&
+                `(${gyeonggiCovered.map(shortRegionLabel).join(",")})`}
             </span>
           )}
         </div>

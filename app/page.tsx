@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { StageIcon } from "@/components/ui/StageIcon";
+import { VisitorCounter } from "@/components/ui/VisitorCounter";
 
 const STAGES = [
   { slug: "임신준비", ordinal: "첫 번째", label: "임신준비 단계" },
@@ -55,6 +56,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <VisitorCounter />
     </main>
   );
 }

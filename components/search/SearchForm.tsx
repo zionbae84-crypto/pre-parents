@@ -26,13 +26,13 @@ const STATUS_LABEL: Record<PregnancyStatus, string> = {
 const labelClass = "mb-2 block text-[15px] font-bold text-brown";
 const fieldClass = "w-full rounded-button border-2 border-brown/20 px-3 py-2";
 
-function formatIncome(value: number): string {
-  return value.toLocaleString("ko-KR");
+function formatIncome(value: number | ""): string {
+  return value === "" ? "" : value.toLocaleString("ko-KR");
 }
 
-function parseIncome(input: string): number {
+function parseIncome(input: string): number | "" {
   const digitsOnly = input.replace(/[^0-9]/g, "");
-  return digitsOnly === "" ? 0 : Number(digitsOnly);
+  return digitsOnly === "" ? "" : Number(digitsOnly);
 }
 
 export function SearchForm({
@@ -44,11 +44,11 @@ export function SearchForm({
   const [sigungu, setSigungu] = useState("");
   const [status, setStatus] = useState<PregnancyStatus>("preparing");
   const [dueDate, setDueDate] = useState("");
-  const [childAgeMonths, setChildAgeMonths] = useState(0);
-  const [motherAge, setMotherAge] = useState(30);
-  const [householdSize, setHouseholdSize] = useState(3);
-  const [monthlyIncome, setMonthlyIncome] = useState(4000000);
-  const [birthOrder, setBirthOrder] = useState(1);
+  const [childAgeMonths, setChildAgeMonths] = useState<number | "">(0);
+  const [motherAge, setMotherAge] = useState<number | "">(30);
+  const [householdSize, setHouseholdSize] = useState<number | "">(3);
+  const [monthlyIncome, setMonthlyIncome] = useState<number | "">(4000000);
+  const [birthOrder, setBirthOrder] = useState<number | "">(1);
   const [isMultipleBirth, setIsMultipleBirth] = useState(false);
 
   function handleSubmit(event: FormEvent) {
@@ -58,16 +58,16 @@ export function SearchForm({
         ? { status: "preparing" }
         : status === "pregnant"
           ? { status: "pregnant", dueDate }
-          : { status: "born", childAgeMonths };
+          : { status: "born", childAgeMonths: childAgeMonths === "" ? 0 : childAgeMonths };
 
     onSubmit({
       sido,
       sigungu,
       stageInput,
-      motherAge,
-      householdSize,
-      monthlyIncome,
-      birthOrder,
+      motherAge: motherAge === "" ? 0 : motherAge,
+      householdSize: householdSize === "" ? 1 : householdSize,
+      monthlyIncome: monthlyIncome === "" ? 0 : monthlyIncome,
+      birthOrder: birthOrder === "" ? 1 : birthOrder,
       isMultipleBirth,
     });
   }
@@ -153,7 +153,9 @@ export function SearchForm({
               type="number"
               min={0}
               value={childAgeMonths}
-              onChange={(e) => setChildAgeMonths(Number(e.target.value))}
+              onChange={(e) =>
+                setChildAgeMonths(e.target.value === "" ? "" : Number(e.target.value))
+              }
               required
               aria-label="자녀 현재 개월수"
               className={fieldClass}
@@ -168,7 +170,7 @@ export function SearchForm({
           type="number"
           min={1}
           value={birthOrder}
-          onChange={(e) => setBirthOrder(Number(e.target.value))}
+          onChange={(e) => setBirthOrder(e.target.value === "" ? "" : Number(e.target.value))}
           className={fieldClass}
         />
       </div>
@@ -212,7 +214,7 @@ export function SearchForm({
             type="number"
             min={0}
             value={motherAge}
-            onChange={(e) => setMotherAge(Number(e.target.value))}
+            onChange={(e) => setMotherAge(e.target.value === "" ? "" : Number(e.target.value))}
             className={fieldClass}
           />
         </div>
@@ -223,7 +225,9 @@ export function SearchForm({
             type="number"
             min={1}
             value={householdSize}
-            onChange={(e) => setHouseholdSize(Number(e.target.value))}
+            onChange={(e) =>
+              setHouseholdSize(e.target.value === "" ? "" : Number(e.target.value))
+            }
             className={fieldClass}
           />
         </div>
