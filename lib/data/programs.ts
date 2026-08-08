@@ -1656,6 +1656,29 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gg.go.kr/contents/contents.do?ciIdx=1401&menuId=3318",
     lastVerifiedAt: "2026-08-09",
   },
+  // 출처: 경기도 아동언제나돌봄 공식 페이지(gg.go.kr/always360), 2026-08-09 확인.
+  // 참고: 참여 시·군이 반기별로 순차 확대되는 사업이라(2024년 13개 → 2025년 상반기 11개 → 하반기 14개 →
+  // 2026년 추가 확대 등, 시기마다 명단이 달라짐) 특정 시점의 시군 명단을 시별 항목으로 고정하면 곧 부정확해질
+  // 위험이 커서, 경기도 광역 항목 1건으로만 반영하고 안내문에 "참여 여부는 거주 시·군마다 다르니 신청 전
+  // 확인 필요"를 명시함. 공식 페이지 자체도 참여 시군 명단을 게시하지 않음(경기민원24 신청 시점에 확인).
+  {
+    id: "gg-family-care-allowance",
+    title: "경기형 가족돌봄수당",
+    agencyType: "광역",
+    agencyName: "경기도",
+    region: { sido: "경기도" },
+    stages: ["영유아기"],
+    category: "현금지원",
+    summary: "생후 24~36개월 아동을 돌보는 친인척·이웃에게 돌봄수당 지원(참여 시·군 순차 확대 중)",
+    benefit: "월 40시간 이상 돌봄 시 아동 1명 월 30만원, 2명 월 45만원, 3명 월 60만원을 돌봄조력자 계좌로 지급.",
+    eligibility: {
+      note: "경기도 거주 생후 24~36개월 아동을 둔 맞벌이·다자녀 등 양육공백 가정(기준중위소득 150% 이하), 신청일 기준 양육자와 아동이 사업 시행 시·군에 동일 주소 거주, 돌봄조력자는 4촌 이내 친인척 또는 이웃. 참여 시·군이 순차적으로 확대되는 중이라 거주 시·군의 시행 여부는 신청 전 경기민원24 또는 관할 읍·면·동에서 반드시 확인 필요.",
+    },
+    applicationMethod: "경기민원24(gg24.gg.go.kr) 온라인 신청",
+    applicationPeriod: "매월 1~15일 접수(전월 신청, 익월 활동 개시)",
+    officialLink: "https://www.gg.go.kr/always360/ggCare/alwys360/ggFamCare.jsp",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 수원시청 공식 홈페이지(suwon.go.kr), 2026-08-07 확인
   {
     id: "suwon-childbirth-adoption-grant",
