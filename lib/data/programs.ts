@@ -1615,6 +1615,47 @@ export const programs: SupportProgram[] = [
       "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare14/welfare14-01/welfare14-01-14.jsp",
     lastVerifiedAt: "2026-08-07",
   },
+  // 출처: 경기도청 공식 홈페이지(gg.go.kr), 경기민원24(gg24.gg.go.kr), 경기도뉴스포털(gnews.gg.go.kr),
+  // 2026-08-09 확인. 여러 시·군 리서치에서 "경기도 광역 사업이라 트랩(제외 대상)"으로 반복 확인됐으나
+  // 산후조리비 지원처럼 독립된 광역 항목으로는 반영되지 않았던 것을 뒤늦게 확인하여 추가함.
+  {
+    id: "gg-pregnant-eco-produce-support",
+    title: "경기 임산부 친환경농산물 지원사업",
+    agencyType: "광역",
+    agencyName: "경기도",
+    region: { sido: "경기도" },
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "임산부에게 친환경농산물 꾸러미 40만원 상당 지원(자부담 8만원)",
+    benefit:
+      "총 40만원 상당의 친환경농산물·유기가공식품 꾸러미를 거주지로 배송, 본인부담 20%(8만원)만 납부. 1회 구매 한도 20만원.",
+    eligibility: {
+      note: "경기도 31개 시·군에 주소지를 둔 임신부 또는 최근 출산한 산모(자녀당 1회만 지원, 영양플러스·농식품바우처 수급자는 제외). 시·군별 예산 내 추첨으로 대상자 선정.",
+    },
+    applicationMethod: "경기민원24(gg24.gg.go.kr) 온라인 신청 또는 읍·면·동 주민센터 방문 신청",
+    applicationPeriod: "매년 공고에 따라 상이(경기민원24 공고 확인)",
+    officialLink: "https://gg24.gg.go.kr/svcreqst/selectSvcReqst.do?svc_seq=906",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "gg-iplus-multichild-card",
+    title: "경기 아이플러스(I-Plus) 카드",
+    agencyType: "광역",
+    agencyName: "경기도",
+    region: { sido: "경기도" },
+    stages: ["영유아기", "유아"],
+    category: "세제혜택",
+    summary: "2자녀 이상(막내 18세 이하) 가정 대상 가맹점 할인 카드",
+    benefit:
+      "학원·병의원 7% 할인, 주유소 리터당 80원 할인, 커피전문점·백화점·대형할인점·패밀리레스토랑·편의점 5% 할인, 경기도 내 공영주차장 할인, 스터디카페 결제금액 10% 마일리지 적립 등.",
+    eligibility: {
+      note: "경기도 거주, 2자녀 이상 가정, 막내 자녀 만 18세 이하.",
+    },
+    applicationMethod: "신분증·주민등록등본 지참 후 가까운 농협(농협중앙회 및 지역농협) 방문 신청",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gg.go.kr/contents/contents.do?ciIdx=1401&menuId=3318",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 수원시청 공식 홈페이지(suwon.go.kr), 2026-08-07 확인
   {
     id: "suwon-childbirth-adoption-grant",
