@@ -220,6 +220,27 @@ export const programs: SupportProgram[] = [
     officialLink: "https://seoul-agi.seoul.go.kr/preg-med-support",
     lastVerifiedAt: "2026-08-09",
   },
+  // 출처: 서울시뉴스(news.seoul.go.kr/economy/archives/573440), 2026-08-09 확인. 도봉구 리서치 중 발견
+  // — 여러 자치구(도봉구 등)에서 "경기도 사업"으로 오인해 트랩 처리했으나, 실제로는 서울시 자체의
+  // 별도 광역 사업(경기도 임산부 친환경농산물 지원사업과는 별개)으로 확인되어 추가함.
+  {
+    id: "seoul-pregnant-eco-produce-support",
+    title: "서울시 임산부 친환경농산물 지원사업",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "임산부에게 친환경농산물 연 최대 24만원 상당 지원(자부담 20%)",
+    benefit: "연 최대 24만원 상당 친환경농산물·유기가공식품 지원, 서울시 80%(19만2천원) 부담·본인 20%(4만8천원) 자부담. 영양플러스·농식품바우처 임산부 유형 수급자는 중복 신청 불가.",
+    eligibility: {
+      note: "신청일 기준 서울시 주민등록 거주 임산부 또는 신청년도 기준 최근 출산한 산모.",
+    },
+    applicationMethod: "에코이몰(ecoemall.com) 온라인 신청 또는 주소지 동주민센터·구청 지정 접수창구 방문(외국인·장애인 등)",
+    applicationPeriod: "매년 권역별 순차 접수(자치구별 신청기간 상이, 서울시 공고 확인)",
+    officialLink: "https://news.seoul.go.kr/economy/archives/573440",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 서울시 탄생응원 서울프로젝트 몽땅정보 만능키(umppa.seoul.go.kr) 및
   // 서울시 뉴스(news.seoul.go.kr/welfare/archives/543754), 2026-08-05 확인
   {
@@ -913,7 +934,48 @@ export const programs: SupportProgram[] = [
       "동주민센터 방문(출생신고 시 행복출산 원스톱서비스로 통합 신청) 또는 중랑구청 홈페이지 온라인 신청",
     applicationPeriod: "출생일로부터 6개월 이내",
     officialLink: "https://www.jungnang.go.kr/portal/main/contents.do?menuNo=201500",
-    lastVerifiedAt: "2026-08-06",
+    lastVerifiedAt: "2026-08-09",
+  },
+  // 출처: 국가법령정보센터(law.go.kr, ordinSeq=1860175), 중랑구보건소 공식 홈페이지(jungnang.go.kr),
+  // 2026-08-09 확인(라이브 브라우저로 직접 확인, WebFetch는 서버 응답 형식 문제로 실패).
+  // 참고: 장난감도서관(jungnang.webstore.kr, .go.kr 아님)과 저소득·비혼모 산모신생아 건강관리 본인부담금
+  // 지원(서울시 광역 사업과 중복 여부 미확인)은 이번 배치에서 보류.
+  {
+    id: "jungnang-disabled-family-birth-grant",
+    title: "장애인가정 출산지원금 지원",
+    agencyType: "기초",
+    agencyName: "중랑구",
+    region: { sido: "서울특별시", sigungu: "중랑구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "장애인 가정 신생아 1명당 50만원 이내 지원",
+    benefit: "신생아 1명당 50만원 이내 지원(국가 여성장애인 출산비용 지원사업과 중복지원 아님).",
+    eligibility: {
+      note: "신생아의 부 또는 모가 등록장애인이며, 신생아 출생일 현재 1년 이상 중랑구에 거주(미충족 시 충족일로부터 1년 이내 신청 가능).",
+    },
+    applicationMethod: "출생일로부터 1년 이내 별지 서식 작성 후 주민등록지 동주민센터 제출",
+    applicationPeriod: "출생일로부터 1년 이내",
+    officialLink: "https://www.law.go.kr/LSW/ordinInfoP.do?ordinSeq=1860175&chrClsCd=010202&gubun=ELIS",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "jungnang-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "중랑구",
+    region: { sido: "서울특별시", sigungu: "중랑구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "산모에게 유축기 4주 무료 대여(1회 연장 가능)",
+    benefit: "스펙트라 S2플러스/S2프로 또는 쌍둥이 산모용 메델라 락티나 유축기 1인 4주(28일) 대여, 1회 4주 추가 연장 가능(재고에 따라 변동).",
+    eligibility: {
+      note: "중랑구민 산모(분만 후 신청 가능).",
+    },
+    applicationMethod: "사용 5일 전까지 보건소 홈페이지에서 산모 본인 명의 온라인 신청 후 방문 수령",
+    applicationPeriod: "상시 신청 가능(토·일·공휴일·점심시간 제외)",
+    requiredDocuments: ["산모 신분증", "(임산부 등록 시) 1개월 이내 발급 주민등록등본"],
+    officialLink: "https://www.jungnang.go.kr/health/bbs/list/B0000412.do?menuNo=400364",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 법제처 찾기쉬운 생활법령정보 성북구 조례 안내(easylaw.go.kr, areaCsmOrdinSeq=221), 2026-08-06 확인
   {
@@ -943,6 +1005,82 @@ export const programs: SupportProgram[] = [
       ],
     },
   },
+  // 출처: 성북구보건소 공식 홈페이지(sb.go.kr), 성북구도시관리공단(gongdan.go.kr), 2026-08-09 확인.
+  // 참고: 다둥이행복카드 소지자 대상 성북구 자체 공공시설 감면(2자녀 이상 확대)은 조례 근거는 확인됐으나
+  // 전용 공식페이지를 찾지 못해 이번 배치에서 보류.
+  {
+    id: "seongbuk-breast-pump-rental",
+    title: "모유수유 클리닉 및 유축기 대여",
+    agencyType: "기초",
+    agencyName: "성북구",
+    region: { sido: "서울특별시", sigungu: "성북구" },
+    stages: ["출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "전동 유축기 2개월 무료 대여 및 1:1 모유수유 클리닉",
+    benefit: "전동 유축기 2개월 무상 대여(연장·재대여 불가, 소모품 포함). 모유수유 클리닉은 매월 1·3주 목요일 14:00~16:00 1:1 수유자세 교정·유방관리 상담 제공.",
+    eligibility: {
+      note: "성북구 관내 거주 산모 중 모유수유가 어려운 자.",
+    },
+    applicationMethod: "전화 예약(02-2241-6011~2) 후 방문 대여, 모유수유 클리닉은 서울시 임신출산정보센터 온라인 예약",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sb.go.kr/bogunso/contents.do?key=231",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongbuk-pregnant-woman-parking-sticker",
+    title: "임산부 전용 주차 스티커 발급",
+    agencyType: "기초",
+    agencyName: "성북구",
+    region: { sido: "서울특별시", sigungu: "성북구" },
+    stages: ["임신중"],
+    category: "기타",
+    summary: "임산부 전용 주차구역 이용을 위한 스티커 발급",
+    benefit: "임산부 전용 주차구역(일반 구획보다 폭 80cm 넓음) 우선 이용 스티커 발급. 유효기간 신청일~출산 후 6개월.",
+    eligibility: {
+      note: "임신 중이거나 분만 후 6개월 이내인 성북구 거주 여성.",
+    },
+    applicationMethod: "성북구보건소 1층 모자보건실 방문 신청",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sb.go.kr/bogunso/contents.do?key=235",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongbuk-postpartum-care-copay-support",
+    title: "저소득층 산모신생아 건강관리 본인부담금 지원",
+    agencyType: "기초",
+    agencyName: "성북구",
+    region: { sido: "서울특별시", sigungu: "성북구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "기초수급자·차상위 산모의 본인부담금 90% 현금 환급",
+    benefit: "산모·신생아 건강관리서비스(바우처) 이용 본인부담금의 90%를 현금으로 환급(서울형 산후조리경비 바우처로 결제 시 중복지원 제외).",
+    eligibility: {
+      note: "기초생활보장수급자, 차상위계층 중 산모신생아 건강관리 서비스 이용자.",
+    },
+    applicationMethod: "서비스 종료 후 보건소에 신청서·통장사본·자격증빙서류·본인부담금 계좌이체내역 제출",
+    applicationPeriod: "서비스 종료 후 신청",
+    officialLink: "https://www.sb.go.kr/bogunso/contents.do?key=243",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongbuk-toy-library",
+    title: "SB장난감도서관",
+    agencyType: "기초",
+    agencyName: "성북구",
+    region: { sido: "서울특별시", sigungu: "성북구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "연 1만원 이용료로 장난감 무료 대여(다자녀·취약계층 할인)",
+    benefit:
+      "연회비 1만원(다둥이가족 5천원, 장애 경증 5천원·중증 무료, 기초수급자·국가유공자·한부모가족 무료)으로 1년간 이용, 1회 3개까지 14일 대여. 월곡점·보문점·SB장난감도서관(구청 1층) 3개 지점 운영.",
+    eligibility: {
+      note: "서울시민, 성북구 소재 직장인·어린이집 종사자 등 회원가입 가능자.",
+    },
+    applicationMethod: "센터 방문 또는 온라인 회원가입 후 결제(가족관계증명서 필요)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gongdan.go.kr/childCare/cnts/selectContents.do?cntnts_id=I200000054",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 서대문구보건소 공식 홈페이지(sdm.go.kr), 2026-08-06 확인
   {
     id: "seodaemun-pregnancy-congrats-grant",
@@ -969,6 +1107,63 @@ export const programs: SupportProgram[] = [
       note: "쌍태아 기준(60만원). 삼태아 이상은 90만원으로 별도 문의 필요",
     },
   },
+  // 출처: 서대문구보건소 공식 홈페이지(sdm.go.kr), 서대문구 공공산후조리원 "품애가득"(sdm-mom.or.kr),
+  // 2026-08-09 확인. 참고: 아빠 육아휴직장려금은 상한액 정보가 출처마다 상충(150만~360만원)해 이번 배치에서
+  // 보류. 장난감 대여(카시트 포함 여부 불확실), 다자녀가정 체육시설 감면도 원문 미확인으로 보류.
+  {
+    id: "seodaemun-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "서대문구",
+    region: { sido: "서울특별시", sigungu: "서대문구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 1개월 무료 대여",
+    benefit: "Medela Lactina 또는 Spectra S2(무작위 배정) 1개월 무료 대여, 개인용 소모품 포함.",
+    eligibility: {
+      note: "서대문구 거주 임산부(타지역 대여 불가).",
+    },
+    applicationMethod: "서울시 임신출산정보센터(seoul-agi.seoul.go.kr) 예약 또는 지소 전화 예약(출산예정일 2개월 전 예약 권장)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sdm.go.kr/health/contents/healthbiz/maternal/feeding",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seodaemun-breastfeeding-home-visit",
+    title: "찾아가는 행복수유",
+    agencyType: "기초",
+    agencyName: "서대문구",
+    region: { sido: "서울특별시", sigungu: "서대문구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유 전문가의 가정방문 상담(최대 2회)",
+    benefit: "1:1 모유수유 상담 가정방문, 1회 1시간, 최대 2회 무료 제공.",
+    eligibility: {
+      note: "서대문구 6개월 이상 거주 임산부 또는 산후 8주 이내 산모.",
+    },
+    applicationMethod: "서울시 임신출산정보센터(seoul-agi.seoul.go.kr) 온라인 신청 또는 보건소 방문",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sdm.go.kr/news/news/notice.do?mode=view&sdmBoardSeq=283580",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seodaemun-public-postpartum-center-discount",
+    title: "공공산후조리원 '품애가득' 이용료 감면",
+    agencyType: "기초",
+    agencyName: "서대문구",
+    region: { sido: "서울특별시", sigungu: "서대문구" },
+    stages: ["출생출산"],
+    category: "바우처",
+    summary: "서북권 유일 공공산후조리원 기본이용료 최대 90% 감면",
+    benefit: "기본이용료(2주/250만원) 중 관내 1년 이상 거주자는 90% 감면(25만원 부담), 1년 미만 거주자는 20% 감면(200만원 부담). 다자녀·다문화·국가유공자 등은 별도 감면율 적용(쌍둥이 이상 추가요금 별도).",
+    eligibility: {
+      note: "분만예정일 3개월 전 홈페이지 신청 후 공개추첨으로 선정.",
+    },
+    applicationMethod: "품애가득 홈페이지(sdm-mom.or.kr) 신청",
+    applicationPeriod: "분만예정일 3개월 전 신청",
+    officialLink: "https://www.sdm.go.kr/health/contents/healthbiz/maternal/carecenter",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 도봉구청 공식 홈페이지(dobong.go.kr, code=10010135), 2026-08-06 확인
   {
     id: "dobong-birth-celebration-goods",
@@ -988,6 +1183,46 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
     officialLink: "https://www.dobong.go.kr/Contents.asp?code=10010135",
     lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 도봉구보건소·도봉구육아종합지원센터 공식 홈페이지(dobong.go.kr, doccic.go.kr), 2026-08-09 확인.
+  // 참고: 도봉구 자체 "출산지원금"(현금, 첫째 10만~넷째 이상 100만원)은 조례 존재가 민간 법률정보
+  // 사이트(ulex.co.kr)로만 확인되고 .go.kr 원문 링크를 확보하지 못해 이번 배치에서 보류.
+  {
+    id: "dobong-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "도봉구",
+    region: { sido: "서울특별시", sigungu: "도봉구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 3개월 무료 대여",
+    benefit: "유축기 3개월 대여, 모유수유 클리닉과 연계 운영.",
+    eligibility: {
+      note: "도봉구 거주 산모.",
+    },
+    applicationMethod: "온라인(e보건소, 복지로, 서울시임신출산정보센터) 또는 도봉구보건소 3층 아이맘건강센터 방문 신청",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://welfare.dobong.go.kr/dobongBokji/pgm/wsysmInfo/view.do?menuNo=200130&infoId=1047",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "dobong-toy-rental-delivery",
+    title: "장난감 대여배송서비스 '도토리' 및 장난감도서관",
+    agencyType: "기초",
+    agencyName: "도봉구",
+    region: { sido: "서울특별시", sigungu: "도봉구" },
+    stages: ["임신중", "영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "장난감 자택 배송 대여 서비스 및 방문 대여 지점 운영",
+    benefit:
+      "센터 홈페이지에서 장난감 선택 후 자택 배송·수거('도토리' 서비스), 또는 방학·창동권역 대여 지점 방문 대여. 대여기간 14일(1회 7일 연장 가능), 1회 최대 2점.",
+    eligibility: {
+      note: "도봉구 거주 임산부 가정, 24개월 이하 자녀 가정, 36개월 이하 자녀 2인 이상 가정, 미취학 자녀 3인 이상 가정, 장애인 가족 등 센터 유료회원.",
+    },
+    applicationMethod: "도봉구육아종합지원센터(doccic.go.kr) 회원가입 후 온라인 신청 또는 지점 방문",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.doccic.go.kr/rental/rental_information.php",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 양천구청 공식 홈페이지(yangcheon.go.kr, cbIdx=369, bcIdx=177144), 2026-08-06 확인.
   // 참고: 양천구 자체 "출산지원금 지급 조례"는 2021년생까지만 적용되고 폐지되어 반영하지 않음.
@@ -1010,6 +1245,83 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신청서", "출생사실이 기재된 주민등록등본", "통장사본"],
     officialLink: "https://www.yangcheon.go.kr/site/yangcheon/ex/bbs/View.do?cbIdx=369&bcIdx=177144",
     lastVerifiedAt: "2026-08-06",
+  },
+  // 출처: 양천구보건소 공식 홈페이지(yangcheon.go.kr), 양천구육아종합지원센터(ychccic.or.kr), 2026-08-09 확인.
+  // 참고: 임산부 친환경농산물 지원은 서울시 광역 사업으로 확인되어(별도 반영 예정) 양천구 전용으로는
+  // 제외. 산후조리경비 다자녀 차등지원·양천아이사랑택시는 서울형 산후조리경비·서울 엄마아빠택시의
+  // 지역 브랜딩으로 판단해 제외.
+  {
+    id: "yangcheon-breast-pump-rental",
+    title: "유축기 대여 사업",
+    agencyType: "기초",
+    agencyName: "양천구",
+    region: { sido: "서울특별시", sigungu: "양천구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 8주 무료 대여",
+    benefit: "Spectra S2+ 유축기 8주(재대여·연장 불가) 대여, 소모품(부착 병) 함께 제공.",
+    eligibility: {
+      note: "등본상 양천구민 산모.",
+    },
+    applicationMethod: "보건소 홈페이지 회원가입 후 온라인 신청(희망 수령일 3일 전까지), 아이맘센터 또는 모자건강증진센터 방문 수령",
+    applicationPeriod: "상시 신청 가능(평일 9:00~11:30, 13:00~17:30)",
+    requiredDocuments: ["신분증(대리 수령 시 산모·대리인 신분증 및 가족관계증명서)"],
+    officialLink: "https://www.yangcheon.go.kr/health/health/01/10106020000002016102505.jsp",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yangcheon-pregnant-woman-parking-sticker",
+    title: "임산부 등록관리 및 자동차 표지 발급",
+    agencyType: "기초",
+    agencyName: "양천구",
+    region: { sido: "서울특별시", sigungu: "양천구" },
+    stages: ["임신중"],
+    category: "기타",
+    summary: "임산부 등록 및 전용 주차구역 이용 표지 발급",
+    benefit: "임산부 등록 후 전용 주차구역 이용이 가능한 자동차 표지(주차증) 발급.",
+    eligibility: {
+      note: "양천구 거주 임신부.",
+    },
+    applicationMethod: "아이맘센터(보건소 별관 1층) 또는 모자건강증진센터 방문(임신확인서·산모수첩, 주차증은 자동차등록증 추가 지참)",
+    applicationPeriod: "상시 신청 가능(평일 9:00~11:30, 13:00~17:30)",
+    officialLink: "https://www.yangcheon.go.kr/health/health/02/10210000000002017010501.jsp",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yangcheon-baby-gear-rental",
+    title: "해누리 육아용품 대여점",
+    agencyType: "기초",
+    agencyName: "양천구",
+    region: { sido: "서울특별시", sigungu: "양천구" },
+    stages: ["영유아기"],
+    category: "돌봄서비스",
+    summary: "유모차·카시트 등 육아용품 약 50종 대여(연회비 1만원)",
+    benefit: "유모차, 카시트, 아기침대, 웨건, 하이체어, 소독기·조유기, 아기띠, 바운서 등 대여, 연회비 1만원으로 개별 대여료 없이 이용. 대여기간 30일(1회 연장, 최대 60일).",
+    eligibility: {
+      note: "양천구 거주 또는 재직·재학 중인 0~24개월 자녀를 둔 가정.",
+    },
+    applicationMethod: "양천구육아종합지원센터(ychccic.or.kr) 온라인 회원가입 후 해누리타운 4층 방문 결제·수령",
+    applicationPeriod: "화~토 09:30~17:30(일·월·공휴일 휴무)",
+    officialLink: "https://www.yangcheon.go.kr/site/yangcheon/05/10501020400002016081013.jsp",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "yangcheon-toy-library",
+    title: "장난감도서관",
+    agencyType: "기초",
+    agencyName: "양천구",
+    region: { sido: "서울특별시", sigungu: "양천구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "7개 지점에서 장난감 대여(연회비 1만원)",
+    benefit: "해누리·신정7동·목동깨비 등 7개 지점 장난감도서관 운영, 연회비 1만원 카드로 대여.",
+    eligibility: {
+      note: "서울시 거주 만 5세 미만 자녀 가정 또는 관내 어린이집·유치원 재원 아동.",
+    },
+    applicationMethod: "양천구육아종합지원센터(ychccic.or.kr) 온라인 회원가입 후 지점 방문",
+    applicationPeriod: "평일 09:30~17:30(지점별 상이)",
+    officialLink: "https://www.yangcheon.go.kr/site/yangcheon/05/10501020400002016081013.jsp",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 법제처 찾기쉬운 생활법령정보 구로구 조례 안내 및 구로구청 공식 홈페이지(guro.go.kr, key=4187), 2026-08-06 확인
   {
@@ -1038,6 +1350,67 @@ export const programs: SupportProgram[] = [
       ],
       multipleBirthMode: "sumConsecutiveOrders",
     },
+  },
+  // 출처: 구로구보건소 공식 홈페이지(guro.go.kr), 2026-08-09 확인.
+  // 참고: 구로형 산후조리비용 지원의 정확한 금액이 언론보도(순위별 차등, 최대 370만원)와 공식페이지(순위
+  // 무관 정액 50만원)에서 상충함. 더 최신이고 직접 확인 가능한 공식페이지 수치를 채택했으며, 구로구
+  // 보건소(02-860-3003)에 재확인 권장. 구로꿈나무장난감나라(toy.guro.go.kr, JS 렌더링으로 상세조건
+  // 미확인)는 이번 배치에서 보류.
+  {
+    id: "guro-postpartum-care-cash-topup",
+    title: "[구로형] 산후조리비용 지원",
+    agencyType: "기초",
+    agencyName: "구로구",
+    region: { sido: "서울특별시", sigungu: "구로구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "서울형 산후조리비용 지원과 별도로 구로구가 50만원 추가 지급",
+    benefit: "출생순위 무관 정액 50만원(다태아도 동일 금액), 구로사랑상품권(Seoul Pay+ 앱)으로 지급. 서울형 산후조리비용 지원(별도 항목)과 병행 가능.",
+    eligibility: {
+      incomePercentMax: 80,
+      note: "신청 시점 구로구 거주, 기준중위소득 80% 이하 가구(다문화가정 포함).",
+    },
+    applicationMethod: "출생신고 시 출산서비스 통합처리 신청서 제출, 정부24 온라인 또는 동주민센터 방문 신청",
+    applicationPeriod: "출생일로부터 6개월(180일) 이내",
+    officialLink: "https://www.guro.go.kr/health/contents.do?key=4450",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "guro-breastfeeding-home-visit-support",
+    title: "[구로형] 구로맘 수유온 지원",
+    agencyType: "기초",
+    agencyName: "구로구",
+    region: { sido: "서울특별시", sigungu: "구로구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유 전문가의 가정방문 상담(최대 2회)",
+    benefit: "1:1 모유수유 상담 가정방문, 1회 1시간, 최대 2회 무료 제공.",
+    eligibility: {
+      note: "출산 후 60일 이내 구로구 거주 산모(다문화가정 포함, 부부 모두 외국인인 경우 제외).",
+    },
+    applicationMethod: "정부24 온라인 신청",
+    applicationPeriod: "2026년 3월 4일~12월 31일(예산 소진 시 조기 마감)",
+    officialLink: "https://www.guro.go.kr/health/contents.do?key=4584",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "guro-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "구로구",
+    region: { sido: "서울특별시", sigungu: "구로구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 2개월 무료 대여",
+    benefit: "유축기 2개월 대여(2025년 1월부터 1개월에서 연장, 추가 연장 불가).",
+    eligibility: {
+      note: "구로구 등록 임산부·산모.",
+    },
+    applicationMethod: "보건소 홈페이지에서 산모 명의 온라인 예약 후 3일 이내 모자보건실(3층) 방문 수령",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["임신확인서 또는 임신·출산 진료비 신청서(산모수첩 불가)", "신분증"],
+    officialLink: "https://www.guro.go.kr/health/contents.do?key=1310",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 금천구청 공식 홈페이지(geumcheon.go.kr, key=525), 2026-08-06 확인
   {
