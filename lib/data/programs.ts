@@ -2753,6 +2753,46 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.songpa.go.kr/www/contents.do?key=6176",
     lastVerifiedAt: "2026-08-06",
   },
+  // 출처: 송파구보건소 공식 페이지(songpa.go.kr/ehealth, key=4568), 2026-08-10 확인.
+  {
+    id: "songpa-breast-pump-rental",
+    title: "유축기 대여 지원",
+    agencyType: "기초",
+    agencyName: "송파구",
+    region: { sido: "서울특별시", sigungu: "송파구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "송파구 산모에게 유축기 4주 무료 대여",
+    benefit: "유축기(기계·어댑터·호스·필터·깔때기·젖병·대여가방 포함) 4주(28일) 무료 대여, 출산 1회당 1회(연장 불가).",
+    eligibility: {
+      note: "주민등록상 송파구 주소지를 둔 산모.",
+    },
+    applicationMethod: "송파구보건소 온라인 신청(전화·방문 신청 불가, 익일부터 7일 이내 예약) 후 송파산모건강증진센터 방문 수령·반납",
+    applicationPeriod: "출산 후 신청(신청 후 약 2주 대기)",
+    officialLink: "https://www.songpa.go.kr/ehealth/contents.do?key=4568",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 출처: 송파구보건소 공식 페이지(songpa.go.kr/ehealth, key=4569), 2026-08-10 확인.
+  // 참고: 정확한 환급 금액·절차는 페이지에 상세 기재되어 있지 않아 관할 부서(생애건강과 모자보건팀,
+  // 02-2147-3750/5149) 전화 확인이 필요함을 명시함.
+  {
+    id: "songpa-postpartum-care-copay-refund",
+    title: "산모·신생아 건강관리 본인부담금 환급(저소득·비혼모)",
+    agencyType: "기초",
+    agencyName: "송파구",
+    region: { sido: "서울특별시", sigungu: "송파구" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "저소득가정(가형)·비혼모 대상 산모신생아 건강관리서비스 본인부담금 환급",
+    benefit: "산모·신생아 건강관리서비스(국가바우처) 이용 시 발생하는 본인부담금을 환급 지원(서비스 유형별 금액 상이). 정확한 절차는 관할 부서 전화 문의 필요.",
+    eligibility: {
+      note: "가형(생계·의료·주거·교육급여 수급자, 차상위계층) 산모 또는 비혼모(미혼모) 산모.",
+    },
+    applicationMethod: "송파산모건강증진센터 2층 의료비지원실 방문접수 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    applicationPeriod: "명시 없음(국가바우처 이용기간과 연동 추정, 정확한 기한은 전화 확인 필요)",
+    officialLink: "https://www.songpa.go.kr/ehealth/contents.do?key=4569",
+    lastVerifiedAt: "2026-08-10",
+  },
   // 출처: 강북구보건소 공식 페이지(gangbuk.go.kr, menuNo=400148), 2026-08-07 확인.
   // 이전 조사에서 DNS 접속 실패로 확인 못 했던 mhealth.gangbuk.go.kr 대신, 강북구청 메인 포털(www.gangbuk.go.kr)
   // 내 보건소 콘텐츠 페이지에서 동일 사업을 확인함.
