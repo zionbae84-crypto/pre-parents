@@ -332,37 +332,167 @@ export const programs: SupportProgram[] = [
       ],
     },
   },
-  // 출처: 법제처 찾기쉬운 생활법령정보 출산장려금(서울특별시 서초구) 조례 안내
-  // (easylaw.go.kr, areaCsmOrdinSeq=220), 2026-08-05 확인
+  // 출처: 강남구청 공식 보도자료(gangnam.go.kr, B_000031/1074904), 2026-08-10 확인.
+  // 국가 육아휴직급여(6+6 부모육아휴직제) 수급자 중 "6+6" 지원 대상은 제외 조건이 명시되어 있어
+  // 국가 사업과 중복되지 않는 강남구 자체 예산 인센티브로 판단, 반영함.
   {
-    id: "seocho-childbirth-grant",
-    title: "서초구 출산장려금",
+    id: "gangnam-dad-parental-leave-incentive",
+    title: "아빠 육아휴직 장려금",
+    agencyType: "기초",
+    agencyName: "강남구",
+    region: { sido: "서울특별시", sigungu: "강남구" },
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "강남구 거주 아빠 육아휴직자에게 월 30만원씩 최대 1년 지원",
+    benefit: "육아휴직급여 수급 중인 아빠에게 매월 30만원씩 최대 1년(총 최대 360만원) 현금 지급.",
+    eligibility: {
+      note: "신청일 기준 1년 이상 강남구 주민등록을 두고 고용보험 가입 근로자로서 육아휴직급여를 수급 중인 아빠(고용노동부 6+6 부모육아휴직제 지원대상자는 제외).",
+    },
+    applicationMethod: "정부24 온라인 신청 또는 거주지 동주민센터 방문 신청",
+    applicationPeriod: "육아휴직 시작일 이후 1개월부터 육아휴직 종료일 이후 1년 이내",
+    officialLink: "https://www.gangnam.go.kr/board/B_000031/1074904/view.do?mid=ID01_0313",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 출처: 강남구청 공식 홈페이지 종합민원 신청서식(gangnam.go.kr, B_000060/1068512), 2026-08-10 확인.
+  // 저소득층 한정인 국가 "산모신생아 건강관리 본인부담금 지원"과 달리 소득기준 없이 강남구 거주 요건만
+  // 충족하면 되는 별도 조례 기반 사업.
+  {
+    id: "gangnam-postpartum-care-copay-support",
+    title: "산후건강관리비용 지원",
+    agencyType: "기초",
+    agencyName: "강남구",
+    region: { sido: "서울특별시", sigungu: "강남구" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "산모신생아 건강관리서비스 본인부담금 최대 100만원 지원",
+    benefit: "산모·신생아 건강관리서비스 이용 시 결제한 본인부담금 중 최대 100만원을 1회 현금 지원(부가서비스 제외). 서울형 산후조리경비 등 유사 바우처로 이미 결제한 부분은 중복 지원 제외.",
+    eligibility: {
+      note: "신청일 기준 1년 전부터 부 또는 모가 강남구에 계속 거주하고, 강남구에 출생 등록된 신생아와 동일세대인 가정.",
+    },
+    applicationMethod: "정부24 온라인 신청 또는 방문·등기 접수",
+    applicationPeriod: "출생일로부터 1년 이내(서비스 이용 완료 후 신청)",
+    officialLink: "https://www.gangnam.go.kr/board/B_000060/1068512/view.do?mid=ID03_010104",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 출처: 강남구육아종합지원센터 공식 홈페이지(gncare.go.kr) 및 강남구청 소개기사(gangnam.go.kr,
+  // board/article/7280), 2026-08-10 확인. 대여 수량·기간은 구청 공식 소개기사 기준(2점/7일)으로 반영,
+  // 지점별로 세부 조건이 다를 수 있어 이용 전 gncare.go.kr 재확인 권장.
+  {
+    id: "gangnam-toy-library",
+    title: "강남구육아종합지원센터 장난감도서관",
+    agencyType: "기초",
+    agencyName: "강남구",
+    region: { sido: "서울특별시", sigungu: "강남구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "만 1개월~72개월 영유아 가정 대상 장난감 대여(연회비 1만원)",
+    benefit: "연회비 1만원으로 1인당 장난감 2점을 7일간 대여(연장 시 +7일). 대치·도곡·수서 등 여러 지점 운영, 원거리 지역은 찾아가는 서비스 예약 가능.",
+    eligibility: {
+      note: "만 1개월~72개월 영유아 자녀를 둔 강남구민 또는 강남구 소재 직장인.",
+    },
+    applicationMethod: "지점 당일 방문 또는 gncare.go.kr 사전예약",
+    applicationPeriod: "상시 이용 가능",
+    officialLink: "https://www.gncare.go.kr/main/index_toy.php",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 출처: 강남구청 공식 홈페이지 종합민원 신청서식(gangnam.go.kr, B_000060/1071040), 2026-03-08 작성 안내문
+  // 기준 2026-08-10 확인.
+  {
+    id: "gangnam-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "강남구",
+    region: { sido: "서울특별시", sigungu: "강남구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "강남구 산모에게 유축기 첫 1개월 무료 대여(연장 시 월 2만원)",
+    benefit: "유축기 첫 1개월 무료 대여, 연장 시 월 2만원. 신청서·구비서류 스캔본 이메일 제출 후 택배로 배송·반납.",
+    eligibility: {
+      note: "강남구에 주민등록을 둔 산모(주민등록등본으로 확인).",
+    },
+    applicationMethod: "이메일(gnhealthcenter@naver.com)로 신청서 및 구비서류(신분증 사본, 주민등록등본 등) 제출",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gangnam.go.kr/board/B_000060/1071040/view.do?mid=ID03_010104",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 참고: "서초구 출산장려금"(조례 기반 현금지원) 항목은 2026-08-09 재조사 결과 2022년경 폐지되어
+  // 국가 첫만남이용권으로 일원화된 것으로 서초구 공식 홈페이지(신생아출산지원 메뉴, 첫만남이용권만 게재)에서
+  // 확인되어 삭제함. 대신 서초구가 실제 운영 중인 사업들을 아래에 반영함(2026-08-10 확인).
+  {
+    id: "seocho-breast-pump-rental",
+    title: "유축기 대여",
     agencyType: "기초",
     agencyName: "서초구",
     region: { sido: "서울특별시", sigungu: "서초구" },
-    // applicationPeriod가 "출생일부터 1년 이내"이므로 영유아기 단계까지 신청 가능
-    stages: ["출생출산", "영유아기"],
-    category: "현금지원",
-    summary: "서초구 신생아 가정에 최대 100만원 현금지원",
-    benefit:
-      "첫째아 30만원, 둘째아 50만원, 셋째아 이상 100만원 현금 지급(쌍생아는 출생순위별로 각각 지급).",
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "서초구 산모에게 유축기 기본 30일(연장 시 최대 60일) 무료 대여",
+    benefit: "유축기(메델라 스윙)와 소모품 1세트 무료 대여. 기본 30일, 반납 1주일 전 연장 신청 시 최대 60일까지 이용 가능.",
     eligibility: {
-      note: "출생일 기준 365일 이전부터 서초구에 계속 주민등록을 두고 실제 거주 중인 신생아의 부 또는 모.",
+      note: "출산 후 3개월 이내 서초구 산모.",
     },
-    applicationMethod: "오케이민원센터장 또는 거주지 관할 동장에게 제출(동주민센터 방문신청)",
-    applicationPeriod: "신생아 출생일부터 1년 이내",
-    requiredDocuments: ["출산지원금 지원신청서", "예금통장 사본"],
-    officialLink:
-      "https://easylaw.go.kr/CSP/CnpClsOrdinMain.laf?popMenu=ov&areaCsmOrdinSeq=220&ccfNo=1&cciNo=1&cnpClsNo=1",
-    lastVerifiedAt: "2026-08-05",
-    birthOrderBenefit: {
-      tiers: [
-        { orderMin: 1, amount: 300000 },
-        { orderMin: 2, amount: 500000 },
-        { orderMin: 3, amount: 1000000 },
-      ],
-      multipleBirthMode: "sumConsecutiveOrders",
+    applicationMethod: "건강부모e음(parents.seocho.go.kr) 온라인 사전예약(선착순) 후 지정 기관 방문 수령",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.seocho.go.kr/site/sh/03/10304011200002020031805.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "seocho-breastfeeding-clinic",
+    title: "모유수유클리닉",
+    agencyType: "기초",
+    agencyName: "서초구",
+    region: { sido: "서울특별시", sigungu: "서초구" },
+    stages: ["임신중", "출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유 어려움을 겪는 산모 대상 1:1 상담·교육 클리닉 무료 운영",
+    benefit: "모자보건지소별 정기 운영 1:1 모유수유 상담·교육·실습 교정(무료). 미숙아·다태아 출산 산모는 가정방문 클리닉도 제공.",
+    eligibility: {
+      note: "임신 32주~출산 3개월 이내 서초구 산모(가정방문은 미숙아·다태아 출산 3개월 이내 산모).",
     },
+    applicationMethod: "건강부모e음 온라인 사전예약(모자보건지소), 가정방문은 서초구보건소 전화예약(02-2155-5495)",
+    applicationPeriod: "상시 신청 가능(회차별 사전예약제)",
+    officialLink: "https://www.seocho.go.kr/site/sh/03/10304011100002020031805.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "seocho-multichild-floor-mat",
+    title: "다자녀가정 실내 바닥매트 지원",
+    agencyType: "기초",
+    agencyName: "서초구",
+    region: { sido: "서울특별시", sigungu: "서초구" },
+    stages: ["영유아기", "유아"],
+    category: "기타",
+    summary: "중학생 이하 세자녀 이상 가정에 실내 바닥매트 지원",
+    benefit: "실내 바닥매트(240×140×4cm) 1개 현물 지원(층간소음 예방 목적), 신청 후 2주 내 배송. 가정당 1회 한정.",
+    eligibility: {
+      note: "서초구에 주민등록을 두고 거주하는 중학생 이하 세자녀 이상 가정(기지원 가정 중복신청 불가).",
+    },
+    applicationMethod: "서초구청 홈페이지 온라인 신청 또는 동주민센터·여성보육과 방문 신청",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["대상 자녀 모두 등재된 주민등록등본"],
+    officialLink: "https://www.seocho.go.kr/site/seocho/ex/mat/MatSupportFView.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 국가 육아휴직급여(6+6 부모육아휴직제 등) 수급 사실을 전제조건으로 요구하되, 그 위에 서초구 예산으로
+  // 별도 지급하는 구조로 확인되어 국가 사업과 중복이 아닌 서초구 자체 인센티브로 반영함.
+  {
+    id: "seocho-dad-parental-leave-incentive",
+    title: "아빠육아휴직장려금",
+    agencyType: "기초",
+    agencyName: "서초구",
+    region: { sido: "서울특별시", sigungu: "서초구" },
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "서초구 거주 아빠 육아휴직자에게 월 30만원씩 최대 1년 지원",
+    benefit: "매월 30만원씩 최대 1년(총 최대 360만원) 지급. 단, 서초구 거주 1년 경과 이후부터 지급 개시.",
+    eligibility: {
+      note: "신청일 기준 1년 이상 서초구에 주민등록(대상 자녀도 서초구 주민등록)을 둔, 고용보험 가입 근로자로서 육아휴직급여를 수급 중인 아빠(공무원·교사 등 연금수급자 제외).",
+    },
+    applicationMethod: "서초구청 온라인 신청서 작성 또는 가족정책과·동주민센터 방문 신청",
+    applicationPeriod: "육아휴직 시작일 이후 1개월부터 육아휴직 종료일 이후 12개월 이내",
+    requiredDocuments: ["고용센터 발행 육아휴직급여 지급결정통지서"],
+    officialLink: "https://www.seocho.go.kr/site/seocho/ex/parental/ParentalLeaveFList.do",
+    lastVerifiedAt: "2026-08-10",
   },
   // 출처: 관악구청 공식 홈페이지 한눈에 보는 출산 및 양육 관련 연령별 지원사업(gwanak.go.kr), 2026-08-05 확인.
   // 참고: 2021년 언론보도는 조례 개정으로 자녀순위별 10만~200만원 현금 지급으로 상향되었다고 보도했으나
@@ -387,6 +517,46 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gwanak.go.kr/site/gwanak/06/10614011300002025051402.jsp",
     lastVerifiedAt: "2026-08-05",
   },
+  // 출처: 관악구청 공식 홈페이지(gwanak.go.kr) 2024-11 보도자료 및 사업 안내 페이지, 2026-08-10 확인.
+  // 전국 최초 사업으로 2024년 11월 신설. 0세 대상 "관악구 출생축하금"과는 별개의 2~4세 성장기 아동 대상
+  // 연속 지원금.
+  {
+    id: "gwanak-toddler-growth-grant",
+    title: "깡충깡충 성장양육지원금",
+    agencyType: "기초",
+    agencyName: "관악구",
+    region: { sido: "서울특별시", sigungu: "관악구" },
+    stages: ["영유아기", "유아"],
+    category: "바우처",
+    summary: "2~4세 각 연령 도래 시 연 1회 관악사랑상품권 30만원 지급(최대 90만원)",
+    benefit: "2세·3세·4세 각 생일 도래 시마다 연 1회 관악사랑상품권 30만원 지급(아동 1인당 최대 3회, 총 90만원).",
+    eligibility: {
+      note: "관악구에 실제 거주하며 주민등록을 둔 2~4세 영유아. 보호자는 아동 생일 도래일 기준 6개월 전부터 계속 관악구 거주.",
+    },
+    applicationMethod: "정부24 온라인 신청 또는 아동 거주지 동주민센터 방문 신청(연령별로 매년 별도 신청 필요)",
+    applicationPeriod: "아동의 생일(2세/3세/4세) 도래일로부터 6개월 이내",
+    officialLink: "https://www.gwanak.go.kr/site/gwanak/06/10614010800002024110410.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "gwanak-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "관악구",
+    region: { sido: "서울특별시", sigungu: "관악구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "관악구 임산부·산모에게 유축기 40일 무료 대여",
+    benefit: "유축기(어댑터·일반형 흡입기 포함) 무료 대여(보증금 없음). 대여기간 40일(대여일 포함), 1회 대여만 가능(연장·재대여 불가).",
+    eligibility: {
+      note: "주민등록상 관악구에 주소를 둔 임산부 및 출산 후 6개월 이내 산모(외국인은 부부 중 1인 대한민국 국적 필요).",
+    },
+    applicationMethod: "관악구보건소 홈페이지 온라인 예약 후 예약일 전후 3일 이내 보건소 5층 모성실 방문 수령",
+    applicationPeriod: "상시 신청 가능(예약 정원 소진 시 마감)",
+    requiredDocuments: ["산모 신분증", "산모수첩 또는 출생증명서"],
+    officialLink: "https://www.gwanak.go.kr/site/health/05/10502050300002022080207.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
   // 출처: 강서구청 공식 홈페이지 강서구 임신부 가사돌봄서비스(gangseo.seoul.kr/welfare/wel100501), 2026-08-05 확인
   {
     id: "gangseo-pregnant-housework-service",
@@ -406,6 +576,28 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "2026년 3월 23일(월) ~ 10월 30일(금)",
     officialLink: "https://www.gangseo.seoul.kr/welfare/wel100501",
     lastVerifiedAt: "2026-08-05",
+  },
+  // 출처: 강서구보건소 공식 홈페이지(gangseo.seoul.kr/health/ht050202), 2026-08-10 확인.
+  // 참고: 과거 URL(site/health/c2/page11.jsp)은 접속은 되나 본문이 비어있는 구 페이지로 확인되어
+  // 신규 URL(/health/ht050202)로 반영함.
+  {
+    id: "gangseo-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "강서구",
+    region: { sido: "서울특별시", sigungu: "강서구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "강서구 산모에게 유축기 무료 대여(1인 2개월, 재대여 불가)",
+    benefit: "유축기와 소모품(깔대기, 젖병) 무료 대여. 1인 2개월, 재대여 불가.",
+    eligibility: {
+      note: "강서구 관내 거주 출산 산모.",
+    },
+    applicationMethod: "강서구보건소 홈페이지 온라인 예약(사용 예정일 3일 전까지) 후 보건소 1층 모성실 방문 수령(평일만 가능)",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["산모 신분증(대리수령 시 산모·대리인 신분증, 가족관계증명서)"],
+    officialLink: "https://www.gangseo.seoul.kr/health/ht050202",
+    lastVerifiedAt: "2026-08-10",
   },
   // 출처: 종로구보건소 공식 홈페이지(jongno.go.kr, menuId=401291), 2026-08-06 확인
   {
@@ -2630,6 +2822,28 @@ export const programs: SupportProgram[] = [
     officialLink: "https://childcare.gangbuk.go.kr/index.php?mp=5_1_1_1",
     lastVerifiedAt: "2026-08-07",
   },
+  // 출처: 강북구보건소 공식 페이지(gangbuk.go.kr/health/main/contents.do?menuNo=400152), 2026-08-10 확인.
+  // 전국 표준 국가바우처(산모신생아 건강관리서비스)의 본인부담금 중 90%를 강북구가 추가 지원하는 사업.
+  // 국가바우처와 달리 기초수급/차상위/비혼모로 대상이 한정됨(전 출산가정 대상 아님).
+  {
+    id: "gangbuk-postpartum-care-copay-support",
+    title: "산모·신생아 건강관리서비스 본인부담금 지원",
+    agencyType: "기초",
+    agencyName: "강북구",
+    region: { sido: "서울특별시", sigungu: "강북구" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "기초수급·차상위·비혼모 가정 산모신생아 건강관리서비스 본인부담금 90% 지원",
+    benefit: "산모·신생아 건강관리서비스(국가바우처) 이용 시 발생하는 본인부담금의 90%를 현금 지원(서비스 유형·태아 수에 따라 실제 금액 상이).",
+    eligibility: {
+      note: "기초생활보장수급자, 차상위계층 또는 비혼모 출산가정으로 국가 산모신생아 건강관리서비스를 신청·이용한 강북구민.",
+    },
+    applicationMethod: "서비스 이용 후 아이맘 건강센터(강북구보건소 1층) 방문 신청",
+    applicationPeriod: "명시 없음(서비스 종료 후 신청, 정확한 기한은 보건소 확인 권장)",
+    requiredDocuments: ["신청서", "산모 명의 통장사본"],
+    officialLink: "https://www.gangbuk.go.kr/health/main/contents.do?menuNo=400152",
+    lastVerifiedAt: "2026-08-10",
+  },
   // 출처: 은평구보건소 공식 페이지(ep.go.kr, key=1589), 2026-08-07 확인.
   // 이전 조사에서 확인한 "다자녀 출산용품 교환권"과는 별개로, 이번에 은평구 자체 산후 건강관리 추가지원
   // 사업을 발견함.
@@ -2677,6 +2891,26 @@ export const programs: SupportProgram[] = [
     requiredDocuments: ["신분증", "주민등록등본(최근 3개월 이내)"],
     officialLink: "https://www.ep.go.kr/health/contents.do?key=1576",
     lastVerifiedAt: "2026-08-07",
+  },
+  // 출처: 은평구청 공식 홈페이지 공지사항(ep.go.kr, key=744/bbsNo=42/nttNo=312932, 2026-02-20 게시), 2026-08-10 확인.
+  // 매년 갱신되는 공지 게시글이라 링크가 만료되면 ep.go.kr에서 "아이맘택시"로 재검색해 최신 공지로 갱신 필요.
+  {
+    id: "eunpyeong-imom-taxi",
+    title: "아이맘택시",
+    agencyType: "기초",
+    agencyName: "은평구",
+    region: { sido: "서울특별시", sigungu: "은평구" },
+    stages: ["임신중", "출생출산", "영유아기"],
+    category: "바우처",
+    summary: "임산부·24개월 이하 영유아 가정에 전용택시 이용권 연 10회 무료 제공",
+    benefit: "아동(태아 포함) 1인당 연 10회(건강취약 영유아는 연 20회) 전용택시 무료 이용, 병원동행서비스 추가 제공.",
+    eligibility: {
+      note: "은평구에 주민등록을 둔 임산부 및 24개월 이하 영유아 가정.",
+    },
+    applicationMethod: "\"아이맘택시\" 전용 스마트폰 앱 설치·회원가입(임신확인서 또는 주민등록등본 제출) 후 앱 내 사전예약",
+    applicationPeriod: "상시 신청 가능(연 단위 갱신 운영, 매년 1~12월)",
+    officialLink: "https://www.ep.go.kr/www/selectBbsNttView.do?key=744&bbsNo=42&nttNo=312932",
+    lastVerifiedAt: "2026-08-10",
   },
   // 출처: 수원시 공식 페이지(suwon.go.kr, welfare14-01-14)에 게재된 "경기도 산후조리비 지원" 안내를 확인.
   // 고양시(고양페이)·화성시 등 여러 경기도 시에서도 동일 금액·자격요건(경기도 주민등록)으로 확인되어
