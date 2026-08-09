@@ -817,6 +817,57 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.mapo.go.kr/site/health/content/health04020101",
     lastVerifiedAt: "2026-08-06",
   },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=1379), 노동OK "출산휴가급여 총정리(2026년)",
+  // 2026-08-09 확인. 배우자 출산휴가 급여(아빠 몫)는 이미 반영되어 있었으나, 정작 산모 본인의 출산전후휴가
+  // 급여가 누락되어 있던 것을 뒤늦게 확인하여 추가함.
+  {
+    id: "gov-maternity-leave-benefit",
+    title: "출산전후휴가급여",
+    agencyType: "정부",
+    agencyName: "고용노동부",
+    region: "nationwide",
+    stages: ["임신중", "출생출산"],
+    category: "현금지원",
+    summary: "출산전후휴가(단태아 90일·다태아 120일) 기간 급여 지원",
+    benefit:
+      "출산전후휴가는 단태아 90일(출산 후 45일 이상 확보), 다태아 120일(출산 후 60일 이상 확보) 부여. 우선지원대상기업(중소기업) 근로자는 정부가 휴가 전체 기간을 통상임금 기준 월 상한 220만원까지 지급(사업주 부담 없음). 대규모기업 근로자는 최초 60일(다태아 75일)은 사업주가 통상임금 100% 유급 지급하고, 이후 30일(다태아 45일)만 정부가 월 상한 220만원까지 지급.",
+    eligibility: {
+      note: "출산전후휴가 종료일 이전까지 고용보험 피보험단위기간 합산 180일 이상인 근로자(이직 후 3년 이내 재취업 시 이전 직장 경력 합산 가능).",
+    },
+    applicationMethod:
+      "관할 고용센터 방문·우편·팩스 신청 또는 고용보험 홈페이지(ei.go.kr)·고용24(work24.go.kr) 온라인 신청",
+    applicationPeriod:
+      "우선지원대상기업은 휴가 시작 1개월 후부터 30일 단위 신청 가능, 대규모기업은 휴가 종료 후 신청. 휴가 종료일로부터 12개월 이내 신청.",
+    requiredDocuments: [
+      "출산전후휴가 급여 신청서",
+      "출산전후(유산·사산)휴가 확인서",
+      "통상임금 확인 서류(임금대장 등)",
+    ],
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1379&ccfNo=3&cciNo=1&cnpClsNo=3",
+    lastVerifiedAt: "2026-08-09",
+  },
+  // 출처: 정부24 민원안내(gov.kr, serviceInfo/149200000153), 2026-08-09 확인. 서울시·이천시 등 여러 지자체
+  // 데이터에 이 사업의 "시비 추가지원"이 이미 반영되어 있었으나, 정작 기반이 되는 국가 사업 자체가 누락되어
+  // 있던 것을 뒤늦게 확인하여 추가함.
+  {
+    id: "gov-non-insured-maternity-benefit",
+    title: "고용보험 미적용자 출산급여",
+    agencyType: "정부",
+    agencyName: "고용노동부",
+    region: "nationwide",
+    stages: ["임신중", "출생출산"],
+    category: "현금지원",
+    summary: "고용보험 미적용 출산여성에게 월 50만원씩 3개월(총 150만원) 지원",
+    benefit: "월 50만원씩 3개월분, 총 150만원 지급(유산·사산은 임신기간에 따라 급여 수준 상이).",
+    eligibility: {
+      note: "소득활동을 하지만 고용보험 미적용으로 출산전후휴가급여를 받지 못하는 출산여성(유산·사산 포함) — 고용보험 피보험단위기간 180일 미충족자, 초단시간근로자, 4인 이하 농어업 종사자 등 고용보험 적용제외자, 특수형태근로종사자, 프리랜서, 1인 자영업자 등.",
+    },
+    applicationMethod: "고용24(work24.go.kr) 온라인 신청 또는 거주지·사업장 관할 고용센터 방문·우편 신청",
+    applicationPeriod: "출산일로부터 1년 이내 신청",
+    requiredDocuments: ["출산 자녀가 등재된 주민등록등본", "소득세 원천징수영수증 또는 소득 증빙 통장 내역"],
+    officialLink: "https://www.gov.kr/portal/service/serviceInfo/149200000153",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 고용노동부 정책자료 "2025.1.1부터 달라지는 육아지원제도"(moel.go.kr), 2026-08-06 확인
   {
     id: "gov-parental-leave-benefit",
