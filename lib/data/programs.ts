@@ -176,6 +176,50 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gov.kr/portal/service/serviceInfo/SME000000100",
     lastVerifiedAt: "2026-08-05",
   },
+  // 출처: 법제처 찾기쉬운 생활법령정보(easylaw.go.kr, csmSeq=735), e보건소(e-health.go.kr), 2026-08-09 확인.
+  // 참고: 여러 자치구 리서치에서 "전국 표준 프로그램이라 제외"로 반복 확인됐으나, 정작 국가 사업 자체가
+  // 목록에 없던 것을 뒤늦게 확인하여 추가함.
+  {
+    id: "gov-pre-pregnancy-health-checkup",
+    title: "임신 사전건강관리 지원사업",
+    agencyType: "정부",
+    agencyName: "보건복지부",
+    region: "nationwide",
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "임신 전 남녀 가임력 검사비 지원(여성 최대 13만원, 남성 최대 5만원)",
+    benefit:
+      "여성은 난소기능검사(AMH)·부인과 초음파 등 최대 13만원, 남성은 정액검사 등 최대 5만원 지원. 생애주기별(29세 이하/30~34세/35~49세) 1회씩 최대 3회까지 지원.",
+    eligibility: {
+      note: "20~49세 남녀 중 검사 희망자(혼인·자녀 여부 무관), 15~19세는 예비부부·사실혼 관계자만 가능, 내국인 배우자가 있는 외국인도 가능.",
+    },
+    applicationMethod: "e보건소(e-health.go.kr) 온라인 신청 또는 주소지 관할 보건소 방문 신청",
+    applicationPeriod: "상시 신청 가능(예산 소진 시 조기 마감)",
+    officialLink: "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=735&ccfNo=1&cciNo=1&cnpClsNo=2",
+    lastVerifiedAt: "2026-08-09",
+  },
+  // 출처: 서울시 임신출산정보센터(seoul-agi.seoul.go.kr), 2026-08-09 확인. 여러 자치구(성동·은평·도봉·
+  // 동대문·송파 등) 리서치에서 동일 이름·동일 금액으로 반복 확인되어 서울시 광역 사업으로 판단, 1건으로
+  // 통합 반영(자치구별 개별 항목으로 중복 등재하지 않음).
+  {
+    id: "seoul-elderly-pregnant-medical-expense",
+    title: "서울시 35세 이상 임산부 의료비 지원",
+    agencyType: "광역",
+    agencyName: "서울특별시",
+    region: { sido: "서울특별시" },
+    stages: ["임신중"],
+    category: "의료비",
+    summary: "35세 이상 임산부에게 외래 진료·검사비 최대 50만원 지원",
+    benefit: "임산부 외래 진료 및 검사비 최대 50만원 지원(국민행복카드 임신·출산 바우처와 중복 사용 불가, 다른 결제수단으로 결제 후 청구).",
+    eligibility: {
+      motherAgeMin: 35,
+      note: "분만예정연도 기준 35세 이상 서울시 거주 임산부.",
+    },
+    applicationMethod: "탄생육아 몽땅정보통(umppa.seoul.go.kr) 온라인 신청 또는 거주지 관할 보건소 방문 신청",
+    applicationPeriod: "출산 후 6개월 이내",
+    officialLink: "https://seoul-agi.seoul.go.kr/preg-med-support",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 서울시 탄생응원 서울프로젝트 몽땅정보 만능키(umppa.seoul.go.kr) 및
   // 서울시 뉴스(news.seoul.go.kr/welfare/archives/543754), 2026-08-05 확인
   {
@@ -372,10 +416,73 @@ export const programs: SupportProgram[] = [
     lastVerifiedAt: "2026-08-06",
     hasMultipleBirthOrOrderVariation: true,
   },
-  // 출처: 중구청 공식 홈페이지 다자녀 가정지원 안내(junggu.seoul.kr, cmsid=16349), 2026-08-06 확인.
+  // 출처: 종로구청 공식 홈페이지(jongno.go.kr), 2026-08-09 확인.
+  // 참고: 종로구는 공식 "출산장려지원" 목록(6개 사업)을 직접 확인한 결과 출생순위별 현금 출산장려금이
+  // 존재하지 않음을 확인함(대신 출생축하선물+보험지원 조합으로 운영). 다자녀가정 자치회관 수강료 감면,
+  // 옥인 육아어울림센터는 세부조건 재확인이 더 필요해 이번 배치에서는 보류.
+  {
+    id: "jongno-birth-celebration-gift",
+    title: "출생축하선물 지원",
+    agencyType: "기초",
+    agencyName: "종로구",
+    region: { sido: "서울특별시", sigungu: "종로구" },
+    stages: ["출생출산"],
+    category: "바우처",
+    summary: "출생아 가정에 5만원 상당 육아용품 세트 지원(2026년 신설)",
+    benefit: "5만원 상당 육아용품 세트(10종 중 택1)를 택배로 배송.",
+    eligibility: {
+      note: "2026년 1월 1일 이후 출생하여 종로구에 출생신고된 자녀, 보호자가 출생일부터 신청일까지 종로구 주민등록 및 자녀와 동일 주소 거주.",
+    },
+    applicationMethod: "거주지 동주민센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생일로부터 12개월 이내(2026년 2월~12월 운영, 예산 소진 시 조기 마감)",
+    officialLink: "https://www.jongno.go.kr/Main.do?menuId=401428&menuNo=401428",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "jongno-multichild-insurance-support",
+    title: "둘째아 이상 건강(어린이)보험 지원",
+    agencyType: "기초",
+    agencyName: "종로구",
+    region: { sido: "서울특별시", sigungu: "종로구" },
+    stages: ["영유아기"],
+    category: "기타",
+    summary: "둘째 이상 자녀에게 민간 어린이보험을 구 예산으로 가입 지원",
+    benefit:
+      "구에서 어린이 상해·중대질병보험(5년 납입, 10년 보장)에 가입해줌 — 진단비(암·뇌혈관질환 최대 1,000만원), 입원비(1일차부터 2만원), 수술비(최대 500만원), 응급실비(최대 5만원) 등 보장.",
+    eligibility: {
+      note: "둘째 이상 자녀로, 가족이 출생 10개월 전부터 종로구 주민등록을 유지(전입이 늦은 경우 보장 개시가 지연될 수 있음).",
+    },
+    applicationMethod: "동주민센터 비치 출산서비스 통합처리신청서 제출(출생일로부터 1년 이내), 이후 지정 보험설계사가 방문하여 가입 절차 안내",
+    applicationPeriod: "출생일로부터 1년 이내",
+    officialLink: "https://www.jongno.go.kr/Main.do?menuId=400953&menuNo=400953",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "jongno-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "종로구",
+    region: { sido: "서울특별시", sigungu: "종로구" },
+    stages: ["출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 최대 3개월 무료 대여",
+    benefit: "유축기 무료 대여, 최대 3개월(연장 불가). 출산예정일 2주 전부터 전화 예약 가능.",
+    eligibility: {
+      note: "종로구 주민등록을 두고 모유수유를 계획 중인 산모.",
+    },
+    applicationMethod: "전화 예약 후 보건소 방문 수령(대리 수령 시 산모·대리인 신분증 및 가족관계증명서 필요)",
+    applicationPeriod: "상시 신청 가능(출산예정일 2주 전부터 예약)",
+    officialLink: "https://www.jongno.go.kr/Health.do?menuId=401282&menuNo=401282",
+    lastVerifiedAt: "2026-08-09",
+  },
+  // 출처: 중구청 공식 홈페이지 다자녀 가정지원 안내(junggu.seoul.kr, cmsid=16349), 뉴시스·헤럴드경제 등
+  // 2026-01-25 보도(중구청장 발표, 2025년 실적 569가구), 2026-08-09 재확인.
   // 참고: 중구청 사이트 내 별도 팝업 공지(cid=64081)에는 "둘째 50만/셋째 100만/넷째 이상 300만원(첫째 지급 없음)"으로
-  // 다르게 게시되어 있어 두 페이지의 금액이 상충함. 더 상세하고 구조화된 콘텐츠 페이지(cmsid=16349) 수치를 채택했으며,
-  // 실제 운영 여부는 중구청 가족정책과(02-3396-5434) 재확인 권장.
+  // 다르게 게시되어 있으나, 이는 인상 이전의 구 버전 공지로 판단됨(첫째·다섯째 구간 자체가 없어 현재 조례와 불일치).
+  // 공식 콘텐츠 페이지(cmsid=16349)는 넷째 400만원으로 표기되어 있으나, 3개 이상의 독립된 2026-01-25자
+  // 보도(뉴시스·헤럴드경제·동방일보·네이트뉴스)가 일관되게 넷째 500만원(구청장 직접 발표, "서울 최고 수준")으로
+  // 보도하고 있어, 더 최근이고 다중 교차검증된 500만원을 채택함. 실제 운영 여부는 중구청 가족정책과
+  // (02-3396-5434) 재확인 권장.
   {
     id: "junggu-childbirth-childcare-grant",
     title: "출산양육지원금",
@@ -386,27 +493,69 @@ export const programs: SupportProgram[] = [
     category: "현금지원",
     summary: "출생아 순위별 최대 1,000만원 양육지원금 지급",
     benefit:
-      "자녀 출산 시 순위별 일시금 지급 — 첫째 100만원, 둘째 200만원, 셋째 300만원, 넷째 400만원, 다섯째 이상 1,000만원.",
+      "자녀 출산 시 순위별 일시금 지급 — 첫째 100만원, 둘째 200만원, 셋째 300만원, 넷째 500만원, 다섯째 이상 1,000만원.",
     eligibility: {
       note: "신생아 출생일 현재 중구에 12개월 이상 주민등록 후 실제 거주(12개월 미만 거주 시 실거주기간 12개월 경과 후 지원 가능).",
     },
     applicationMethod: "거주지 동주민센터 방문 신청",
     applicationPeriod: "명시 없음(관할 동주민센터 확인 필요)",
     officialLink: "https://www.junggu.seoul.kr/content.do?cmsid=16349",
-    lastVerifiedAt: "2026-08-06",
+    lastVerifiedAt: "2026-08-09",
     birthOrderBenefit: {
       tiers: [
         { orderMin: 1, amount: 1000000 },
         { orderMin: 2, amount: 2000000 },
         { orderMin: 3, amount: 3000000 },
-        { orderMin: 4, amount: 4000000 },
+        { orderMin: 4, amount: 5000000 },
         { orderMin: 5, amount: 10000000 },
       ],
     },
   },
+  {
+    id: "junggu-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "중구",
+    region: { sido: "서울특별시", sigungu: "중구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "산모에게 유축기 1개월(연장 시 2개월) 무료 대여",
+    benefit: "Spectra 전동 유축기 1개월 기본 대여(재고에 따라 1개월 추가 연장 가능), 예약 없이 재고 확인 후 방문 수령.",
+    eligibility: {
+      note: "중구 거주(주소지 등재)이며 모유수유를 원하는 출산 산모.",
+    },
+    applicationMethod: "중구보건소 방문 전 전화로 재고 확인 후 방문 수령(대리 수령 시 위임 서류 필요)",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["산모 신분증(또는 주소 확인용 등본)", "출생증명서 또는 등본"],
+    officialLink: "https://www.junggu.seoul.kr/health/content.do?cmsid=15847",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "junggu-postpartum-care-cash-topup",
+    title: "중구형 산후조리비 지원",
+    agencyType: "기초",
+    agencyName: "중구",
+    region: { sido: "서울특별시", sigungu: "중구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "서울형 산후조리경비와 별도로 중구가 현금 50만원 추가 지급",
+    benefit: "출생아 1인당 현금 50만원을 산모 계좌로 지급, 서울시 산후조리경비(바우처)와 별도로 병행 지원.",
+    eligibility: {
+      note: "신청일 기준 중구 주민등록 산모, 자녀 출생등록이 중구(2026년 1월 1일 이후 출생아부터 적용).",
+    },
+    applicationMethod: "동주민센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생일로부터 60일 이내",
+    requiredDocuments: ["신청서", "신분증", "통장사본", "(대리 신청 시) 위임 서류"],
+    officialLink: "https://www.junggu.seoul.kr/health/content.do?cmsid=15851",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 용산구보건소 공식 홈페이지(health.yongsan.go.kr, menuNo=201275), 2026-08-06 확인.
-  // 참고: 일반 가구 대상 출산장려금 조례(전부개정, 2024.10 입법예고)가 존재하나 공식페이지에서 구체 금액을
-  // 확인하지 못해, 확실히 검증된 장애인가정 출산지원금만 반영함.
+  // 참고: 일반 가구 대상 출산장려금 조례는 2024-11-15 "서울특별시 용산구 출산 및 양육지원에 관한 조례"
+  // (조례 제1661호)로 전부개정되어 시행 중임을 elis.go.kr 자치법규정보시스템에서 확인함(2026-08-09 재확인).
+  // 셋째 200만원/넷째 400만원/다섯째 이상 400만원으로 추정되나(2개 이상 언론·집계 사이트 교차 확인), 조례
+  // 원문 페이지가 접속 자동화로 렌더링되지 않아 .go.kr 직접 링크를 확보하지 못해 이번에도 미반영. 유축기
+  // 대여(용산구보건소 모자보건실)와 장난감나라(자체 조례 기반 장난감도서관, yongsan-toy.or.kr)도 존재가
+  // 확인됐으나 정확한 이용조건 페이지를 찾지 못해 보류.
   {
     id: "yongsan-disabled-family-birth-grant",
     title: "장애인가정 출산지원금",
@@ -463,6 +612,108 @@ export const programs: SupportProgram[] = [
       flatAddOn: 500000,
     },
   },
+  // 출처: 성동구청 공식 홈페이지(sd.go.kr), 2026-08-09 확인.
+  // 참고: 임산부 공영주차장 30% 감면(parking.happysd.or.kr, .or.kr 도메인)은 도메인 기준 미달로 보류.
+  {
+    id: "seongdong-birth-grant-multichild",
+    title: "출생축하금",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "셋째 이상 자녀 출산 시 최대 1,000만원 출생축하금 지급",
+    benefit: "셋째 300만원(일시금), 넷째 500만원(300만원+1년 뒤 200만원), 다섯째 이상 1,000만원(400만원+매년 200만원씩 3년).",
+    eligibility: {
+      note: "부 또는 모가 1년 이상 계속 성동구 주민등록 및 실거주하는 셋째 이상 자녀의 보호자, 출생일로부터 1년 6개월 이내 신청.",
+    },
+    applicationMethod: "동주민센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생일로부터 1년 6개월 이내",
+    officialLink: "https://www.sd.go.kr/main/contents.do?key=1591",
+    lastVerifiedAt: "2026-08-09",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 3, amount: 3000000 },
+        { orderMin: 4, amount: 5000000 },
+        { orderMin: 5, amount: 10000000 },
+      ],
+    },
+  },
+  {
+    id: "seongdong-pregnant-housework-care",
+    title: "성동형 임산부 가사돌봄서비스",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["임신중", "출생출산"],
+    category: "돌봄서비스",
+    summary: "임신부·산후 1년 이내 산모에게 가사도우미 무료 파견(소득 무관)",
+    benefit: "1회 4시간, 단태아 7회·다태아 10회 무료 가사도우미 파견(청소·세탁·식사준비·병원동행 등), 소득기준 없음.",
+    eligibility: {
+      note: "성동구 거주 임신부 또는 출산 후 12개월 이내 산모(서울형 가사서비스 지원과 중복 수급 불가).",
+    },
+    applicationMethod: "성동구 홈페이지 → 신속예약 → 생활서비스 온라인 신청",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sd.go.kr/health/contents.do?key=3915",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongdong-breast-pump-rental",
+    title: "유축기 대여",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 2개월 무료 대여",
+    benefit: "Spectra S2+ 유축기 및 소모품 2개월 무료 대여.",
+    eligibility: {
+      note: "성동구 거주 산모로 모유수유를 계획 중인 자.",
+    },
+    applicationMethod: "성동아이맘건강센터(성동구보건소 건강관리과) 방문 신청",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["신분증(성동구민 확인)", "출생증명서 또는 등본"],
+    officialLink: "https://www.sd.go.kr/health/contents.do?key=2314",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongdong-toy-library",
+    title: "성동구 장난감세상·장난감누리",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "5개 분관에서 장난감·도서 상호대차 대여(연회비 1만원, 다자녀 등 면제)",
+    benefit:
+      "무지개·금호·왕십리·옥수·성수 5개 분관 중 어디서나 대여·반납 가능, 자녀 1인당 장난감 1개 또는 도서 3권, 연회비 1만원(2자녀 5천원, 기초수급·장애인·국가유공자·한부모·3자녀 이상 가정 면제).",
+    eligibility: {
+      note: "영유아를 양육하는 서울시 거주자 또는 서울 소재 직장 재직자.",
+    },
+    applicationMethod: "성동구육아종합지원센터(ccic.sd.go.kr) 회원가입 후 예약 이용",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.sd.go.kr/main/sub.do?key=1589",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "seongdong-multichild-facility-discount",
+    title: "성동구 다자녀 가족 혜택",
+    agencyType: "기초",
+    agencyName: "성동구",
+    region: { sido: "서울특별시", sigungu: "성동구" },
+    stages: ["영유아기", "유아"],
+    category: "세제혜택",
+    summary: "2자녀 이상(막내 18세 이하) 가정 대상 구 공공시설 이용료 감면",
+    benefit:
+      "성동힐링센터 50% 할인, 주민자치회관 프로그램 2자녀 50%·3자녀 이상 100% 할인, 도서관 문화강좌·공연장 관람료·체육시설 프로그램 각 50% 할인, 공영주차장 주차료 50% 할인, 장난감세상 놀이체험 2자녀 50%·3자녀 이상 100% 할인, 가족센터 프로그램 우선신청.",
+    eligibility: {
+      note: "다둥이행복카드 소지, 2자녀 이상(막내 만 18세 이하) 가정.",
+    },
+    applicationMethod: "동주민센터 또는 이용 시설별 개별 신청",
+    applicationPeriod: "상시 이용 가능",
+    officialLink: "https://www.sd.go.kr/main/contents.do?key=5069",
+    lastVerifiedAt: "2026-08-09",
+  },
   // 출처: 광진구청 공식 홈페이지(gwangjin.go.kr, menuNo=200309), 2026-08-06 확인
   {
     id: "gwangjin-first-birthday-celebration-grant",
@@ -490,6 +741,84 @@ export const programs: SupportProgram[] = [
         { orderMin: 5, amount: 3000000 },
       ],
     },
+  },
+  // 출처: 광진구청 공식 홈페이지(gwangjin.go.kr), 광진구육아종합지원센터(gjcare.go.kr), 2026-08-09 확인.
+  // 참고: 카시트 대여(gjcare.go.kr 페이지 렌더링 오류로 뉴스 교차검증만 가능), 백일상·돌상 대여(2020년
+  // 이후 신규 확인 불가), 입양축하금(공식 페이지 미발견)은 이번 배치에서 보류.
+  {
+    id: "gwangjin-postpartum-care-copay-support",
+    title: "산모·신생아 건강관리서비스 본인부담금 지원",
+    agencyType: "기초",
+    agencyName: "광진구",
+    region: { sido: "서울특별시", sigungu: "광진구" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "산모·신생아 건강관리서비스 본인부담금 90%(최대 50만원) 추가 지원",
+    benefit: "서울형 산후조리경비(50만원) 선사용 후 남는 본인부담금의 90%를 최대 50만원까지 추가 지원.",
+    eligibility: {
+      incomePercentMax: 150,
+      note: "산모 또는 배우자가 광진구 주민등록, 자녀가 광진구에 출생등록(기준중위소득 150% 이하는 통합형, 초과 시 라형으로 차등 지원).",
+    },
+    applicationMethod: "광진구보건소 2층 모자건강센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    applicationPeriod: "서비스 종료 후 60일 이내",
+    requiredDocuments: ["신분증", "신청서", "개인정보 수집이용동의서", "본인부담금 납부 영수증", "통장사본", "가족관계증명서(필요시)"],
+    officialLink: "https://www.gwangjin.go.kr/health/main/contents.do?menuNo=300123",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "gwangjin-breast-pump-rental",
+    title: "유축기 무료 대여",
+    agencyType: "기초",
+    agencyName: "광진구",
+    region: { sido: "서울특별시", sigungu: "광진구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "모유수유를 위한 유축기 1개월 무료 대여",
+    benefit: "Medela Swing 유축기 1개월 무료 대여(새 부속품 세트 포함), 연장·모델 변경·추가 부속품은 유료.",
+    eligibility: {
+      note: "광진구 주민등록 임신부·산모로 모유수유를 원하는 자.",
+    },
+    applicationMethod: "보건소 2층 모자보건실 방문 또는 이메일(gwangjin1583@gwangjin.go.kr) 신청",
+    applicationPeriod: "상시 신청 가능",
+    requiredDocuments: ["신분증(대리 신청 시 위임장 포함)"],
+    officialLink: "https://www.gwangjin.go.kr/health/main/contents.do?menuNo=300084",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "gwangjin-breastfeeding-home-visit",
+    title: "찾아가는 모유수유 클리닉",
+    agencyType: "기초",
+    agencyName: "광진구",
+    region: { sido: "서울특별시", sigungu: "광진구" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "국제모유수유전문가가 가정을 방문해 1시간 무료 상담",
+    benefit: "산모 1인당 1회 1시간 가정방문 — 유방상태 확인, 수유자세 교육, 신생아 수유시범, 가족지원 상담, 유방마사지 교육 등 무료 제공.",
+    eligibility: {
+      note: "광진구 주민등록 출산 후 산모.",
+    },
+    applicationMethod: "서울시 임신출산정보센터 온라인 신청(광진구 주소로 등록)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gwangjin.go.kr/health/main/contents.do?menuNo=300083",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "gwangjin-mobile-toy-library",
+    title: "이동식 장난감 도서관",
+    agencyType: "기초",
+    agencyName: "광진구",
+    region: { sido: "서울특별시", sigungu: "광진구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "동주민센터를 순회하는 이동식 장난감 대여 서비스",
+    benefit: "회원 가구당 장난감 최대 3개, 14일 대여. 격주로 동주민센터를 순회하며 대여·반납 가능.",
+    eligibility: {
+      note: "광진구 거주 영유아 자녀를 둔 가정.",
+    },
+    applicationMethod: "광진구육아종합지원센터 회원가입 후 순회 일정에 맞춰 이용",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=201722",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 「서울특별시 동대문구 출생 및 양육 지원에 관한 조례」(law.go.kr, ordinSeq=1890197), 2026-08-06 확인.
   // 참고: law.go.kr 조례 원문은 JS 렌더링으로 직접 추출하지 못해, 일관되게 동일 금액을 보도한 언론 3건으로
@@ -521,6 +850,47 @@ export const programs: SupportProgram[] = [
         { orderMin: 5, amount: 3000000 },
       ],
     },
+  },
+  // 출처: 동대문구보건소·동대문구육아종합지원센터 공식 홈페이지(ddm.go.kr, ddmccic.go.kr), 2026-08-09 확인.
+  // 참고: 임산부 자동차 표지(2018년 작성 게시물, 재확인 필요), 다자녀가정 입학축하금(공식 페이지 미발견,
+  // 언론·의회 회의록만 확인)은 이번 배치에서 보류.
+  {
+    id: "dongdaemun-aga-love-center",
+    title: "아가사랑센터",
+    agencyType: "기초",
+    agencyName: "동대문구",
+    region: { sido: "서울특별시", sigungu: "동대문구" },
+    stages: ["임신중", "출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "임신·출산·육아 원스톱 거점 — 유축기 대여·수유실·부모교육 프로그램 운영",
+    benefit:
+      "유축기(스펙트라) 2개월 무료 대여, 수유실·엄마모임 공간 이용, 태교·출산준비·부부마사지·조부모교실 등 프로그램 운영.",
+    eligibility: {
+      note: "동대문구 거주 임신부·산모·영유아 보호자.",
+    },
+    applicationMethod: "서울시 임신출산정보센터 온라인 가입 후 신청(매월 15일 9시 접수 시작)",
+    applicationPeriod: "상시 신청 가능(프로그램별 접수일 상이)",
+    officialLink: "https://www.ddm.go.kr/health/contents.do?key=3757",
+    lastVerifiedAt: "2026-08-09",
+  },
+  {
+    id: "dongdaemun-toy-library",
+    title: "느티나무 장난감방",
+    agencyType: "기초",
+    agencyName: "동대문구",
+    region: { sido: "서울특별시", sigungu: "동대문구" },
+    stages: ["영유아기", "유아"],
+    category: "돌봄서비스",
+    summary: "장난감·유축기·출산용품 대여(3개소, 연회비 1만원)",
+    benefit:
+      "답십리점·제기점·휘경점 3개소에서 장난감·유축기·출산용품 대여, 개인회원 1회당 2점(최대 14일), 연회비 1만원(다자녀·장애인·한부모·차상위·기초수급 면제).",
+    eligibility: {
+      note: "서울시 거주 만 5세 이하 자녀를 둔 부모·위탁모·예비부모, 관내 어린이집·유치원(기관회원).",
+    },
+    applicationMethod: "동대문구육아종합지원센터(ddmccic.go.kr) 온라인 회원가입 후 방문 이용",
+    applicationPeriod: "화~토 10:00~18:00(목요일 20:00까지 연장), 월·일·공휴일 휴관",
+    officialLink: "https://www.ddmccic.go.kr",
+    lastVerifiedAt: "2026-08-09",
   },
   // 출처: 중랑구청 공식 홈페이지(jungnang.go.kr, menuNo=201500), 2026-08-06 확인.
   // 참고: 공식페이지 직접 fetch가 기술적으로 반복 실패해 검색엔진에 색인된 동일 페이지 콘텐츠와
