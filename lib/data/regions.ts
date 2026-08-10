@@ -72,6 +72,10 @@ export const regions: RegionEntry[] = [
     sido: "세종특별자치시",
     sigungus: [],
   },
+  {
+    sido: "대전광역시",
+    sigungus: ["동구", "중구", "서구", "유성구", "대덕구"],
+  },
 ];
 
 export function getSidoList(): string[] {
