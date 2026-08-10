@@ -50,6 +50,14 @@ export const regions: RegionEntry[] = [
       "부평구", "계양구", "서해구", "검단구", "강화군", "옹진군",
     ],
   },
+  {
+    sido: "충청북도",
+    sigungus: [
+      "청주시", "충주시", "제천시", "보은군", "옥천군",
+      "영동군", "증평군", "진천군", "괴산군", "음성군",
+      "단양군",
+    ],
+  },
 ];
 
 export function getSidoList(): string[] {
