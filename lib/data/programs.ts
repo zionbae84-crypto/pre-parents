@@ -10655,6 +10655,171 @@ export const programs: SupportProgram[] = [
       "https://www.taean.go.kr/cop/bbs/BBSMSTR_000000000040/selectBoardArticle.do?nttId=1514298532&mno=sitemap_12",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 세종특별자치시 =====
+  // 출처: 세종시청·보건소 공식 홈페이지(sejong.go.kr), 2026-08-10 확인.
+  // 세종특별자치시는 기초자치단체(시·군·구) 없이 단일 계층으로 운영되는 광역자치단체이므로,
+  // 모든 세종시 자체 사업은 agencyType: "광역", region에 sigungu 없이 sido만 기재한다.
+  //
+  // 아래는 조사했으나 이번 배치에 반영하지 않은 항목:
+  // - 산후조리비용 지원/공공산후조리원: 세종시는 해당 사업이 없음(전국 공통 매칭사업인 산모·신생아
+  //   건강관리 지원사업만 존재, 세종시 자체 추가 현금지원 없음) — 확인 완료, 반영 불필요.
+  // - 다자녀 우대카드, 결혼장려금(출생축하금과 별개의 결혼축하금), 보육료·양육수당 세종시 자체
+  //   추가지원: 모두 존재하지 않음을 확인 — 반영 불필요.
+  // - 한방 난임치료비 지원, 다자녀 학습준비비(연 10만원): 사업 존재 정황은 있으나 공식 .go.kr
+  //   페이지를 확보하지 못해 보류(각각 남부통합보건지소 044-301-2426, 인구여성가족과 재확인 권장).
+  // - 임산부 친환경농산물 꾸러미(연 24만원 상당, 시비 80%): 2026년도 신청 정보는 언론 보도로만
+  //   확인되고 해당 연도 공식 공고 원문을 찾지 못해 보류(도농상생국 농업정책과 044-300-4322).
+  // - 아이돌봄 지원사업: 전국 공통 국비 매칭 요금체계만 확인되고 세종시 자체 추가 지원분이
+  //   확인되지 않아 국가 데이터와의 중복을 피하기 위해 미반영.
+  {
+    id: "sejong-birth-grant",
+    title: "세종시 출생축하금",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "세종시 출생아 가정에 1인당 120만원(여민전) 지급",
+    benefit: "출생아 1인당 1회 120만원(지역화폐 여민전 지급), 출생순위와 무관하게 동일 금액.",
+    eligibility: {
+      note: "출생일 기준 3개월 이전부터 세종시에 계속 주민등록 거주 또는 출생일을 포함하여 3개월 이상 계속 거주하는 부 또는 모.",
+    },
+    applicationMethod: "읍면동 행정복지센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생신고 후 6개월 이내",
+    officialLink: "https://www.sejong.go.kr/life/sub01_010110.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-infertility-treatment",
+    title: "세종시 난임부부 시술비 지원",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "세종시 난임부부에게 체외수정·인공수정 시술비 및 비급여 항목 지원",
+    benefit:
+      "체외수정(신선배아) 최대 20회 회당 110만원, 체외수정(동결배아) 최대 50회 회당 50만원, 인공수정 최대 5회 회당 30만원. 비급여 3종(유산방지제·착상보조제 각 20만원, 배아동결비 30만원 한도) 추가 지원, 출산당 최대 25회.",
+    eligibility: {
+      note: "여성 주소지 세종시, 법률혼 또는 1년 이상 사실혼 부부, 부부 중 최소 1인 대한민국 국적, 부부 모두 건강보험 가입. 지원결정통지서 발급 이후 발생한 비용만 지원(소급 불가).",
+    },
+    applicationMethod: "남부통합보건지소 방문 또는 e보건소/정부24, 시술 시작 전 매 회차 신청 필수",
+    applicationPeriod: "상시",
+    officialLink: "https://www.sejong.go.kr/health/sub03_04_11.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-newlywed-checkup",
+    title: "세종시 신혼부부·초기임신부 건강검진 지원",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["임신준비", "임신중"],
+    category: "의료비",
+    summary: "세종시 신혼부부 및 초기임신부에게 필수 검사비 전액 지원",
+    benefit:
+      "신혼부부: 매독·에이즈·혈액형·B형간염·헤모글로빈·풍진항체(여성) 검사비 전액. 초기임신부: 매독·에이즈·혈액형·B형간염·헤모글로빈 검사비 전액. 신혼부부 검진은 평생 1회.",
+    eligibility: {
+      note: "세종시 거주 임신 준비 중인 신혼부부 또는 임신 12주 이내 임신부.",
+    },
+    applicationMethod: "남부통합보건지소 아동모성담당 방문(평일 09:00~16:30)",
+    applicationPeriod: "상시",
+    officialLink: "https://www.sejong.go.kr/health/sub03_04_17.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-pre-pregnancy-checkup",
+    title: "세종시 임신 사전건강관리 지원(가임력 검사비)",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "세종시 가임기 남녀에게 가임력 검사비 지원",
+    benefit:
+      "여성: 난소기능검사(AMH)+부인과 초음파 최대 13만원. 남성: 정액검사(정자정밀형태검사) 최대 5만원. 연령 주기별(29세 이하/30~34세/35~49세) 최대 3회.",
+    eligibility: {
+      note: "세종시 주민등록 20~49세 남녀, 혼인여부·자녀수 무관(예비부부·사실혼 포함).",
+    },
+    applicationMethod: "보건소 방문 또는 e보건소 온라인 사전신청 후 검사의뢰서 발급",
+    applicationPeriod: "신청일로부터 3개월 내 검사, 검사일로부터 1개월 내 청구",
+    officialLink: "https://www.sejong.go.kr/health/sub03_04_18.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-pregnant-woman-support",
+    title: "세종시 임산부 지원(영양제·유축기·자동차표지증)",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["임신중"],
+    category: "기타",
+    summary: "세종시 임산부에게 엽산·철분제, 유축기 대여, 자동차 표지증 지원",
+    benefit:
+      "엽산(임신 12주 미만) 최대 2갑, 철분제(16주~분만 전) 최대 5갑, 유축기(스펙트라S2+) 1개월 대여, 자동차 표지증 발급(차량 1대).",
+    eligibility: {
+      note: "세종시 주민등록 임산부, 소득 무관.",
+    },
+    applicationMethod: "남부통합보건지소 아동모성팀 또는 읍면동 주민센터 방문, 정부24",
+    applicationPeriod: "상시",
+    officialLink: "https://www.sejong.go.kr/health/sub03_04_10.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-early-childhood-home-visit",
+    title: "세종시 생애 초기 건강관리(가정방문)",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["출생출산", "영유아기"],
+    category: "돌봄서비스",
+    summary: "세종시 임산부·만 2세 미만 영아 가정에 간호사·사회복지사 방문 건강관리",
+    benefit: "건강간호사·사회복지사 가정방문을 통한 산모 건강상담, 신생아 발달상담, 양육교육, 정서 지원.",
+    eligibility: {
+      note: "세종시 임산부 및 만 2세 미만 영아 가정, 소득 무관.",
+    },
+    applicationMethod: "남부통합보건지소 신청",
+    applicationPeriod: "임신부터 출산 후 8주 이내 신청",
+    officialLink: "https://www.sejong.go.kr/health/sub03_04_10.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-multichild-entrance-grant",
+    title: "세종시 다자녀가정 입학지원금",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["유아"],
+    category: "현금지원",
+    summary: "세종시 셋째 이상 초등학교 신입생에게 1인당 20만원 지급",
+    benefit: "1인당 20만원(지역화폐 여민전 지급).",
+    eligibility: {
+      note: "입학일 기준 세종시에 주민등록을 두고 출생순위가 셋째 이상인 초등학교 신입생.",
+    },
+    applicationMethod: "입학 초기 학교를 통해 신청, 이후 읍면동 행정복지센터 또는 정부24",
+    applicationPeriod: "매년 3~6월(2026년: 3.3~6.30)",
+    officialLink: "https://www.sejong.go.kr/bbs/R0079/view.do?nttId=B000000149124Mt2pD4b",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "sejong-newlywed-housing-loan-interest",
+    title: "세종시 청년(신혼부부) 주택임차보증금 이자지원",
+    agencyType: "광역",
+    agencyName: "세종특별자치시",
+    region: { sido: "세종특별자치시" },
+    stages: ["임신준비"],
+    category: "주거",
+    summary: "세종시 무주택 청년가구(신혼부부 포함) 전세자금 대출이자 지원",
+    benefit:
+      "대출이자 연 4.1% 시비 지원, 대출한도 최대 1억원(임차보증금 90% 이내), 2년 만기 일시상환 최장 6년(2회 연장). 임차보증금 한도: 미혼청년 2억원 이하, 청년 신혼부부 3억원 이하.",
+    eligibility: {
+      note: "만 19~39세 세종시 거주 또는 전입예정 무주택 청년가구(미혼, 신혼부부).",
+    },
+    applicationMethod: "세종청년희망내일센터 누리집 또는 잡아람 온라인 신청",
+    applicationPeriod: "상시모집(예산 소진 시까지)",
+    officialLink: "https://www.sejong.go.kr/bbs/R0071/view.do?nttId=B000000140018Cw8dF4o",
+    lastVerifiedAt: "2026-08-10",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지

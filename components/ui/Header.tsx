@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCoveredSigungu } from "@/lib/coverage";
+import { getCoveredSigungu, hasSidoLevelProgram } from "@/lib/coverage";
 import { regions } from "@/lib/data/regions";
 import { shortSidoLabel } from "@/lib/regionLabels";
 
@@ -26,10 +26,22 @@ function LocationPinIcon() {
 }
 
 function RegionBadge({ sido }: { sido: string }) {
+  const total = regions.find((r) => r.sido === sido)?.sigungus.length ?? 0;
+
+  // 세종특별자치시처럼 하위 시군구가 없는 단일 계층 광역자치단체는 사업 존재 여부만으로 뱃지를 표시한다.
+  if (total === 0) {
+    if (!hasSidoLevelProgram(sido)) return null;
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full border border-brown/15 bg-brown/5 px-2 py-0.5 text-[12px] font-bold text-brown/70">
+        <LocationPinIcon />
+        {shortSidoLabel(sido)}
+      </span>
+    );
+  }
+
   const covered = getCoveredSigungu(sido);
   if (covered.length === 0) return null;
-  const total = regions.find((r) => r.sido === sido)?.sigungus.length ?? 0;
-  const isFullyCovered = total > 0 && covered.length === total;
+  const isFullyCovered = covered.length === total;
 
   return (
     <span className="inline-flex items-center gap-1 rounded-full border border-brown/15 bg-brown/5 px-2 py-0.5 text-[12px] font-bold text-brown/70">

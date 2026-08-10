@@ -66,6 +66,12 @@ export const regions: RegionEntry[] = [
       "서천군", "청양군", "홍성군", "예산군", "태안군",
     ],
   },
+  {
+    // 세종특별자치시는 기초자치단체(시·군·구) 없이 단일 계층으로 운영되는
+    // 광역자치단체이므로 하위 시군구가 존재하지 않는다.
+    sido: "세종특별자치시",
+    sigungus: [],
+  },
 ];
 
 export function getSidoList(): string[] {
