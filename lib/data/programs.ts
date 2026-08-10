@@ -10447,6 +10447,11 @@ export const programs: SupportProgram[] = [
   // "육아지원금"은 언론·민간 취합 정보뿐이며 공식 .go.kr 페이지를 확보하지 못해 이번 배치에서는 반영을
   // 보류함(가정행복과 041-630-1959, 인구정책 041-630-1302로 재확인 권장). 홍성공공산후조리원 이용료 감면도
   // 공식 요금표를 확보하지 못해 보류.
+  // 2026-08-10 재검증 시도: elis.go.kr/law.go.kr에서 근거 조례("홍성군 인구증가 등을 위한 지원 조례")
+  // 존재는 확인했으나 본문이 JS 렌더링이라 curl/WebFetch로 조문(금액) 확보 실패. hongseong.go.kr 보건소
+  // 메뉴(sub03_0601/060301/060306.do)는 모두 출산축하금·육아지원금을 다루지 않음(소관이 보건소가 아닌
+  // 가정행복과·인구정책과로 추정) — site: 검색으로도 전용 페이지를 찾지 못해 재차 보류. 향후 hongseong.go.kr
+  // 내 "복지" 메뉴(가정행복과 소관) 쪽에서 재탐색 필요.
   {
     id: "hongseong-breast-pump-rental",
     title: "홍성군 임신·출산용품(유축기) 대여",
@@ -10493,10 +10498,20 @@ export const programs: SupportProgram[] = [
     region: { sido: "충청남도", sigungu: "예산군" },
     stages: ["출생출산", "영유아기"],
     category: "현금지원",
-    summary: "예산군 출생아 가정에 출생순위별 최대 3,000만원 지급",
-    benefit: "출생순서별 차등 지급(첫째 200~500만원, 다섯째 3,000만원 규모로 확인됨).",
+    summary: "예산군 출생아 가정에 출생순위별 최대 3,000만원 지급(분할지급)",
+    benefit:
+      "2023.1.1. 이후 출생아 기준(공식 홈페이지 확인): 첫째아 500만원(연250만원씩 2년), 둘째아 1,000만원(연250만원씩 4년), 셋째아 1,500만원(연300만원씩 5년), 넷째아 2,000만원(연400만원씩 5년), 다섯째아 이상 3,000만원(연600만원씩 5년). 분할지급기간 중 타지역 전출 시 지급 중지.",
     eligibility: {
-      note: "부모가 모두 출생 6개월 전부터 계속 예산군 주민등록.",
+      note: "부모가 모두 출생 6개월 전부터 계속 예산군 주민등록. 2023.1.1. 이후 출생아부터 적용(그 이전 출생아는 별도 구간 금액 적용).",
+    },
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 5000000 },
+        { orderMin: 2, amount: 10000000 },
+        { orderMin: 3, amount: 15000000 },
+        { orderMin: 4, amount: 20000000 },
+        { orderMin: 5, amount: 30000000 },
+      ],
     },
     applicationMethod: "거주지 읍·면행정복지센터 출생신고 시 신청",
     applicationPeriod: "출생일로부터 180일 이내",
@@ -10559,7 +10574,8 @@ export const programs: SupportProgram[] = [
     lastVerifiedAt: "2026-08-10",
   },
   // ===== 충청남도 태안군 =====
-  // 출처: 태안군청 자치법규(elis.go.kr) 및 공식 보도, 2026-08-10 확인.
+  // 출처: 태안군청 자치법규(elis.go.kr) 및 태안군청 보도자료(taean.go.kr 공보팀), 2026-08-10 1차 확인,
+  // 2026-08-10 재검증 시 아래 개별 공식 페이지로 officialLink 전면 교체(기존에는 홈페이지 fallback만 있었음).
   {
     id: "taean-birth-grant",
     title: "태안군 신생아 출산장려금",
@@ -10575,7 +10591,8 @@ export const programs: SupportProgram[] = [
     },
     applicationMethod: "주소지 읍·면장에게 출생신고 후 신청서 제출",
     applicationPeriod: "명시 없음",
-    officialLink: "https://www.taean.go.kr",
+    officialLink:
+      "https://www.elis.go.kr/allalr/selectAlrBdtOne?alrNo=44825102293010&histNo=012&menuNm=main",
     lastVerifiedAt: "2026-08-10",
     birthOrderBenefit: { tiers: [{ orderMin: 1, amount: 500000 }, { orderMin: 2, amount: 1000000 }, { orderMin: 3, amount: 2000000 }] },
   },
@@ -10594,7 +10611,8 @@ export const programs: SupportProgram[] = [
     },
     applicationMethod: "읍·면사무소 또는 태안군보건의료원 모자보건실 신청",
     applicationPeriod: "명시 없음(2025년부터 시행)",
-    officialLink: "https://www.taean.go.kr",
+    officialLink:
+      "https://www.taean.go.kr/cop/bbs/BBSMSTR_000000000040/selectBoardArticle.do?nttId=1514298434&mno=sitemap_12",
     lastVerifiedAt: "2026-08-10",
   },
   {
@@ -10610,9 +10628,31 @@ export const programs: SupportProgram[] = [
     eligibility: {
       note: "보호자·아동 모두 태안군 주민등록 6개월 이상.",
     },
-    applicationMethod: "태안군청 문의·신청",
-    applicationPeriod: "2026년 신청 접수 시작",
-    officialLink: "https://www.taean.go.kr",
+    applicationMethod: "읍·면 행정복지센터 방문 신청",
+    applicationPeriod: "3세 생일이 속한 달부터 12세 생일 전달까지",
+    officialLink:
+      "https://www.taean.go.kr/cop/bbs/BBSMSTR_000000000040/selectBoardArticle.do?nttId=1514307233&mno=sitemap_12",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "taean-newlywed-loan-interest",
+    title: "태안군 신혼부부 주택자금 대출이자 지원",
+    agencyType: "기초",
+    agencyName: "태안군",
+    region: { sido: "충청남도", sigungu: "태안군" },
+    stages: ["임신준비"],
+    category: "주거",
+    summary: "태안군 신혼부부 대상 주택매입·전세자금 대출이자 연최대 100만원 지원",
+    benefit:
+      "연간 최대 100만원(자녀 1인당 10만원씩 가산), 최장 3년간 연 1회 지원. 2026년부터 전세자금뿐 아니라 주택매입자금까지 지원 확대.",
+    eligibility: {
+      incomePercentMax: 180,
+      note: "최근 7년 이내 혼인신고한 만 18~45세 무주택 부부, 신청일 기준 부부 모두 태안군 거주. 대상 주택: 전용 85㎡ 이하이면서 매입가 4억원 이하 또는 전세보증금 3억원 이하(오피스텔 포함).",
+    },
+    applicationMethod: "주소지 읍·면사무소 방문 신청",
+    applicationPeriod: "명시 없음(2026년부터 매입자금까지 확대 시행)",
+    officialLink:
+      "https://www.taean.go.kr/cop/bbs/BBSMSTR_000000000040/selectBoardArticle.do?nttId=1514298532&mno=sitemap_12",
     lastVerifiedAt: "2026-08-10",
   },
 ];
