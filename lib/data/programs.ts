@@ -8583,6 +8583,46 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.icbp.go.kr/bbs/bbsMsgDetail.do?bcd=branch_notice&msg_seq=4380",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 인천광역시 계양구 =====
+  // 출처: 계양구 "아이조아계양" 출산정보통합 포털(gyeyang.go.kr), 2026-08-10 확인(사용자 제공 링크로 재조사).
+  // 참고: 같은 포털의 "출산·입양 장려금(계양구)"과 "다자녀가정 양육비(계양구)"는 2024년 12월 31일 이전
+  // 출생아까지만 지원하고 일몰된 폐지 사업으로 확인되어 반영하지 않음.
+  {
+    id: "gyeyang-dad-parental-leave-incentive",
+    title: "아빠육아휴직장려금(계양구)",
+    agencyType: "기초",
+    agencyName: "계양구",
+    region: { sido: "인천광역시", sigungu: "계양구" },
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "계양구 거주 아빠 육아휴직자에게 월 최대 50만원씩 최대 6개월 지원",
+    benefit: "매월 최대 50만원씩 6개월간 지원(최대 300만원). 육아휴직급여가 통상임금 100%로 지급되는 앞의 6개월은 제외하고, 80%로 전환되는 7개월차부터의 기간에 대해 지급.",
+    eligibility: {
+      note: "신청일 기준 1년 이상 계속 계양구에 주민등록을 둔 남성 근로자로, 육아휴직 대상 아동과 동일 세대 주민등록, 고용보험법 제70조 지급요건 충족.",
+    },
+    applicationMethod: "계양구청 여성보육과 출산정책팀 방문 신청(지원신청서, 육아휴직급여 지급결정통지서 제출)",
+    applicationPeriod: "육아휴직 시작일 이후 7개월부터 육아휴직 종료일 이후 12개월 이내",
+    officialLink: "https://www.gyeyang.go.kr/open_content/childbirth/family/dad.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "gyeyang-oriental-infertility-support",
+    title: "계양구 난임부부 지원사업(한방)",
+    agencyType: "기초",
+    agencyName: "계양구",
+    region: { sido: "인천광역시", sigungu: "계양구" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "계양구 난임부부에게 한약재 치료비 최대 150만원 지원",
+    benefit: "3개월간 한약재 지원(1인당 150만원 범위 내, 자부담 10% 범위 내 납부 후 치료 완료 시 환급), 치료 종료 후 3개월간 임신여부 추적관찰.",
+    eligibility: {
+      note: "신청일 기준 부부 중 1인 이상이 대한민국 국적 및 계양구 주민등록·실거주하는 난임부부(사실혼 포함). 여성은 10년 이내 난임진단서, 남성은 난임진단서상 남성요인 또는 정액검사 소견 필요.",
+    },
+    applicationMethod: "계양구보건소 1층 모자보건실 방문 신청",
+    applicationPeriod: "연중 상시(선착순 마감)",
+    officialLink: "https://www.gyeyang.go.kr/open_content/childbirth/pregnancy/prepare_oriental.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
   // ===== 인천광역시 서해구(옛 서구) =====
   // 출처: 서해구청 공식 홈페이지(seohae.go.kr), 2026-08-10 확인. 2026년 7월 1일 옛 인천 서구에서
   // 검단 지역이 검단구로 분리되며 명칭 변경.
