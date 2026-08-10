@@ -8713,6 +8713,28 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.ongjin.go.kr/open_content/main/environment/welfare/population.jsp",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 인천광역시 검단구 =====
+  // 출처: 검단구보건소 공식 홈페이지(geomdan.go.kr), 2026-08-10 확인(사용자 제공 링크로 재조사).
+  // 참고: 복지정책과 소관 "복지" 섹션(main/part/welfare.jsp)은 여전히 "페이지 준비중" 상태로, 이 사업 외
+  // 확인 가능한 자체(구비) 사업은 없음(신설구, 향후 콘텐츠 보강 시 재확인 필요).
+  {
+    id: "geomdan-oriental-infertility-support",
+    title: "검단구 한의약 난임치료 지원사업",
+    agencyType: "기초",
+    agencyName: "검단구",
+    region: { sido: "인천광역시", sigungu: "검단구" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "검단구 난임부부에게 한약재 치료비 150만원 지원",
+    benefit: "3개월간 한약 지원(1인당 150만원), 치료 종료 후 3개월간 임신여부 확인. 치료 기간 중 양방난임시술(체외수정·인공수정) 병행 불가.",
+    eligibility: {
+      note: "신청일 기준 검단구에 주민등록을 두고 거주하는 난임진단 부부(사실혼 포함).",
+    },
+    applicationMethod: "검단구보건소 건강증진과 방문 신청(주민등록등본, 난임진단서, AMH·정액검사결과지 제출)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.geomdan.go.kr/clinic/business/mathernal_child/oriental.jsp",
+    lastVerifiedAt: "2026-08-10",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
