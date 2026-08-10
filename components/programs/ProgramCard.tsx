@@ -45,7 +45,11 @@ export function ProgramCard({
     <Card compact>
       <div className="flex h-full flex-col">
         <div className="mb-1.5 flex flex-wrap items-center gap-2">
-          <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
+          <AgencyBadge
+            agencyType={program.agencyType}
+            agencyName={program.agencyName}
+            region={program.region}
+          />
           <span className="text-[13px] text-brown/60">{program.category}</span>
           {showEligibilityWarning && needsEligibilityCheck(program) && (
             <span className="inline-flex items-center rounded-full bg-soft-yellow px-2 py-0.5 text-[13px] font-bold text-brown">

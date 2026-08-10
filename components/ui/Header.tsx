@@ -1,19 +1,10 @@
 import Link from "next/link";
 import { getCoveredSigungu } from "@/lib/coverage";
 import { regions } from "@/lib/data/regions";
+import { shortSidoLabel } from "@/lib/regionLabels";
 
 function shortRegionLabel(name: string): string {
   return name.replace(/(시|군|구)$/, "");
-}
-
-const SIDO_SHORT_LABELS: Record<string, string> = {
-  서울특별시: "서울",
-  부산광역시: "부산",
-  강원특별자치도: "강원",
-};
-
-function shortSidoLabel(sido: string): string {
-  return SIDO_SHORT_LABELS[sido] ?? sido.replace(/(특별자치도|특별자치시|광역시|특별시)$/, "");
 }
 
 function LocationPinIcon() {

@@ -23,7 +23,11 @@ export default async function ProgramDetailPage({
   return (
     <main className="mx-auto max-w-[800px] px-6 py-12">
       <div className="mb-3 flex items-center gap-2">
-        <AgencyBadge agencyType={program.agencyType} agencyName={program.agencyName} />
+        <AgencyBadge
+          agencyType={program.agencyType}
+          agencyName={program.agencyName}
+          region={program.region}
+        />
         <span className="text-[13px] text-brown/60">{program.category}</span>
       </div>
       <h1 className="font-display text-[32px] text-brown">{program.title}</h1>
