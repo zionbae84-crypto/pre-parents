@@ -7287,6 +7287,54 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.hongcheon.go.kr/health/selectBbsNttView.do?key=881&bbsNo=122&nttNo=122986",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 강원특별자치도 속초시 =====
+  // 출처: 속초시청 공식 홈페이지(sokcho.go.kr/sc/fields/welfare/population/birth), 2026-08-10 확인(사용자 제공 링크).
+  // 참고: 같은 페이지에 안내된 "산모신생아 건강관리지원 본인부담금 지원"과 "출산 후 의료비 및 약제비 지원
+  // (15/20/30만원)"은 강원도 광역 사업과 금액·조건이 동일해 중복 등록하지 않음.
+  {
+    id: "sokcho-birth-grant",
+    title: "속초시 출산장려금",
+    agencyType: "기초",
+    agencyName: "속초시",
+    region: { sido: "강원특별자치도", sigungu: "속초시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "속초시 출생아 가정에 출생순위별 최대 200만원 지급",
+    benefit: "첫째아 50만원, 둘째아 70만원, 셋째아 100만원, 넷째아 이상 200만원을 1회 현금 지급.",
+    eligibility: {
+      note: "출생일 기준 6개월 전부터 신청일 현재까지 속초시에 주민등록을 두고 출생아와 함께 거주하는 부 또는 모(거주기간 6개월 미만인 경우 6개월 경과 후 지원).",
+    },
+    applicationMethod: "관할 동 주민센터 방문(출생신고 시 출산서비스 통합처리 신청서 작성)",
+    applicationPeriod: "명시 없음(출생신고 시 신청)",
+    officialLink: "https://www.sokcho.go.kr/sc/fields/welfare/population/birth",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 500000 },
+        { orderMin: 2, amount: 700000 },
+        { orderMin: 3, amount: 1000000 },
+        { orderMin: 4, amount: 2000000 },
+      ],
+    },
+  },
+  {
+    id: "sokcho-newborn-credit-union-grant",
+    title: "신생아 출산축하금 지원(속초신협 업무협약)",
+    agencyType: "기초",
+    agencyName: "속초시",
+    region: { sido: "강원특별자치도", sigungu: "속초시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "속초시 신생아 명의 적금 통장 개설 시 10만원 입금 지원",
+    benefit: "출생신고 후 3개월 이내 출생아 명의 통장(평생어부바 새희망적금) 개설 시 1주일 내 1인당 10만원 입금.",
+    eligibility: {
+      note: "신청일 기준 3개월 이내 속초시에 출생신고한 신생아.",
+    },
+    applicationMethod: "속초신협 방문 통장 개설(자치행정과 지역소멸대응팀 033-639-2136 문의)",
+    applicationPeriod: "출생신고 후 3개월 이내",
+    officialLink: "https://www.sokcho.go.kr/sc/fields/welfare/population/birth",
+    lastVerifiedAt: "2026-08-10",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
