@@ -6878,6 +6878,415 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.gijang.go.kr/index.gijang?menuCd=DOM_000000402001001002",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 강원특별자치도 =====
+  // 출처: 강원특별자치도 복지포털(state.gwd.go.kr) 및 시군 보건소 페이지 교차 확인, 2026-08-10 확인.
+  // 육아기본수당·본인부담금지원·산후건강관리지원·친환경농산물 지원사업은 18개 시군(친환경농산물은 횡성군
+  // 제외) 전역에서 공통 확인되어 광역 사업으로 반영.
+  {
+    id: "gangwon-basic-childcare-allowance",
+    title: "강원특별자치도 육아기본수당",
+    agencyType: "광역",
+    agencyName: "강원특별자치도",
+    region: { sido: "강원특별자치도" },
+    stages: ["영유아기", "유아"],
+    category: "현금지원",
+    summary: "만 1~8세 아동에게 국가 부모급여 종료 이후 이어지는 현금 지원(최대 월 50만원)",
+    benefit:
+      "국가 부모급여(0~11개월)와 별개로 강원도 자체 예산으로 12~47개월 월 50만원, 48~71개월 월 30만원, 72~95개월 월 10만원을 매월 현금 지급(소득 무관, 전 가구 동일).",
+    eligibility: {
+      childAgeMonthsMin: 12,
+      childAgeMonthsMax: 95,
+      note: "2019년 1월 1일 이후 출생아, 부모(또는 주 양육자) 중 1인이 신청일 기준 1년 이상 강원특별자치도 계속 거주.",
+    },
+    applicationMethod: "거주지 읍·면·동 행정복지센터 방문 또는 온라인(강원디지털행정서비스 easy.gwd.go.kr, 도민앱 \"우리도\")",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://state.gwd.go.kr/portal/partinfo/welfare/child/nurtureCare",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "gangwon-postpartum-care-copay-support",
+    title: "산모·신생아 건강관리서비스 본인부담금 지원(강원도)",
+    agencyType: "광역",
+    agencyName: "강원특별자치도",
+    region: { sido: "강원특별자치도" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "국가바우처 본인부담금의 90%를 강원도가 추가 지원",
+    benefit: "표준서비스 본인부담금 1인 10일 최대 20만원, 큰아이 돌봄 부가서비스 1명 최대 9만원·2명 이상 최대 14만원을 각 90% 지원.",
+    eligibility: {
+      note: "신청일 기준 도내 6개월 이상 계속 거주하는 국가 산모신생아 건강관리 지원사업 대상자.",
+    },
+    applicationMethod: "서비스 이용 종료 후 관할 보건소 신청",
+    applicationPeriod: "서비스 이용 마지막일 기준 30일 이내",
+    officialLink: "https://state.gwd.go.kr/portal/partinfo/health/motherandson/copaycare",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 참고: 홍천군은 이 사업을 자체 강화형 "2026년 홍천군 산후조리비용지원사업"(최대 100만원)으로 대체
+  // 운영하고 있어, 홍천군 거주자는 이 사업 대신 홍천군 자체 사업이 적용될 수 있음(hongcheon-postpartum-care-expense 참고).
+  {
+    id: "gangwon-postpartum-health-management-cash",
+    title: "산후 건강관리 지원(강원도)",
+    agencyType: "광역",
+    agencyName: "강원특별자치도",
+    region: { sido: "강원특별자치도" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "강원도 출산모에게 출생순위별 최대 30만원 현금 지원",
+    benefit: "첫째 최대 15만원, 둘째 최대 20만원, 셋째 이상 최대 30만원 현금 지급.",
+    eligibility: {
+      note: "도내 6개월 이상 거주 출산모. 홍천군은 자체 강화형 산후조리비용지원사업으로 대체 운영.",
+    },
+    applicationMethod: "관할 보건소 모성실 방문 신청(영수증·진료비 세부내역서·통장사본 지참)",
+    applicationPeriod: "출산 후 6개월 이내",
+    officialLink: "https://www.taebaek.go.kr/www/contents.do?key=229",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 150000 },
+        { orderMin: 2, amount: 200000 },
+        { orderMin: 3, amount: 300000 },
+      ],
+    },
+  },
+  {
+    id: "gangwon-pregnant-eco-friendly-produce",
+    title: "강원특별자치도 임산부 친환경농산물 지원사업",
+    agencyType: "광역",
+    agencyName: "강원특별자치도",
+    region: { sido: "강원특별자치도" },
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "임신부·출산모에게 연 24만원 상당 친환경농산물 지원(횡성군 제외)",
+    benefit: "1인당 24만원 상당 친환경농산물·유기가공식품 지원(본인부담 4만8천원, 20%), 에코이몰 등 온라인 통합몰에서 품목 선택·주문.",
+    eligibility: {
+      note: "임신 중이거나 2025년 1월 1일 이후 출산한 산모로, 횡성군을 제외한 도내 17개 시·군 거주자(영양플러스·농식품바우처 중복 불가). 연 1회 공고 기간 내 신청.",
+    },
+    applicationMethod: "온라인 통합몰(에코이몰 등) 신청",
+    applicationPeriod: "연 1회 공고 기간 내(통상 매년 상반기, 시·군별 공고 확인)",
+    officialLink: "https://state.gwd.go.kr/portal/briefing/pressRelease/newpressRelease?seq=8422",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 춘천시 =====
+  // 출처: 춘천시청 공식 홈페이지(chuncheon.go.kr), 2026-08-10 확인.
+  {
+    id: "chuncheon-birth-grant",
+    title: "춘천시 출생축하금(출산장려금)",
+    agencyType: "기초",
+    agencyName: "춘천시",
+    region: { sido: "강원특별자치도", sigungu: "춘천시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "춘천시 출생아 가정에 출생순위별 최대 100만원 지급",
+    benefit: "첫째 50만원, 둘째 70만원, 셋째 이상 100만원을 1회 현금 지급.",
+    eligibility: {
+      note: "12개월 이내 영아, 출생일(입양신고일) 기준 6개월 전부터 계속 춘천시 주민등록·거주.",
+    },
+    applicationMethod: "읍·면·동 행정복지센터 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생 후 12개월 이내",
+    officialLink: "https://www.chuncheon.go.kr/new-welfare/low-birth/care/childcare-subsidy/",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 500000 },
+        { orderMin: 2, amount: 700000 },
+        { orderMin: 3, amount: 1000000 },
+      ],
+    },
+  },
+  {
+    id: "chuncheon-postpartum-care-expense",
+    title: "춘천시 산후조리비 지원",
+    agencyType: "기초",
+    agencyName: "춘천시",
+    region: { sido: "강원특별자치도", sigungu: "춘천시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "춘천시 출산모에게 산후조리비 50만원(다태아 100만원) 지급",
+    benefit: "산후조리비 50만원(다태아 100만원) 현금 지급.",
+    eligibility: {
+      note: "춘천시에 6개월 이상 거주한 출산 산모.",
+    },
+    applicationMethod: "보건소 방문 또는 온라인 신청",
+    applicationPeriod: "출산일 기준 6개월 이내",
+    officialLink: "https://www.chuncheon.go.kr/new-welfare/life/pregnancy-birth/health-policy/",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 원주시 =====
+  // 출처: 원주시청 공식 홈페이지(wonju.go.kr), 2026-08-10 확인.
+  {
+    id: "wonju-birth-grant",
+    title: "원주시 출생축하금",
+    agencyType: "기초",
+    agencyName: "원주시",
+    region: { sido: "강원특별자치도", sigungu: "원주시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "원주시 출생아 가정에 출생순위별 최대 100만원 지급",
+    benefit: "첫째 30만원, 둘째 50만원, 셋째 이상 100만원을 1회 현금 지급.",
+    eligibility: {
+      note: "원주시 관내 주민등록을 둔 출생아의 부 또는 모.",
+    },
+    applicationMethod: "읍·면·동 행정복지센터 방문 신청(출생신고 시)",
+    applicationPeriod: "명시 없음(출생신고 시 신청)",
+    officialLink: "https://www.wonju.go.kr/welfare/contents.do?key=2268",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 300000 },
+        { orderMin: 2, amount: 500000 },
+        { orderMin: 3, amount: 1000000 },
+      ],
+    },
+  },
+  {
+    id: "wonju-postpartum-care-expense",
+    title: "원주시 산후조리비 지원",
+    agencyType: "기초",
+    agencyName: "원주시",
+    region: { sido: "강원특별자치도", sigungu: "원주시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "원주시 출산모에게 산후조리비 최대 50만원 지급",
+    benefit: "산모 1인당 50만원 이내 실비 지급.",
+    eligibility: {
+      note: "신생아 출생일 기준 원주시 주민등록 및 원주시 출생등록 산모.",
+    },
+    applicationMethod: "원주시보건소 모자보건실 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출산(사산) 후 12개월 이내(1인 1회)",
+    officialLink: "https://www.wonju.go.kr/health/contents.do?key=6405",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 강릉시 =====
+  // 출처: 강릉시청 공식 홈페이지(gn.go.kr), 2026-08-10 확인.
+  {
+    id: "gangneung-birth-grant",
+    title: "강릉시 출산지원금",
+    agencyType: "기초",
+    agencyName: "강릉시",
+    region: { sido: "강원특별자치도", sigungu: "강릉시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "강릉시 출생아 가정에 출생순위별 최대 100만원 지급",
+    benefit: "첫째 30만원, 둘째 50만원, 셋째 이상 100만원을 1회 현금 지급.",
+    eligibility: {
+      note: "부 또는 모가 강릉시 내 주민등록을 두고 강릉시에 출생신고한 출생아.",
+    },
+    applicationMethod: "읍·면·동사무소 방문 또는 정부24 온라인 신청",
+    applicationPeriod: "출생신고 후 1개월 이내",
+    officialLink: "https://www.gn.go.kr/phc/contents.do?key=5963",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 300000 },
+        { orderMin: 2, amount: 500000 },
+        { orderMin: 3, amount: 1000000 },
+      ],
+    },
+  },
+  // ===== 강원특별자치도 동해시 =====
+  // 출처: 동해시 「인구정책지원 조례」(2025.1.1 시행) 및 2차 출처(모두의혜택 등) 교차 확인, 2026-08-10 확인.
+  // 참고: 동해시 공식(dh.go.kr) 원문 페이지의 직접 텍스트 확인에는 실패했으나, 조례 시행 사실과 금액이
+  // 2차 출처로 일관되게 확인되어 반영. 정확한 신청 절차는 담당부서(행정과 033-530-2053) 확인 권장.
+  {
+    id: "donghae-birth-grant",
+    title: "동해시 출산장려금",
+    agencyType: "기초",
+    agencyName: "동해시",
+    region: { sido: "강원특별자치도", sigungu: "동해시" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "동해시 출생아 가정에 출생순위별 최대 180만원을 분할 지급",
+    benefit: "첫째 60만원(월 10만원×6회), 둘째 120만원(월 10만원×12회), 셋째 이상 180만원(월 10만원×18회)을 매월 20일 계좌로 분할 지급.",
+    eligibility: {
+      note: "출산일(입양일) 기준 동해시 주민등록을 둔 영아의 부 또는 모.",
+    },
+    applicationMethod: "동해시청 행정과 방문 신청(033-530-2053, 온라인 신청 불가)",
+    applicationPeriod: "명시 없음(관할 부서 확인 권장)",
+    officialLink: "https://www.dh.go.kr",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 600000 },
+        { orderMin: 2, amount: 1200000 },
+        { orderMin: 3, amount: 1800000 },
+      ],
+    },
+  },
+  // ===== 강원특별자치도 태백시 =====
+  // 출처: 태백시청 공식 홈페이지(taebaek.go.kr), 2026-08-10 확인. 태백시는 인구소멸위기지역으로 지정.
+  {
+    id: "taebaek-birth-grant",
+    title: "태백시 출산양육비 지원",
+    agencyType: "기초",
+    agencyName: "태백시",
+    region: { sido: "강원특별자치도", sigungu: "태백시" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "태백시 출생아 가정에 출생순위별 최대 360만원 지급",
+    benefit: "첫째 50만원(1회), 둘째 100만원(1회), 셋째 이상 360만원(30만원×12회 분할).",
+    eligibility: {
+      note: "출산일 현재 태백시 주민등록을 두고 1년 전부터 계속 거주.",
+    },
+    applicationMethod: "동 행정복지센터 방문 신청(출생신고 시 통합신청)",
+    applicationPeriod: "명시 없음",
+    officialLink: "https://www.taebaek.go.kr/health/contents.do?key=1572",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 500000 },
+        { orderMin: 2, amount: 1000000 },
+        { orderMin: 3, amount: 3600000 },
+      ],
+    },
+  },
+  {
+    id: "taebaek-public-postpartum-center-discount",
+    title: "태백시 공공산후조리원 이용료 90% 감면",
+    agencyType: "기초",
+    agencyName: "태백시",
+    region: { sido: "강원특별자치도", sigungu: "태백시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "태백시 공공산후조리원 이용료를 90% 감면(실부담 18만원)",
+    benefit: "2주 이용료 180만원 중 90%를 감면(태백시민 실부담 18만원).",
+    eligibility: {
+      note: "산모 또는 배우자가 신청일 기준 태백시에 6개월 이상 주민등록.",
+    },
+    applicationMethod: "태백시 공공산후조리원 홈페이지(taebaek-mom.or.kr) 또는 전화 예약(033-806-7737)",
+    applicationPeriod: "상시 예약 가능",
+    officialLink: "https://www.taebaek.go.kr/health/index.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 삼척시 =====
+  // 출처: 삼척시청 공식 홈페이지(samcheok.go.kr), 2026-08-10 확인. 삼척시는 인구소멸위기지역으로 지정.
+  // 참고: 삼척시 페이지에 함께 안내된 "산후 건강관리 지원(15/20/30만원)"과 "산모신생아 건강관리 본인부담금
+  // 지원"은 강원도 광역 사업과 금액·조건이 동일해 중복 등록하지 않음(위 강원도 광역 항목 참고).
+  {
+    id: "samcheok-birth-grant",
+    title: "삼척시 출산장려금(2년 거주 시 100% 가산)",
+    agencyType: "기초",
+    agencyName: "삼척시",
+    region: { sido: "강원특별자치도", sigungu: "삼척시" },
+    stages: ["출생출산", "영유아기"],
+    category: "현금지원",
+    summary: "삼척시 출생아 가정에 출생순위별 최대 200만원, 2년 거주 시 동일액 추가 지급",
+    benefit: "첫째 100만원, 둘째 150만원, 셋째 이상 200만원 지급. 지급일로부터 2년 이상 계속 거주 시 동일 금액을 100% 추가 지급(사실상 2배).",
+    eligibility: {
+      note: "삼척시에 주소를 두고 출산한 신생아의 부 또는 모.",
+    },
+    applicationMethod: "읍·면·동 행정복지센터 방문 신청",
+    applicationPeriod: "명시 없음",
+    officialLink: "https://www.samcheok.go.kr/specialty/00466/01252.web",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1000000 },
+        { orderMin: 2, amount: 1500000 },
+        { orderMin: 3, amount: 2000000 },
+      ],
+    },
+  },
+  {
+    id: "samcheok-newborn-insurance",
+    title: "삼척시 출생아 건강보장보험료 지원",
+    agencyType: "기초",
+    agencyName: "삼척시",
+    region: { sido: "강원특별자치도", sigungu: "삼척시" },
+    stages: ["출생출산"],
+    category: "기타",
+    summary: "삼척시 출생아에게 월 2만원 상당 건강보장보험 가입 지원",
+    benefit: "월 2만원 상당 보험료 지원(3년 납입, 6년 보장).",
+    eligibility: {
+      note: "신청일 기준 삼척시에 6개월 이상 주소를 보유한 자의 출생아.",
+    },
+    applicationMethod: "읍·면·동 행정복지센터 방문 신청",
+    applicationPeriod: "명시 없음",
+    officialLink: "https://www.samcheok.go.kr/specialty/00466/01252.web",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "samcheok-public-postpartum-center-full-support",
+    title: "삼척의료원 공공산후조리원 이용료 100% 지원",
+    agencyType: "기초",
+    agencyName: "삼척시",
+    region: { sido: "강원특별자치도", sigungu: "삼척시" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "삼척시 산모에게 공공산후조리원 이용료 전액(180만원) 지원",
+    benefit: "2주 이용료 180만원 전액(100%) 지원.",
+    eligibility: {
+      note: "출산일 현재 삼척시에 1년 이상 주민등록을 두고 거주하는 산모.",
+    },
+    applicationMethod: "임신 32주부터 사전예약(033-570-7550)",
+    applicationPeriod: "임신 32주부터 예약 가능",
+    officialLink: "https://www.samcheok.go.kr/specialty/00466/01252.web",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 홍천군 =====
+  // 출처: 홍천군 「출산·양육 지원 조례」(elis.go.kr, 조례번호 42720126330013) 및 홍천군보건소 공식 홈페이지
+  // (hongcheon.go.kr), 2026-08-10 확인. 홍천군은 인구감소지역으로 지정.
+  {
+    id: "hongcheon-birth-grant",
+    title: "홍천군 출산장려금",
+    agencyType: "기초",
+    agencyName: "홍천군",
+    region: { sido: "강원특별자치도", sigungu: "홍천군" },
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "홍천군 출생아 가정에 출생순위별 최대 600만원을 분할 지급",
+    benefit: "첫째 200만원(연 100만원×2년), 둘째 300만원(연 100만원×3년), 셋째 이상 600만원(연 200만원×3년) 분할 지급.",
+    eligibility: {
+      note: "출생일 기준 1년 전부터 신청일까지 홍천군 관내 주민등록 거주 부모(1년 미만 거주 시 1년 경과 후 지원).",
+    },
+    applicationMethod: "읍·면 행정복지센터 방문 신청(출생신고 시 통합신청 가능)",
+    applicationPeriod: "명시 없음",
+    officialLink: "https://www.hongcheon.go.kr",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 2000000 },
+        { orderMin: 2, amount: 3000000 },
+        { orderMin: 3, amount: 6000000 },
+      ],
+    },
+  },
+  {
+    id: "hongcheon-newborn-safety-insurance",
+    title: "홍천군 출생아 안전보험 지원",
+    agencyType: "기초",
+    agencyName: "홍천군",
+    region: { sido: "강원특별자치도", sigungu: "홍천군" },
+    stages: ["출생출산"],
+    category: "기타",
+    summary: "홍천군 둘째 이상 출생아에게 안전보험 가입 지원",
+    benefit: "1인당 2만원 기준(최대 3만원 이내) 보험료 지원, 5년 지원·10년 보장.",
+    eligibility: {
+      note: "홍천군 주민등록을 둔 둘째 자녀부터.",
+    },
+    applicationMethod: "읍·면사무소 방문 신청(출생신고 시 통합신청)",
+    applicationPeriod: "명시 없음",
+    officialLink: "https://www.hongcheon.go.kr",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // 참고: 강원도 광역 "산후 건강관리 지원"(15/20/30만원)을 대체하는 홍천군 자체 강화형 사업.
+  {
+    id: "hongcheon-postpartum-care-expense",
+    title: "홍천군 산후조리비용지원사업",
+    agencyType: "기초",
+    agencyName: "홍천군",
+    region: { sido: "강원특별자치도", sigungu: "홍천군" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "홍천군 출산모에게 산후조리비 실비 최대 100만원 지원",
+    benefit: "산후조리비용 실비 최대 100만원 지원(첫만남이용권 등 타 사업 결제분 제외, 본인 직접부담분만).",
+    eligibility: {
+      note: "신청일 기준 홍천군에 6개월 이상 계속 거주하며 홍천군에 출생신고한 산모.",
+    },
+    applicationMethod: "보건소 모자보건실 방문 신청(033-430-4048, 산후조리원 이용확인서·영수증·통장사본·등본 필요)",
+    applicationPeriod: "출산일로부터 6개월 이내",
+    officialLink: "https://www.hongcheon.go.kr/health/selectBbsNttView.do?key=881&bbsNo=122&nttNo=122986",
+    lastVerifiedAt: "2026-08-10",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
