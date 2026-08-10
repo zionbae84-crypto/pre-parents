@@ -8071,6 +8071,119 @@ export const programs: SupportProgram[] = [
     officialLink: "https://www.inje.go.kr/health/business/maternalchildhealth",
     lastVerifiedAt: "2026-08-10",
   },
+  // ===== 강원특별자치도 고성군 =====
+  // 출처: 고성군청·보건소 공식 홈페이지(gwgs.go.kr), 2026-08-10 확인.
+  // 주의: "출산장려금 200/400/1000만원(2배 확대)" 관련 언론기사는 경상남도 고성군(055 지역번호) 기사이며
+  // 강원특별자치도 고성군(033 지역번호)과 무관함을 확인해 반영하지 않음.
+  {
+    id: "gwgoseong-birth-grant",
+    title: "고성군 출산장려금",
+    agencyType: "기초",
+    agencyName: "고성군",
+    region: { sido: "강원특별자치도", sigungu: "고성군" },
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "고성군 출생아 가정에 출생순위별 최대 460만원을 다년간 분할 지급",
+    benefit: "첫째 140만원(일시금 20만원+월 10만원×12개월), 둘째 290만원(일시금 50만원+월 10만원×24개월), 셋째 이상 460만원(일시금 100만원+월 10만원×36개월). 입양아 포함.",
+    eligibility: {
+      note: "출생일 기준 부모 중 1인이 고성군에 3개월 이상 거주(또는 출생신고일로부터 100일 이상 거주). 아동이 타 지역으로 전출 시 지급 중단.",
+    },
+    applicationMethod: "거주 읍·면 행정복지센터 민원팀 방문 신청",
+    applicationPeriod: "명시 없음(거주요건 충족 시 수시 신청)",
+    officialLink: "https://www.gwgs.go.kr/kor/sub01_0501.do",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 1400000 },
+        { orderMin: 2, amount: 2900000 },
+        { orderMin: 3, amount: 4600000 },
+      ],
+    },
+  },
+  {
+    id: "gwgoseong-breast-pump-rental",
+    title: "고성군 유축기 대여",
+    agencyType: "기초",
+    agencyName: "고성군",
+    region: { sido: "강원특별자치도", sigungu: "고성군" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "고성군 임산부에게 유축기 최대 6개월 무료 대여",
+    benefit: "모유수유를 위한 유축기 대여, 최대 6개월.",
+    eligibility: {
+      note: "고성군보건소 등록 임산부.",
+    },
+    applicationMethod: "보건소 사전예약 필수(033-680-3964)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://www.gwgs.go.kr/health/sub03_040801.do",
+    lastVerifiedAt: "2026-08-10",
+  },
+  // ===== 강원특별자치도 양양군 =====
+  // 출처: 양양군보건소·양양군육아종합지원센터 공식 홈페이지, 2026-08-10 확인. 출산장려금은 강원도 내
+  // 최고 수준으로 보도된 금액(첫째 220만원)과 공식 페이지 수치가 정확히 일치해 확인됨.
+  {
+    id: "yangyang-birth-grant",
+    title: "양양군 출산장려금 지원사업",
+    agencyType: "기초",
+    agencyName: "양양군",
+    region: { sido: "강원특별자치도", sigungu: "양양군" },
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "양양군 출생아 가정에 출생순위별 최대 1,900만원을 다년간 분할 지급",
+    benefit:
+      "출산축하금 100만원(1회, 출생순위 무관)에 더해 출산장려금을 다년간 분할 지급 — 첫째 120만원(월 10만원×12개월, 총 220만원), 둘째 240만원(월 20만원×12개월, 총 340만원), 셋째 720만원(월 30만원×24개월, 총 820만원), 넷째 이상 1,800만원(월 50만원×36개월, 총 1,900만원). 강원도 광역 육아기본수당과 별개로 중복 수령 가능.",
+    eligibility: {
+      note: "출산일 1년 전부터 양양군에 주민등록을 두고 실거주.",
+    },
+    applicationMethod: "출생신고 시 해당 읍·면사무소 신청",
+    applicationPeriod: "출산 후 30일 이내",
+    officialLink: "https://health.yangyang.go.kr/gw/healthcenter/service_mchealth",
+    lastVerifiedAt: "2026-08-10",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 2200000 },
+        { orderMin: 2, amount: 3400000 },
+        { orderMin: 3, amount: 8200000 },
+        { orderMin: 4, amount: 19000000 },
+      ],
+    },
+  },
+  {
+    id: "yangyang-public-postpartum-center",
+    title: "양양군 공공산후조리원",
+    agencyType: "기초",
+    agencyName: "양양군",
+    region: { sido: "강원특별자치도", sigungu: "양양군" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "양양군 공공산후조리원 이용료를 거주기간별로 최대 80% 감면",
+    benefit: "기본요금 2주 180만원(1주 90만원). 거주기간별 감면 — 1년 이상 80%(2주 36만원), 6개월~1년 60%, 6개월 미만 40%. 국가유공자·기초수급자·차상위·다문화·장애인(1~3급)·한부모 등 90% 감면. 다태아·둘째아 이상 추가 감면. 인근 고성·인제 등 산모는 30% 감면.",
+    eligibility: {
+      note: "이용 희망 산모(거주기간에 따라 감면율 차등).",
+    },
+    applicationMethod: "온라인 접수 또는 전화 상담·예약(010-7161-9024)",
+    applicationPeriod: "출산 전후 상시 예약 가능",
+    officialLink: "https://childcare.yangyang.go.kr/childcare/momcare/operation/fee",
+    lastVerifiedAt: "2026-08-10",
+  },
+  {
+    id: "yangyang-breast-pump-rental",
+    title: "양양군 유축기 대여",
+    agencyType: "기초",
+    agencyName: "양양군",
+    region: { sido: "강원특별자치도", sigungu: "양양군" },
+    stages: ["출생출산"],
+    category: "돌봄서비스",
+    summary: "양양군 임산부에게 유축기 2개월 무료 대여",
+    benefit: "유축기 2개월 대여(6개월 모유수유 권장, 대여 여력이 있으면 연장 가능).",
+    eligibility: {
+      note: "양양군 주민등록 임산부(보건소 등록).",
+    },
+    applicationMethod: "보건소 모자보건실 방문·신청(033-670-1721)",
+    applicationPeriod: "상시 신청 가능",
+    officialLink: "https://health.yangyang.go.kr/gw/healthcenter/service_mchealth",
+    lastVerifiedAt: "2026-08-10",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
