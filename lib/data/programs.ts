@@ -2986,16 +2986,16 @@ export const programs: SupportProgram[] = [
     region: { sido: "경기도" },
     stages: ["임신중", "출생출산"],
     category: "바우처",
-    summary: "임산부에게 친환경농산물 꾸러미 40만원 상당 지원(자부담 8만원)",
+    summary: "임산부에게 친환경농산물 꾸러미 연 24만원 상당 지원(자부담 약 20%)",
     benefit:
-      "총 40만원 상당의 친환경농산물·유기가공식품 꾸러미를 거주지로 배송, 본인부담 20%(8만원)만 납부. 1회 구매 한도 20만원.",
+      "1인당 연간 24만원 상당의 친환경농산물·유기가공식품 꾸러미를 거주지로 배송, 본인부담 20%(약 4만8천원)만 납부(2026년 기준 경기도 31개 시·군 임산부·산모 약 4만8천명 대상, 총 115억원 규모).",
     eligibility: {
       note: "경기도 31개 시·군에 주소지를 둔 임신부 또는 최근 출산한 산모(자녀당 1회만 지원, 영양플러스·농식품바우처 수급자는 제외). 시·군별 예산 내 추첨으로 대상자 선정.",
     },
     applicationMethod: "경기민원24(gg24.gg.go.kr) 온라인 신청 또는 읍·면·동 주민센터 방문 신청",
-    applicationPeriod: "매년 공고에 따라 상이(경기민원24 공고 확인)",
+    applicationPeriod: "매년 6월경 공고·접수(2026년 기준 6.17~6.30 접수, 7.1~12.15 사업 운영), 경기민원24 공고 확인",
     officialLink: "https://gg24.gg.go.kr/svcreqst/selectSvcReqst.do?svc_seq=906",
-    lastVerifiedAt: "2026-08-09",
+    lastVerifiedAt: "2026-08-10",
   },
   {
     id: "gg-iplus-multichild-card",
@@ -3038,6 +3038,27 @@ export const programs: SupportProgram[] = [
     applicationPeriod: "매월 1~15일 접수(전월 신청, 익월 활동 개시)",
     officialLink: "https://www.gg.go.kr/always360/ggCare/alwys360/ggFamCare.jsp",
     lastVerifiedAt: "2026-08-09",
+  },
+  // 출처: 경기도뉴스포털(gnews.gg.go.kr, 경기도청 공식 도메인) 사업 소개 기사, 2026-08-10 확인.
+  // 신청 접수는 위탁 운영기관인 경기도한의사회(ggakomny.or.kr)에서 진행되나, 경기도 자체 예산(2026년
+  // 기준 10억원 규모)으로 운영되는 광역 사업임이 경기도청 공식 기사로 확인되어 반영함.
+  {
+    id: "gg-korean-medicine-infertility-treatment",
+    title: "경기도 난임부부 한의약 지원사업",
+    agencyType: "광역",
+    agencyName: "경기도",
+    region: { sido: "경기도" },
+    stages: ["임신준비"],
+    category: "의료비",
+    summary: "경기도 난임부부에게 한약 치료 3개월(6회)을 무료 지원",
+    benefit: "난임 진단을 받은 여성과 정액검사 결과 기준치 이하인 남성에게 3개월간 한약을 최대 6회까지 무료 지원(병행하는 침·뜸·약침 등 치료의 본인부담금은 별도 부담).",
+    eligibility: {
+      note: "경기도에 거주하는 난임 진단 부부(사실혼 포함, 부부 중 1인만 경기도 거주해도 신청 가능), 나이 제한 없음. 분기별 모집인원 마감 시 조기 마감.",
+    },
+    applicationMethod: "경기도한의사회 홈페이지(ggakomny.or.kr) 온라인 접수(신청서·난임진단서·정액검사결과지 등 제출 후 운영위원회 심의로 선정)",
+    applicationPeriod: "분기별 모집(모집인원 마감 시 조기 마감, 문의 1661-0111)",
+    officialLink: "https://gnews.gg.go.kr/news/news_detail.do?number=202305161540437879C048&s_code=C048&newsType=N",
+    lastVerifiedAt: "2026-08-10",
   },
   // 출처: 수원시청 공식 홈페이지(suwon.go.kr), 2026-08-07 확인
   {
@@ -6938,7 +6959,7 @@ export const programs: SupportProgram[] = [
     },
     applicationMethod: "관할 보건소 모성실 방문 신청(영수증·진료비 세부내역서·통장사본 지참)",
     applicationPeriod: "출산 후 6개월 이내",
-    officialLink: "https://www.taebaek.go.kr/www/contents.do?key=229",
+    officialLink: "https://state.gwd.go.kr/portal/partinfo/health/motherandson/postnatalcare",
     lastVerifiedAt: "2026-08-10",
     birthOrderBenefit: {
       tiers: [
