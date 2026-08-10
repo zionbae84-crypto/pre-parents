@@ -5683,15 +5683,16 @@ export const programs: SupportProgram[] = [
     region: { sido: "경기도", sigungu: "하남시" },
     stages: ["영유아기", "유아"],
     category: "현금지원",
-    summary: "육아휴직 중인 아빠에게 월 30만원씩 최대 5개월(최대 150만원) 지급",
-    benefit: "월 30만원 × 최대 5개월, 최대 150만원 지급.",
+    summary: "육아휴직 중인 아빠에게 월 30만원 이내 최대 6개월(최대 180만원) 지급",
+    benefit:
+      "월 30만원 이내(월 통상임금 초과 불가) × 최대 6개월, 최대 180만원 지급. 하남시는 2023.4.1.부터 자체 조례로 시행 중인 사업으로, 다른 7개 시군(월 30만원×5개월, 최대 150만원, 중위소득 150% 기준)과 지급기간·소득기준이 다르다 — hanam.go.kr key=12207 페이지 기준(2026-08-10 재확인).",
     eligibility: {
-      note: "고용보험 가입, 3개월 이상 육아휴직 사용, 가구소득 기준중위소득 150% 이하, 신청일 기준 해당 시·군에 1년 이상 주민등록(본인 및 자녀).",
+      note: "고용보험법 제70조에 따른 육아휴직급여 지급 대상자, 신청일 기준 1년 이상 하남시 주민등록(본인 및 자녀), 별도 소득기준 없음. 2023.4.1. 이후 육아휴직 해당기간부터 적용(소급적용 불가).",
     },
-    applicationMethod: "경기민원24(gg24.gg.go.kr) 온라인 신청",
-    applicationPeriod: "육아휴직 사용 중 또는 종료 후 신청(접수기간은 경기민원24 공고 확인)",
+    applicationMethod: "주소지 관할 동 행정복지센터 방문 또는 온라인(보조금24) 신청",
+    applicationPeriod: "육아휴직 사용 중 또는 종료 후 신청(소급적용 불가)",
     officialLink: "https://www.hanam.go.kr/www/contents.do?key=12207",
-    lastVerifiedAt: "2026-08-08",
+    lastVerifiedAt: "2026-08-10",
   },
   {
     id: "gg-paternity-leave-incentive-gwangmyeong",
