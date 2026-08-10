@@ -23,6 +23,15 @@ export const regions: RegionEntry[] = [
       "양평군",
     ],
   },
+  {
+    sido: "부산광역시",
+    sigungus: [
+      "중구", "서구", "동구", "영도구", "부산진구",
+      "동래구", "남구", "북구", "해운대구", "사하구",
+      "금정구", "강서구", "연제구", "수영구", "사상구",
+      "기장군",
+    ],
+  },
 ];
 
 export function getSidoList(): string[] {
