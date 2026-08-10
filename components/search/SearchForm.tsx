@@ -37,19 +37,31 @@ function parseIncome(input: string): number | "" {
 
 export function SearchForm({
   onSubmit,
+  initialValues,
 }: {
   onSubmit: (values: SearchFormValues) => void;
+  initialValues?: SearchFormValues;
 }) {
-  const [sido, setSido] = useState(regions[0].sido);
-  const [sigungu, setSigungu] = useState("");
-  const [status, setStatus] = useState<PregnancyStatus>("preparing");
-  const [dueDate, setDueDate] = useState("");
-  const [childAgeMonths, setChildAgeMonths] = useState<number | "">(0);
-  const [motherAge, setMotherAge] = useState<number | "">(30);
-  const [householdSize, setHouseholdSize] = useState<number | "">(3);
-  const [monthlyIncome, setMonthlyIncome] = useState<number | "">(4000000);
-  const [birthOrder, setBirthOrder] = useState<number | "">(1);
-  const [isMultipleBirth, setIsMultipleBirth] = useState(false);
+  const [sido, setSido] = useState(initialValues?.sido ?? regions[0].sido);
+  const [sigungu, setSigungu] = useState(initialValues?.sigungu ?? "");
+  const [status, setStatus] = useState<PregnancyStatus>(
+    initialValues?.stageInput.status ?? "preparing"
+  );
+  const [dueDate, setDueDate] = useState(
+    initialValues?.stageInput.status === "pregnant" ? initialValues.stageInput.dueDate : ""
+  );
+  const [childAgeMonths, setChildAgeMonths] = useState<number | "">(
+    initialValues?.stageInput.status === "born" ? initialValues.stageInput.childAgeMonths : 0
+  );
+  const [motherAge, setMotherAge] = useState<number | "">(initialValues?.motherAge ?? 30);
+  const [householdSize, setHouseholdSize] = useState<number | "">(
+    initialValues?.householdSize ?? 3
+  );
+  const [monthlyIncome, setMonthlyIncome] = useState<number | "">(
+    initialValues?.monthlyIncome ?? 4000000
+  );
+  const [birthOrder, setBirthOrder] = useState<number | "">(initialValues?.birthOrder ?? 1);
+  const [isMultipleBirth, setIsMultipleBirth] = useState(initialValues?.isMultipleBirth ?? false);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
