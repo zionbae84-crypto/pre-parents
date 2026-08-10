@@ -24,7 +24,12 @@ const STATUS_LABEL: Record<PregnancyStatus, string> = {
 };
 
 const labelClass = "mb-2 block text-[15px] font-bold text-brown";
-const fieldClass = "w-full rounded-button border-2 border-brown/20 px-3 py-2";
+const fieldClass =
+  "w-full rounded-button border-2 border-brown/20 bg-white px-3 py-2 shadow-sm outline-none transition-shadow duration-150 focus:border-coral focus:shadow-md";
+const selectedButtonClass =
+  "whitespace-nowrap rounded-button border-2 border-coral bg-coral px-2 py-2 text-center text-[15px] font-bold text-white shadow-[0_3px_10px_rgba(244,112,63,0.35)] transition-shadow duration-150";
+const unselectedButtonClass =
+  "whitespace-nowrap rounded-button border-2 border-brown/20 bg-white px-2 py-2 text-center text-[15px] text-brown shadow-sm transition-shadow duration-150 hover:shadow-md";
 
 function formatIncome(value: number | ""): string {
   return value === "" ? "" : value.toLocaleString("ko-KR");
@@ -123,7 +128,7 @@ export function SearchForm({
 
       <div>
         <label className={labelClass}>현재 상태</label>
-        <div role="radiogroup" aria-label="현재 상태" className="flex flex-wrap gap-2">
+        <div role="radiogroup" aria-label="현재 상태" className="grid grid-cols-3 gap-2">
           {(Object.keys(STATUS_LABEL) as PregnancyStatus[]).map((s) => {
             const selected = status === s;
             return (
@@ -134,11 +139,7 @@ export function SearchForm({
                 aria-pressed={selected}
                 aria-checked={selected}
                 onClick={() => setStatus(s)}
-                className={
-                  selected
-                    ? "rounded-button border-2 border-coral bg-coral px-4 py-2 text-[15px] font-bold text-white"
-                    : "rounded-button border-2 border-brown/20 px-4 py-2 text-[15px] text-brown"
-                }
+                className={selected ? selectedButtonClass : unselectedButtonClass}
               >
                 {STATUS_LABEL[s]}
               </button>
@@ -195,11 +196,7 @@ export function SearchForm({
             role="radio"
             aria-checked={!isMultipleBirth}
             onClick={() => setIsMultipleBirth(false)}
-            className={
-              !isMultipleBirth
-                ? "flex-1 rounded-button border-2 border-coral bg-coral px-3 py-2 text-[15px] font-bold text-white"
-                : "flex-1 rounded-button border-2 border-brown/20 px-3 py-2 text-[15px] text-brown"
-            }
+            className={`flex-1 ${!isMultipleBirth ? selectedButtonClass : unselectedButtonClass}`}
           >
             단태아
           </button>
@@ -208,11 +205,7 @@ export function SearchForm({
             role="radio"
             aria-checked={isMultipleBirth}
             onClick={() => setIsMultipleBirth(true)}
-            className={
-              isMultipleBirth
-                ? "flex-1 rounded-button border-2 border-coral bg-coral px-3 py-2 text-[15px] font-bold text-white"
-                : "flex-1 rounded-button border-2 border-brown/20 px-3 py-2 text-[15px] text-brown"
-            }
+            className={`flex-1 ${isMultipleBirth ? selectedButtonClass : unselectedButtonClass}`}
           >
             쌍둥이 이상
           </button>
@@ -261,7 +254,7 @@ export function SearchForm({
 
       <button
         type="submit"
-        className="rounded-button bg-coral px-6 py-3 font-bold text-white hover:bg-coral-dark"
+        className="rounded-button bg-coral px-6 py-3 font-bold text-white shadow-[0_3px_10px_rgba(244,112,63,0.35)] transition-shadow duration-150 hover:bg-coral-dark hover:shadow-lg"
       >
         내 지원금 찾기
       </button>
