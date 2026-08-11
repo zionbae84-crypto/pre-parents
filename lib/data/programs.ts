@@ -17697,6 +17697,135 @@ export const programs: SupportProgram[] = [
       ],
     },
   },
+  // ===== 제주특별자치도 =====
+  // 출처: 제주특별자치도청 공식 홈페이지(jeju.go.kr), 제주시청·서귀포시청 공식 홈페이지, 2026-08-12 확인.
+  // 제주특별자치도는 2006-07-01 단층제 개편 이후 기초자치단체(제주시·서귀포시·북제주군·남제주군)를
+  // 폐지하고 광역자치단체만 두고 있어, 제주시·서귀포시는 자치권 없는 "행정시"다(2024년부터 기초자치단체
+  // 부활[동제주시·서제주시·서귀포시 3개 구역] 논의가 있었으나 2026-08 기준 2030년으로 연기되어 미시행).
+  // 제주시·서귀포시 각각을 전담 조사했으나 두 곳 모두 독자(시비) 임신·출산·육아 지원사업이 확인되지
+  // 않았고, 확인된 사업은 전부 도비(제주특별자치도) 재원으로 두 행정시에 동일 적용됨 — 세종특별자치시와
+  // 같은 패턴으로 region에 sigungu를 지정하지 않고 도 전체로 반영(제주시/서귀포시 선택 시 모두 노출됨).
+  // 다만 검색 UX상 제주시/서귀포시 선택지는 필요해 regions.ts에는 등록해 둠.
+  //
+  // 보류: 둘째자녀 이상 출산가구 주거임차비 지원(1,400만원) — 해피아이 육아지원금과 병행/택1 관계가
+  // 불명확해 중복 반영 위험으로 보류. 여성 농업인 출산 영농도우미 지원 — 전국 표준사업과 구분 불가로 보류.
+  // 가임력 검사·냉동난자 보조생식술·여성장애인 출산비용 지원은 전국 공통 국비 표준사업으로 판단해 제외.
+  {
+    id: "jj-happy-i-childcare-grant",
+    title: "해피아이 육아지원금",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "현금지원",
+    summary: "출생순위별 500만~1,000만원을 다년간 분할 지급(2026년 개편)",
+    benefit: "첫째아 500만원(5년간 분할, 연차별 차등 배분), 둘째아 이상 1,000만원(9년간 분할, 2026.1.1. 이후 출생·입양부터 5년에서 9년으로 확대). 2025.12.31. 이전 출생 둘째아 이상은 기존 5년(연 200만원) 체계 적용.",
+    eligibility: {
+      note: "자녀 출생(입양)일 기준 첫째아는 6개월, 둘째아 이상은 12개월 이전부터 계속하여 부모 중 1인이 제주특별자치도에 주민등록을 두고 거주. 정확한 연차별 지급액은 매년 공고문에 따라 달라질 수 있어 신청 전 확인 권장.",
+    },
+    applicationMethod: "출생신고 시 읍·면·동 주민센터 원스톱 신청 또는 정부24 온라인",
+    applicationPeriod: "출생일로부터 1년 이내",
+    officialLink: "https://www.jeju.go.kr/wel/child/childPolicy/workSupport.htm",
+    lastVerifiedAt: "2026-08-12",
+    birthOrderBenefit: {
+      tiers: [
+        { orderMin: 1, amount: 5000000 },
+        { orderMin: 2, amount: 10000000 },
+      ],
+    },
+  },
+  {
+    id: "jj-postpartum-care-support",
+    title: "산후조리비 지원",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["출생출산"],
+    category: "현금지원",
+    summary: "산후조리원 이용 산모에게 실비 최대 40만원 지원(소득기준 없음)",
+    benefit: "도내 산후조리원 이용 산모에게 실 지출액 기준 최대 40만원(소득기준 없음)",
+    eligibility: {
+      note: "부 또는 모가 영아 출생일 기준 도에 6개월 이상 주민등록을 두고 계속 거주, 신청일 현재 부/모와 영아 모두 도에 주민등록. 「제주특별자치도 산후조리비 지원 조례」(2023년 제정, 2024년 시행)에 근거하나 jeju.go.kr 내 전용 상세페이지 URL은 이번 조사에서 특정하지 못해 대문 링크로 대체.",
+    },
+    applicationMethod: "주소지 관할 보건소 방문 신청",
+    applicationPeriod: "산후조리원 이용 종료일 다음날부터 60일 이내",
+    officialLink: "https://www.jeju.go.kr",
+    lastVerifiedAt: "2026-08-12",
+  },
+  {
+    id: "jj-newlywed-lease-loan-interest",
+    title: "신혼부부 및 자녀출산가구 주택전세자금 대출이자 지원",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["출생출산", "영유아기", "유아"],
+    category: "주거",
+    summary: "무주택 신혼부부·출산가구에 전세자금 대출이자 최대 150만~190만원 지원",
+    benefit: "대출잔액의 1.5%(최대 150만원), 2자녀 이상·다문화·장애인 구성원 가구는 2%(최대 190만원)",
+    eligibility: {
+      note: "신청일 현재 제주특별자치도에 주민등록을 두고 거주하는 무주택 신혼부부 및 자녀출산 가구(혼인 또는 자녀출산 7년 이내, 2019.1.1. 이후 혼인 또는 출산).",
+    },
+    applicationMethod: "본인 또는 배우자 신청(임대차계약서·금융거래확인서·주민등록표등본 등 제출)",
+    applicationPeriod: "차수별 접수(연중 여러 차수로 진행)",
+    officialLink: "https://www.jeju.go.kr/city/welfare/marriedcouple.htm",
+    lastVerifiedAt: "2026-08-12",
+  },
+  {
+    id: "jj-grandparent-care-allowance",
+    title: "손주돌봄수당(제주형)",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["영유아기"],
+    category: "현금지원",
+    summary: "24~47개월 손자녀를 돌보는 조부모에게 월 30만~60만원 지급",
+    benefit: "월 30만~60만원(제주특별자치도 아이돌봄 광역지원센터 주관)",
+    eligibility: {
+      childAgeMonthsMin: 24,
+      childAgeMonthsMax: 47,
+      note: "24~47개월 아동을 돌보는 (외)조부모. 2026년 첫 지급 294가정·9,270만원 규모로 시행(제주시·서귀포시 동일 적용).",
+    },
+    applicationMethod: "제주특별자치도 아이돌봄 광역지원센터 신청(세부 절차 재확인 권장)",
+    applicationPeriod: "명시 없음(재확인 권장)",
+    officialLink: "https://www.jeju.go.kr",
+    lastVerifiedAt: "2026-08-12",
+  },
+  {
+    id: "jj-postpartum-herbal-medicine",
+    title: "산후조리 한약 지원",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["출생출산"],
+    category: "의료비",
+    summary: "출산여성에게 한약 1재당 15만원 할인 지원(2026년 확대)",
+    benefit: "한약 1재당 15만원 할인(2026년 4월 기준, 기존 10만원에서 확대)",
+    eligibility: {
+      note: "출산 예정일 또는 출산일 현재 제주도에 주민등록을 둔 여성. 임신 30주 이후~출산 후 4개월까지 신청 가능. 4개 언론사 교차확인이나 jeju.go.kr 공식 원문은 미확인 — 재검증 권장.",
+    },
+    applicationMethod: "주소지 관할 읍·면·동 주민센터 신청 → 지원확인서 교부 → 3개월 이내 도내 참여 한의원 방문",
+    applicationPeriod: "2026년 12월까지(예산 소진 시 조기 마감)",
+    officialLink: "https://www.jeju.go.kr",
+    lastVerifiedAt: "2026-08-12",
+  },
+  {
+    id: "jj-pregnant-eco-produce",
+    title: "임산부 친환경농산물 꾸러미 지원",
+    agencyType: "광역",
+    agencyName: "제주특별자치도",
+    region: { sido: "제주특별자치도" },
+    stages: ["임신중", "출생출산"],
+    category: "바우처",
+    summary: "임산부에게 친환경농산물 꾸러미를 연 48만원 한도로 지원(자부담 20%)",
+    benefit: "1인당 연 48만원 한도(자부담 20%, 약 9.6만원 본인부담)",
+    eligibility: {
+      note: "신청일 현재 제주특별자치도에 주소를 둔 임산부(임신 중 또는 최근 출산). 제주시·서귀포시가 각각 별도로 공고·접수를 진행하나 지원조건은 동일.",
+    },
+    applicationMethod: "관할 시(제주시/서귀포시) 친환경농정 관련 부서 공고에 따라 신청",
+    applicationPeriod: "연도별 공고 시기에 따름",
+    officialLink: "https://www.jeju.go.kr",
+    lastVerifiedAt: "2026-08-12",
+  },
 ];
 
 // 아래 사업은 웹서치 및 언론 보도로 사업 존재 정황은 확인했으나, 구청 자체 .go.kr 공식 페이지를 확보하지
