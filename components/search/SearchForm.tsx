@@ -67,9 +67,21 @@ export function SearchForm({
   );
   const [birthOrder, setBirthOrder] = useState<number | "">(initialValues?.birthOrder ?? 1);
   const [isMultipleBirth, setIsMultipleBirth] = useState(initialValues?.isMultipleBirth ?? false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
+    if (status === "pregnant" && !dueDate) {
+      setError("출산예정일을 입력해주세요.");
+      return;
+    }
+    if (status === "born" && childAgeMonths === "") {
+      setError("현재 개월수를 입력해주세요.");
+      return;
+    }
+    setError(null);
+
     const stageInput: UserStageInput =
       status === "preparing"
         ? { status: "preparing" }
@@ -92,6 +104,7 @@ export function SearchForm({
   return (
     <form
       onSubmit={handleSubmit}
+      noValidate
       className="flex flex-col gap-5 rounded-card border-2 border-brown/10 bg-white p-6"
     >
       <div>
@@ -152,9 +165,13 @@ export function SearchForm({
             <input
               type="date"
               value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
+              onChange={(e) => {
+                setDueDate(e.target.value);
+                if (error) setError(null);
+              }}
               required
               aria-label="출산예정일"
+              aria-invalid={error !== null}
               className={fieldClass}
             />
           </div>
@@ -166,15 +183,18 @@ export function SearchForm({
               type="number"
               min={0}
               value={childAgeMonths}
-              onChange={(e) =>
-                setChildAgeMonths(e.target.value === "" ? "" : Number(e.target.value))
-              }
+              onChange={(e) => {
+                setChildAgeMonths(e.target.value === "" ? "" : Number(e.target.value));
+                if (error) setError(null);
+              }}
               required
               aria-label="자녀 현재 개월수"
+              aria-invalid={error !== null}
               className={fieldClass}
             />
           </div>
         )}
+        {error && <p className="mt-2 text-[13px] font-bold text-coral-dark">{error}</p>}
       </div>
 
       <div>
