@@ -3,6 +3,15 @@ import { programs } from "./data/programs";
 
 export function getCoveredSigungu(sido: string): string[] {
   const allSigungu = regions.find((r) => r.sido === sido)?.sigungus ?? [];
+
+  // 시·군·구 태그 없이 sido 단위로만 등록된 광역 사업(예: 대구시 출생축하금)은 관할 내 모든
+  // 시·군·구 주민에게 동일하게 적용되므로, 그런 사업이 하나라도 있으면 전 시·군·구를
+  // "커버됨"으로 본다 — 그렇지 않으면 기초 자체 사업이 따로 없는(광역만으로 충분한) 시·군·구가
+  // 실제로는 데이터가 있는데도 뱃지에서 "미반영"처럼 보이는 오류가 생긴다.
+  if (hasSidoLevelProgram(sido)) {
+    return allSigungu;
+  }
+
   const covered = new Set<string>();
   for (const program of programs) {
     if (program.region !== "nationwide" && program.region.sido === sido && program.region.sigungu) {
