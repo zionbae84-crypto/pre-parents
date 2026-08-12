@@ -1,4 +1,4 @@
-import type { AgencyType, Stage, SupportProgram } from "./schemas";
+import { AGENCY_ORDER, type Stage, type SupportProgram } from "./schemas";
 
 export interface SearchCriteria {
   sido: string;
@@ -86,8 +86,6 @@ export function matchProgram(
     matchesIncome(program, criteria)
   );
 }
-
-const AGENCY_ORDER: Record<AgencyType, number> = { 정부: 0, 광역: 1, 기초: 2 };
 
 export function findMatchingPrograms(
   programs: SupportProgram[],

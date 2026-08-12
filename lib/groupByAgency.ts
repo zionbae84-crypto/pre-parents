@@ -1,6 +1,4 @@
-import type { AgencyType, SupportProgram } from "./schemas";
-
-const AGENCY_ORDER: Record<AgencyType, number> = { 정부: 0, 광역: 1, 기초: 2 };
+import { AGENCY_ORDER, type AgencyType, type SupportProgram } from "./schemas";
 
 export interface AgencyGroup {
   agencyType: AgencyType;

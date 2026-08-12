@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { programs } from "./programs";
+import { regions } from "./regions";
 import { supportProgramSchema } from "../schemas";
 import { findMatchingPrograms, type SearchCriteria } from "../matching";
 
@@ -25,6 +26,42 @@ describe("programs data", () => {
     expect(govStages.has("임신준비")).toBe(true);
     expect(govStages.has("임신중")).toBe(true);
     expect(govStages.has("출생출산")).toBe(true);
+  });
+
+  it("every region.sido/sigungu matches a real entry in regions.ts (catches typos)", () => {
+    const bad: string[] = [];
+    for (const program of programs) {
+      const region = program.region;
+      if (region === "nationwide") continue;
+      const entry = regions.find((r) => r.sido === region.sido);
+      if (!entry) {
+        bad.push(`${program.id}: unknown sido "${region.sido}"`);
+        continue;
+      }
+      if (region.sigungu && !entry.sigungus.includes(region.sigungu)) {
+        bad.push(`${program.id}: unknown sigungu "${region.sigungu}" for sido "${region.sido}"`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it("has no accidental duplicate entries (same region + title)", () => {
+    const seen = new Map<string, string>();
+    const dups: string[] = [];
+    for (const program of programs) {
+      const region =
+        program.region === "nationwide"
+          ? "nationwide"
+          : `${program.region.sido}/${program.region.sigungu ?? ""}`;
+      const key = `${region}::${program.title}`;
+      const firstId = seen.get(key);
+      if (firstId) {
+        dups.push(`${program.id} duplicates ${firstId} (${key})`);
+      } else {
+        seen.set(key, program.id);
+      }
+    }
+    expect(dups).toEqual([]);
   });
 });
 

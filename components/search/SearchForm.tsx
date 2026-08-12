@@ -149,7 +149,6 @@ export function SearchForm({
                 key={s}
                 type="button"
                 role="radio"
-                aria-pressed={selected}
                 aria-checked={selected}
                 onClick={() => setStatus(s)}
                 className={selected ? selectedButtonClass : unselectedButtonClass}

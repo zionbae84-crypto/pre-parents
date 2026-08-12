@@ -3,6 +3,8 @@ import { z } from "zod";
 export const agencyTypeSchema = z.enum(["정부", "광역", "기초"]);
 export type AgencyType = z.infer<typeof agencyTypeSchema>;
 
+export const AGENCY_ORDER: Record<AgencyType, number> = { 정부: 0, 광역: 1, 기초: 2 };
+
 export const stageSchema = z.enum([
   "임신준비",
   "임신중",
